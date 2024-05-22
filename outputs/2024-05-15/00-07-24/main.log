@@ -1,0 +1,157 @@
+[2024-05-15 00:07:25,915][flwr][INFO] - Starting Flower simulation, config: num_rounds=20, no round_timeout
+[2024-05-15 00:07:32,829][flwr][INFO] - Flower VCE: Ray initialized with resources: {'memory': 11908197582.0, 'object_store_memory': 5954098790.0, 'node:127.0.0.1': 1.0, 'CPU': 8.0, 'node:__internal_head__': 1.0}
+[2024-05-15 00:07:32,829][flwr][INFO] - Optimize your simulation with Flower VCE: https://flower.ai/docs/framework/how-to-run-simulations.html
+[2024-05-15 00:07:32,829][flwr][INFO] - No `client_resources` specified. Using minimal resources for clients.
+[2024-05-15 00:07:32,829][flwr][INFO] - Flower VCE: Resources for each Virtual Client: {'num_cpus': 1, 'num_gpus': 0.0}
+[2024-05-15 00:07:32,875][flwr][INFO] - Flower VCE: Creating VirtualClientEngineActorPool with 8 actors
+[2024-05-15 00:07:32,877][flwr][INFO] - [INIT]
+[2024-05-15 00:07:32,879][flwr][INFO] - Requesting initial parameters from one random client
+[2024-05-15 00:07:37,997][flwr][INFO] - Received initial parameters from one random client
+[2024-05-15 00:07:37,997][flwr][INFO] - Evaluating initial global parameters
+[2024-05-15 00:07:37,997][flwr][INFO] - 
+[2024-05-15 00:07:37,997][flwr][INFO] - [ROUND 1]
+[2024-05-15 00:07:37,997][flwr][INFO] - configure_fit: strategy sampled 13 clients (out of 13)
+[2024-05-15 00:11:01,516][flwr][INFO] - aggregate_fit: received 13 results and 0 failures
+[2024-05-15 00:11:01,572][flwr][WARNING] - No fit_metrics_aggregation_fn provided
+[2024-05-15 00:11:01,572][flwr][INFO] - configure_evaluate: strategy sampled 13 clients (out of 13)
+[2024-05-15 00:11:20,968][flwr][INFO] - aggregate_evaluate: received 13 results and 0 failures
+[2024-05-15 00:11:20,968][flwr][WARNING] - No evaluate_metrics_aggregation_fn provided
+[2024-05-15 00:11:20,968][flwr][INFO] - 
+[2024-05-15 00:11:20,975][flwr][INFO] - [ROUND 2]
+[2024-05-15 00:11:20,977][flwr][INFO] - configure_fit: strategy sampled 13 clients (out of 13)
+[2024-05-15 00:14:39,706][flwr][INFO] - aggregate_fit: received 13 results and 0 failures
+[2024-05-15 00:14:39,743][flwr][INFO] - configure_evaluate: strategy sampled 13 clients (out of 13)
+[2024-05-15 00:14:58,593][flwr][INFO] - aggregate_evaluate: received 13 results and 0 failures
+[2024-05-15 00:14:58,593][flwr][INFO] - 
+[2024-05-15 00:14:58,593][flwr][INFO] - [ROUND 3]
+[2024-05-15 00:14:58,593][flwr][INFO] - configure_fit: strategy sampled 13 clients (out of 13)
+[2024-05-15 00:18:15,481][flwr][INFO] - aggregate_fit: received 13 results and 0 failures
+[2024-05-15 00:18:15,512][flwr][INFO] - configure_evaluate: strategy sampled 13 clients (out of 13)
+[2024-05-15 00:18:34,498][flwr][INFO] - aggregate_evaluate: received 13 results and 0 failures
+[2024-05-15 00:18:34,499][flwr][INFO] - 
+[2024-05-15 00:18:34,500][flwr][INFO] - [ROUND 4]
+[2024-05-15 00:18:34,501][flwr][INFO] - configure_fit: strategy sampled 13 clients (out of 13)
+[2024-05-15 00:21:49,478][flwr][INFO] - aggregate_fit: received 13 results and 0 failures
+[2024-05-15 00:21:49,510][flwr][INFO] - configure_evaluate: strategy sampled 13 clients (out of 13)
+[2024-05-15 00:22:09,399][flwr][INFO] - aggregate_evaluate: received 13 results and 0 failures
+[2024-05-15 00:22:09,400][flwr][INFO] - 
+[2024-05-15 00:22:09,401][flwr][INFO] - [ROUND 5]
+[2024-05-15 00:22:09,403][flwr][INFO] - configure_fit: strategy sampled 13 clients (out of 13)
+[2024-05-15 00:25:22,324][flwr][INFO] - aggregate_fit: received 13 results and 0 failures
+[2024-05-15 00:25:22,356][flwr][INFO] - configure_evaluate: strategy sampled 13 clients (out of 13)
+[2024-05-15 00:25:40,311][flwr][INFO] - aggregate_evaluate: received 13 results and 0 failures
+[2024-05-15 00:25:40,312][flwr][INFO] - 
+[2024-05-15 00:25:40,313][flwr][INFO] - [ROUND 6]
+[2024-05-15 00:25:40,314][flwr][INFO] - configure_fit: strategy sampled 13 clients (out of 13)
+[2024-05-15 00:28:53,449][flwr][INFO] - aggregate_fit: received 13 results and 0 failures
+[2024-05-15 00:28:53,481][flwr][INFO] - configure_evaluate: strategy sampled 13 clients (out of 13)
+[2024-05-15 00:29:12,435][flwr][INFO] - aggregate_evaluate: received 13 results and 0 failures
+[2024-05-15 00:29:12,436][flwr][INFO] - 
+[2024-05-15 00:29:12,437][flwr][INFO] - [ROUND 7]
+[2024-05-15 00:29:12,438][flwr][INFO] - configure_fit: strategy sampled 13 clients (out of 13)
+[2024-05-15 00:32:25,271][flwr][INFO] - aggregate_fit: received 13 results and 0 failures
+[2024-05-15 00:32:25,323][flwr][INFO] - configure_evaluate: strategy sampled 13 clients (out of 13)
+[2024-05-15 00:32:44,342][flwr][INFO] - aggregate_evaluate: received 13 results and 0 failures
+[2024-05-15 00:32:44,343][flwr][INFO] - 
+[2024-05-15 00:32:44,344][flwr][INFO] - [ROUND 8]
+[2024-05-15 00:32:44,345][flwr][INFO] - configure_fit: strategy sampled 13 clients (out of 13)
+[2024-05-15 00:35:54,989][flwr][INFO] - aggregate_fit: received 13 results and 0 failures
+[2024-05-15 00:35:55,041][flwr][INFO] - configure_evaluate: strategy sampled 13 clients (out of 13)
+[2024-05-15 00:36:13,490][flwr][INFO] - aggregate_evaluate: received 13 results and 0 failures
+[2024-05-15 00:36:13,491][flwr][INFO] - 
+[2024-05-15 00:36:13,491][flwr][INFO] - [ROUND 9]
+[2024-05-15 00:36:13,493][flwr][INFO] - configure_fit: strategy sampled 13 clients (out of 13)
+[2024-05-15 00:39:25,790][flwr][INFO] - aggregate_fit: received 13 results and 0 failures
+[2024-05-15 00:39:25,822][flwr][INFO] - configure_evaluate: strategy sampled 13 clients (out of 13)
+[2024-05-15 00:39:43,701][flwr][INFO] - aggregate_evaluate: received 13 results and 0 failures
+[2024-05-15 00:39:43,702][flwr][INFO] - 
+[2024-05-15 00:39:43,703][flwr][INFO] - [ROUND 10]
+[2024-05-15 00:39:43,704][flwr][INFO] - configure_fit: strategy sampled 13 clients (out of 13)
+[2024-05-15 00:42:55,503][flwr][INFO] - aggregate_fit: received 13 results and 0 failures
+[2024-05-15 00:42:55,538][flwr][INFO] - configure_evaluate: strategy sampled 13 clients (out of 13)
+[2024-05-15 00:43:13,989][flwr][INFO] - aggregate_evaluate: received 13 results and 0 failures
+[2024-05-15 00:43:13,990][flwr][INFO] - 
+[2024-05-15 00:43:13,991][flwr][INFO] - [ROUND 11]
+[2024-05-15 00:43:13,992][flwr][INFO] - configure_fit: strategy sampled 13 clients (out of 13)
+[2024-05-15 00:46:26,960][flwr][INFO] - aggregate_fit: received 13 results and 0 failures
+[2024-05-15 00:46:26,994][flwr][INFO] - configure_evaluate: strategy sampled 13 clients (out of 13)
+[2024-05-15 00:46:44,968][flwr][INFO] - aggregate_evaluate: received 13 results and 0 failures
+[2024-05-15 00:46:44,968][flwr][INFO] - 
+[2024-05-15 00:46:44,969][flwr][INFO] - [ROUND 12]
+[2024-05-15 00:46:44,971][flwr][INFO] - configure_fit: strategy sampled 13 clients (out of 13)
+[2024-05-15 00:49:59,771][flwr][INFO] - aggregate_fit: received 13 results and 0 failures
+[2024-05-15 00:49:59,804][flwr][INFO] - configure_evaluate: strategy sampled 13 clients (out of 13)
+[2024-05-15 00:50:18,134][flwr][INFO] - aggregate_evaluate: received 13 results and 0 failures
+[2024-05-15 00:50:18,134][flwr][INFO] - 
+[2024-05-15 00:50:18,140][flwr][INFO] - [ROUND 13]
+[2024-05-15 00:50:18,141][flwr][INFO] - configure_fit: strategy sampled 13 clients (out of 13)
+[2024-05-15 00:53:31,887][flwr][INFO] - aggregate_fit: received 13 results and 0 failures
+[2024-05-15 00:53:31,920][flwr][INFO] - configure_evaluate: strategy sampled 13 clients (out of 13)
+[2024-05-15 00:53:49,999][flwr][INFO] - aggregate_evaluate: received 13 results and 0 failures
+[2024-05-15 00:53:50,001][flwr][INFO] - 
+[2024-05-15 00:53:50,002][flwr][INFO] - [ROUND 14]
+[2024-05-15 00:53:50,004][flwr][INFO] - configure_fit: strategy sampled 13 clients (out of 13)
+[2024-05-15 00:57:03,944][flwr][INFO] - aggregate_fit: received 13 results and 0 failures
+[2024-05-15 00:57:03,985][flwr][INFO] - configure_evaluate: strategy sampled 13 clients (out of 13)
+[2024-05-15 00:57:23,125][flwr][INFO] - aggregate_evaluate: received 13 results and 0 failures
+[2024-05-15 00:57:23,126][flwr][INFO] - 
+[2024-05-15 00:57:23,127][flwr][INFO] - [ROUND 15]
+[2024-05-15 00:57:23,129][flwr][INFO] - configure_fit: strategy sampled 13 clients (out of 13)
+[2024-05-15 01:00:35,060][flwr][INFO] - aggregate_fit: received 13 results and 0 failures
+[2024-05-15 01:00:35,095][flwr][INFO] - configure_evaluate: strategy sampled 13 clients (out of 13)
+[2024-05-15 01:00:53,667][flwr][INFO] - aggregate_evaluate: received 13 results and 0 failures
+[2024-05-15 01:00:53,668][flwr][INFO] - 
+[2024-05-15 01:00:53,669][flwr][INFO] - [ROUND 16]
+[2024-05-15 01:00:53,671][flwr][INFO] - configure_fit: strategy sampled 13 clients (out of 13)
+[2024-05-15 01:04:05,402][flwr][INFO] - aggregate_fit: received 13 results and 0 failures
+[2024-05-15 01:04:05,433][flwr][INFO] - configure_evaluate: strategy sampled 13 clients (out of 13)
+[2024-05-15 01:04:23,407][flwr][INFO] - aggregate_evaluate: received 13 results and 0 failures
+[2024-05-15 01:04:23,408][flwr][INFO] - 
+[2024-05-15 01:04:23,409][flwr][INFO] - [ROUND 17]
+[2024-05-15 01:04:23,411][flwr][INFO] - configure_fit: strategy sampled 13 clients (out of 13)
+[2024-05-15 01:07:37,588][flwr][INFO] - aggregate_fit: received 13 results and 0 failures
+[2024-05-15 01:07:37,625][flwr][INFO] - configure_evaluate: strategy sampled 13 clients (out of 13)
+[2024-05-15 01:07:55,966][flwr][INFO] - aggregate_evaluate: received 13 results and 0 failures
+[2024-05-15 01:07:55,967][flwr][INFO] - 
+[2024-05-15 01:07:55,968][flwr][INFO] - [ROUND 18]
+[2024-05-15 01:07:55,969][flwr][INFO] - configure_fit: strategy sampled 13 clients (out of 13)
+[2024-05-15 01:11:06,793][flwr][INFO] - aggregate_fit: received 13 results and 0 failures
+[2024-05-15 01:11:06,830][flwr][INFO] - configure_evaluate: strategy sampled 13 clients (out of 13)
+[2024-05-15 01:11:25,874][flwr][INFO] - aggregate_evaluate: received 13 results and 0 failures
+[2024-05-15 01:11:25,875][flwr][INFO] - 
+[2024-05-15 01:11:25,876][flwr][INFO] - [ROUND 19]
+[2024-05-15 01:11:25,877][flwr][INFO] - configure_fit: strategy sampled 13 clients (out of 13)
+[2024-05-15 01:14:35,762][flwr][INFO] - aggregate_fit: received 13 results and 0 failures
+[2024-05-15 01:14:35,796][flwr][INFO] - configure_evaluate: strategy sampled 13 clients (out of 13)
+[2024-05-15 01:14:53,708][flwr][INFO] - aggregate_evaluate: received 13 results and 0 failures
+[2024-05-15 01:14:53,709][flwr][INFO] - 
+[2024-05-15 01:14:53,709][flwr][INFO] - [ROUND 20]
+[2024-05-15 01:14:53,710][flwr][INFO] - configure_fit: strategy sampled 13 clients (out of 13)
+[2024-05-15 01:18:03,864][flwr][INFO] - aggregate_fit: received 13 results and 0 failures
+[2024-05-15 01:18:03,907][flwr][INFO] - configure_evaluate: strategy sampled 13 clients (out of 13)
+[2024-05-15 01:18:22,465][flwr][INFO] - aggregate_evaluate: received 13 results and 0 failures
+[2024-05-15 01:18:22,466][flwr][INFO] - 
+[2024-05-15 01:18:22,467][flwr][INFO] - [SUMMARY]
+[2024-05-15 01:18:22,468][flwr][INFO] - Run finished 20 rounds in 4244.47s
+[2024-05-15 01:18:22,469][flwr][INFO] - History (loss, distributed):
+[2024-05-15 01:18:22,470][flwr][INFO] - 	('\tround 1: 29.471589938779996\n'
+[2024-05-15 01:18:22,471][flwr][INFO] - 	 '\tround 2: 52.57515680848228\n'
+[2024-05-15 01:18:22,472][flwr][INFO] - 	 '\tround 3: 24.124778793372222\n'
+[2024-05-15 01:18:22,473][flwr][INFO] - 	 '\tround 4: 28.153453079883466\n'
+[2024-05-15 01:18:22,473][flwr][INFO] - 	 '\tround 5: 19.550408578751547\n'
+[2024-05-15 01:18:22,474][flwr][INFO] - 	 '\tround 6: 24.73098064857326\n'
+[2024-05-15 01:18:22,475][flwr][INFO] - 	 '\tround 7: 17.971257734504842\n'
+[2024-05-15 01:18:22,476][flwr][INFO] - 	 '\tround 8: 21.960777956319927\n'
+[2024-05-15 01:18:22,476][flwr][INFO] - 	 '\tround 9: 17.20855816846463\n'
+[2024-05-15 01:18:22,477][flwr][INFO] - 	 '\tround 10: 21.744170493275814\n'
+[2024-05-15 01:18:22,478][flwr][INFO] - 	 '\tround 11: 18.184261096884555\n'
+[2024-05-15 01:18:22,478][flwr][INFO] - 	 '\tround 12: 24.521570527978366\n'
+[2024-05-15 01:18:22,479][flwr][INFO] - 	 '\tround 13: 19.451476558002753\n'
+[2024-05-15 01:18:22,480][flwr][INFO] - 	 '\tround 14: 23.49918967450213\n'
+[2024-05-15 01:18:22,481][flwr][INFO] - 	 '\tround 15: 17.066321097763232\n'
+[2024-05-15 01:18:22,481][flwr][INFO] - 	 '\tround 16: 21.050744851460447\n'
+[2024-05-15 01:18:22,481][flwr][INFO] - 	 '\tround 17: 15.729852906372985\n'
+[2024-05-15 01:18:22,482][flwr][INFO] - 	 '\tround 18: 18.799042141548686\n'
+[2024-05-15 01:18:22,483][flwr][INFO] - 	 '\tround 19: 14.382153621696213\n'
+[2024-05-15 01:18:22,483][flwr][INFO] - 	 '\tround 20: 18.131351741336687\n')
+[2024-05-15 01:18:22,484][flwr][INFO] - 

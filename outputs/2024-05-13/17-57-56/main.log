@@ -1,0 +1,554 @@
+[2024-05-13 17:57:57,352][flwr][INFO] - Starting Flower simulation, config: num_rounds=20, no round_timeout
+[2024-05-13 17:58:02,669][flwr][INFO] - Flower VCE: Ray initialized with resources: {'memory': 10955046912.0, 'node:127.0.0.1': 1.0, 'object_store_memory': 5477523456.0, 'CPU': 8.0, 'node:__internal_head__': 1.0}
+[2024-05-13 17:58:02,669][flwr][INFO] - Optimize your simulation with Flower VCE: https://flower.ai/docs/framework/how-to-run-simulations.html
+[2024-05-13 17:58:02,670][flwr][INFO] - No `client_resources` specified. Using minimal resources for clients.
+[2024-05-13 17:58:02,671][flwr][INFO] - Flower VCE: Resources for each Virtual Client: {'num_cpus': 1, 'num_gpus': 0.0}
+[2024-05-13 17:58:02,683][flwr][INFO] - Flower VCE: Creating VirtualClientEngineActorPool with 8 actors
+[2024-05-13 17:58:02,684][flwr][INFO] - [INIT]
+[2024-05-13 17:58:02,685][flwr][INFO] - Requesting initial parameters from one random client
+[2024-05-13 17:58:07,658][flwr][INFO] - Received initial parameters from one random client
+[2024-05-13 17:58:07,658][flwr][INFO] - Evaluating initial global parameters
+[2024-05-13 17:58:07,659][flwr][INFO] - 
+[2024-05-13 17:58:07,660][flwr][INFO] - [ROUND 1]
+[2024-05-13 17:58:07,660][flwr][INFO] - configure_fit: strategy sampled 1 clients (out of 13)
+[2024-05-13 17:58:42,564][flwr][INFO] - aggregate_fit: received 1 results and 0 failures
+[2024-05-13 17:58:42,567][flwr][WARNING] - No fit_metrics_aggregation_fn provided
+[2024-05-13 17:58:42,568][flwr][INFO] - configure_evaluate: strategy sampled 1 clients (out of 13)
+[2024-05-13 17:58:46,131][flwr][ERROR] - Traceback (most recent call last):
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_client_proxy.py", line 73, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 399, in get_client_result
+    return self._fetch_future_result(cid)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 280, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\auto_init_hook.py", line 24, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\worker.py", line 2524, in get
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(ClientAppException): [36mray::ClientAppActor.run()[39m (pid=18404, ip=127.0.0.1, actor_id=6001d96844ca7825febe32c901000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x000001302E588100>)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\message_handler\message_handler.py", line 137, in handle_legacy_message_from_msgtype
+    evaluate_res = maybe_call_evaluate(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client.py", line 254, in maybe_call_evaluate
+    return client.evaluate(evaluate_ins)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\numpy_client.py", line 262, in _evaluate
+    results = self.numpy_client.evaluate(parameters, ins.config)  # type: ignore
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\client.py", line 53, in evaluate
+    loss, accuracy = test(self.model, self.valloader)
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\centralized.py", line 120, in test
+    outputs = net(inputs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\torch\nn\modules\module.py", line 1511, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\torch\nn\modules\module.py", line 1520, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\centralized.py", line 45, in forward
+    x = self.l1(x)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\torch\nn\modules\module.py", line 1511, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\torch\nn\modules\module.py", line 1520, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\torch\nn\modules\linear.py", line 116, in forward
+    return F.linear(input, self.weight, self.bias)
+RuntimeError: mat1 and mat2 must have the same dtype, but got Double and Float
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=18404, ip=127.0.0.1, actor_id=6001d96844ca7825febe32c901000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x000001302E588100>)
+  File "python\ray\_raylet.pyx", line 1418, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1498, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1424, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1364, in ray._raylet.execute_task.function_executor
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\function_manager.py", line 726, in actor_method_executor
+    return method(__ray_actor, *args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\util\tracing\tracing_helper.py", line 464, in _resume_span
+    return method(self, *_args, **_kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: mat1 and mat2 must have the same dtype, but got Double and Float
+
+[2024-05-13 17:58:46,145][flwr][ERROR] - [36mray::ClientAppActor.run()[39m (pid=18404, ip=127.0.0.1, actor_id=6001d96844ca7825febe32c901000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x000001302E588100>)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\message_handler\message_handler.py", line 137, in handle_legacy_message_from_msgtype
+    evaluate_res = maybe_call_evaluate(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client.py", line 254, in maybe_call_evaluate
+    return client.evaluate(evaluate_ins)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\numpy_client.py", line 262, in _evaluate
+    results = self.numpy_client.evaluate(parameters, ins.config)  # type: ignore
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\client.py", line 53, in evaluate
+    loss, accuracy = test(self.model, self.valloader)
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\centralized.py", line 120, in test
+    outputs = net(inputs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\torch\nn\modules\module.py", line 1511, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\torch\nn\modules\module.py", line 1520, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\centralized.py", line 45, in forward
+    x = self.l1(x)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\torch\nn\modules\module.py", line 1511, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\torch\nn\modules\module.py", line 1520, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\torch\nn\modules\linear.py", line 116, in forward
+    return F.linear(input, self.weight, self.bias)
+RuntimeError: mat1 and mat2 must have the same dtype, but got Double and Float
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=18404, ip=127.0.0.1, actor_id=6001d96844ca7825febe32c901000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x000001302E588100>)
+  File "python\ray\_raylet.pyx", line 1418, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1498, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1424, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1364, in ray._raylet.execute_task.function_executor
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\function_manager.py", line 726, in actor_method_executor
+    return method(__ray_actor, *args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\util\tracing\tracing_helper.py", line 464, in _resume_span
+    return method(self, *_args, **_kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: mat1 and mat2 must have the same dtype, but got Double and Float
+[2024-05-13 17:58:46,153][flwr][INFO] - aggregate_evaluate: received 0 results and 1 failures
+[2024-05-13 17:58:46,154][flwr][INFO] - 
+[2024-05-13 17:58:46,154][flwr][INFO] - [ROUND 2]
+[2024-05-13 17:58:46,155][flwr][INFO] - configure_fit: strategy sampled 1 clients (out of 13)
+[2024-05-13 17:59:19,932][flwr][INFO] - aggregate_fit: received 1 results and 0 failures
+[2024-05-13 17:59:19,935][flwr][INFO] - configure_evaluate: strategy sampled 1 clients (out of 13)
+[2024-05-13 17:59:23,393][flwr][ERROR] - Traceback (most recent call last):
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_client_proxy.py", line 73, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 399, in get_client_result
+    return self._fetch_future_result(cid)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 280, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\auto_init_hook.py", line 24, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\worker.py", line 2524, in get
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(ClientAppException): [36mray::ClientAppActor.run()[39m (pid=18404, ip=127.0.0.1, actor_id=6001d96844ca7825febe32c901000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x000001302E588100>)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\message_handler\message_handler.py", line 137, in handle_legacy_message_from_msgtype
+    evaluate_res = maybe_call_evaluate(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client.py", line 254, in maybe_call_evaluate
+    return client.evaluate(evaluate_ins)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\numpy_client.py", line 262, in _evaluate
+    results = self.numpy_client.evaluate(parameters, ins.config)  # type: ignore
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\client.py", line 53, in evaluate
+    loss, accuracy = test(self.model, self.valloader)
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\centralized.py", line 120, in test
+    outputs = net(inputs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\torch\nn\modules\module.py", line 1511, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\torch\nn\modules\module.py", line 1520, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\centralized.py", line 45, in forward
+    x = self.l1(x)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\torch\nn\modules\module.py", line 1511, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\torch\nn\modules\module.py", line 1520, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\torch\nn\modules\linear.py", line 116, in forward
+    return F.linear(input, self.weight, self.bias)
+RuntimeError: mat1 and mat2 must have the same dtype, but got Double and Float
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=18404, ip=127.0.0.1, actor_id=6001d96844ca7825febe32c901000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x000001302E588100>)
+  File "python\ray\_raylet.pyx", line 1418, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1498, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1424, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1364, in ray._raylet.execute_task.function_executor
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\function_manager.py", line 726, in actor_method_executor
+    return method(__ray_actor, *args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\util\tracing\tracing_helper.py", line 464, in _resume_span
+    return method(self, *_args, **_kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: mat1 and mat2 must have the same dtype, but got Double and Float
+
+[2024-05-13 17:59:23,405][flwr][ERROR] - [36mray::ClientAppActor.run()[39m (pid=18404, ip=127.0.0.1, actor_id=6001d96844ca7825febe32c901000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x000001302E588100>)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\message_handler\message_handler.py", line 137, in handle_legacy_message_from_msgtype
+    evaluate_res = maybe_call_evaluate(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client.py", line 254, in maybe_call_evaluate
+    return client.evaluate(evaluate_ins)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\numpy_client.py", line 262, in _evaluate
+    results = self.numpy_client.evaluate(parameters, ins.config)  # type: ignore
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\client.py", line 53, in evaluate
+    loss, accuracy = test(self.model, self.valloader)
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\centralized.py", line 120, in test
+    outputs = net(inputs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\torch\nn\modules\module.py", line 1511, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\torch\nn\modules\module.py", line 1520, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\centralized.py", line 45, in forward
+    x = self.l1(x)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\torch\nn\modules\module.py", line 1511, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\torch\nn\modules\module.py", line 1520, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\torch\nn\modules\linear.py", line 116, in forward
+    return F.linear(input, self.weight, self.bias)
+RuntimeError: mat1 and mat2 must have the same dtype, but got Double and Float
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=18404, ip=127.0.0.1, actor_id=6001d96844ca7825febe32c901000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x000001302E588100>)
+  File "python\ray\_raylet.pyx", line 1418, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1498, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1424, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1364, in ray._raylet.execute_task.function_executor
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\function_manager.py", line 726, in actor_method_executor
+    return method(__ray_actor, *args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\util\tracing\tracing_helper.py", line 464, in _resume_span
+    return method(self, *_args, **_kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: mat1 and mat2 must have the same dtype, but got Double and Float
+[2024-05-13 17:59:23,417][flwr][INFO] - aggregate_evaluate: received 0 results and 1 failures
+[2024-05-13 17:59:23,418][flwr][INFO] - 
+[2024-05-13 17:59:23,418][flwr][INFO] - [ROUND 3]
+[2024-05-13 17:59:23,419][flwr][INFO] - configure_fit: strategy sampled 1 clients (out of 13)
+[2024-05-13 17:59:58,287][flwr][INFO] - aggregate_fit: received 1 results and 0 failures
+[2024-05-13 17:59:58,289][flwr][INFO] - configure_evaluate: strategy sampled 1 clients (out of 13)
+[2024-05-13 18:00:01,595][flwr][ERROR] - Traceback (most recent call last):
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_client_proxy.py", line 73, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 399, in get_client_result
+    return self._fetch_future_result(cid)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 280, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\auto_init_hook.py", line 24, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\worker.py", line 2524, in get
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(ClientAppException): [36mray::ClientAppActor.run()[39m (pid=18404, ip=127.0.0.1, actor_id=6001d96844ca7825febe32c901000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x000001302E588100>)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\message_handler\message_handler.py", line 137, in handle_legacy_message_from_msgtype
+    evaluate_res = maybe_call_evaluate(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client.py", line 254, in maybe_call_evaluate
+    return client.evaluate(evaluate_ins)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\numpy_client.py", line 262, in _evaluate
+    results = self.numpy_client.evaluate(parameters, ins.config)  # type: ignore
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\client.py", line 53, in evaluate
+    loss, accuracy = test(self.model, self.valloader)
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\centralized.py", line 120, in test
+    outputs = net(inputs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\torch\nn\modules\module.py", line 1511, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\torch\nn\modules\module.py", line 1520, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\centralized.py", line 45, in forward
+    x = self.l1(x)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\torch\nn\modules\module.py", line 1511, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\torch\nn\modules\module.py", line 1520, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\torch\nn\modules\linear.py", line 116, in forward
+    return F.linear(input, self.weight, self.bias)
+RuntimeError: mat1 and mat2 must have the same dtype, but got Double and Float
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=18404, ip=127.0.0.1, actor_id=6001d96844ca7825febe32c901000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x000001302E588100>)
+  File "python\ray\_raylet.pyx", line 1418, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1498, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1424, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1364, in ray._raylet.execute_task.function_executor
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\function_manager.py", line 726, in actor_method_executor
+    return method(__ray_actor, *args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\util\tracing\tracing_helper.py", line 464, in _resume_span
+    return method(self, *_args, **_kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: mat1 and mat2 must have the same dtype, but got Double and Float
+
+[2024-05-13 18:00:01,607][flwr][ERROR] - [36mray::ClientAppActor.run()[39m (pid=18404, ip=127.0.0.1, actor_id=6001d96844ca7825febe32c901000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x000001302E588100>)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\message_handler\message_handler.py", line 137, in handle_legacy_message_from_msgtype
+    evaluate_res = maybe_call_evaluate(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client.py", line 254, in maybe_call_evaluate
+    return client.evaluate(evaluate_ins)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\numpy_client.py", line 262, in _evaluate
+    results = self.numpy_client.evaluate(parameters, ins.config)  # type: ignore
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\client.py", line 53, in evaluate
+    loss, accuracy = test(self.model, self.valloader)
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\centralized.py", line 120, in test
+    outputs = net(inputs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\torch\nn\modules\module.py", line 1511, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\torch\nn\modules\module.py", line 1520, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\centralized.py", line 45, in forward
+    x = self.l1(x)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\torch\nn\modules\module.py", line 1511, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\torch\nn\modules\module.py", line 1520, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\torch\nn\modules\linear.py", line 116, in forward
+    return F.linear(input, self.weight, self.bias)
+RuntimeError: mat1 and mat2 must have the same dtype, but got Double and Float
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=18404, ip=127.0.0.1, actor_id=6001d96844ca7825febe32c901000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x000001302E588100>)
+  File "python\ray\_raylet.pyx", line 1418, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1498, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1424, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1364, in ray._raylet.execute_task.function_executor
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\function_manager.py", line 726, in actor_method_executor
+    return method(__ray_actor, *args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\util\tracing\tracing_helper.py", line 464, in _resume_span
+    return method(self, *_args, **_kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: mat1 and mat2 must have the same dtype, but got Double and Float
+[2024-05-13 18:00:01,617][flwr][INFO] - aggregate_evaluate: received 0 results and 1 failures
+[2024-05-13 18:00:01,618][flwr][INFO] - 
+[2024-05-13 18:00:01,618][flwr][INFO] - [ROUND 4]
+[2024-05-13 18:00:01,618][flwr][INFO] - configure_fit: strategy sampled 1 clients (out of 13)
+[2024-05-13 18:00:35,854][flwr][INFO] - aggregate_fit: received 1 results and 0 failures
+[2024-05-13 18:00:35,856][flwr][INFO] - configure_evaluate: strategy sampled 1 clients (out of 13)
+[2024-05-13 18:00:39,436][flwr][ERROR] - Traceback (most recent call last):
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_client_proxy.py", line 73, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 399, in get_client_result
+    return self._fetch_future_result(cid)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 280, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\auto_init_hook.py", line 24, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\worker.py", line 2524, in get
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(ClientAppException): [36mray::ClientAppActor.run()[39m (pid=18404, ip=127.0.0.1, actor_id=6001d96844ca7825febe32c901000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x000001302E588100>)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\message_handler\message_handler.py", line 137, in handle_legacy_message_from_msgtype
+    evaluate_res = maybe_call_evaluate(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client.py", line 254, in maybe_call_evaluate
+    return client.evaluate(evaluate_ins)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\numpy_client.py", line 262, in _evaluate
+    results = self.numpy_client.evaluate(parameters, ins.config)  # type: ignore
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\client.py", line 53, in evaluate
+    loss, accuracy = test(self.model, self.valloader)
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\centralized.py", line 120, in test
+    outputs = net(inputs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\torch\nn\modules\module.py", line 1511, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\torch\nn\modules\module.py", line 1520, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\centralized.py", line 45, in forward
+    x = self.l1(x)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\torch\nn\modules\module.py", line 1511, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\torch\nn\modules\module.py", line 1520, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\torch\nn\modules\linear.py", line 116, in forward
+    return F.linear(input, self.weight, self.bias)
+RuntimeError: mat1 and mat2 must have the same dtype, but got Double and Float
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=18404, ip=127.0.0.1, actor_id=6001d96844ca7825febe32c901000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x000001302E588100>)
+  File "python\ray\_raylet.pyx", line 1418, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1498, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1424, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1364, in ray._raylet.execute_task.function_executor
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\function_manager.py", line 726, in actor_method_executor
+    return method(__ray_actor, *args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\util\tracing\tracing_helper.py", line 464, in _resume_span
+    return method(self, *_args, **_kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: mat1 and mat2 must have the same dtype, but got Double and Float
+
+[2024-05-13 18:00:39,450][flwr][ERROR] - [36mray::ClientAppActor.run()[39m (pid=18404, ip=127.0.0.1, actor_id=6001d96844ca7825febe32c901000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x000001302E588100>)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\message_handler\message_handler.py", line 137, in handle_legacy_message_from_msgtype
+    evaluate_res = maybe_call_evaluate(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client.py", line 254, in maybe_call_evaluate
+    return client.evaluate(evaluate_ins)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\numpy_client.py", line 262, in _evaluate
+    results = self.numpy_client.evaluate(parameters, ins.config)  # type: ignore
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\client.py", line 53, in evaluate
+    loss, accuracy = test(self.model, self.valloader)
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\centralized.py", line 120, in test
+    outputs = net(inputs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\torch\nn\modules\module.py", line 1511, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\torch\nn\modules\module.py", line 1520, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\centralized.py", line 45, in forward
+    x = self.l1(x)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\torch\nn\modules\module.py", line 1511, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\torch\nn\modules\module.py", line 1520, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\torch\nn\modules\linear.py", line 116, in forward
+    return F.linear(input, self.weight, self.bias)
+RuntimeError: mat1 and mat2 must have the same dtype, but got Double and Float
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=18404, ip=127.0.0.1, actor_id=6001d96844ca7825febe32c901000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x000001302E588100>)
+  File "python\ray\_raylet.pyx", line 1418, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1498, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1424, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1364, in ray._raylet.execute_task.function_executor
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\function_manager.py", line 726, in actor_method_executor
+    return method(__ray_actor, *args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\util\tracing\tracing_helper.py", line 464, in _resume_span
+    return method(self, *_args, **_kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: mat1 and mat2 must have the same dtype, but got Double and Float
+[2024-05-13 18:00:39,461][flwr][INFO] - aggregate_evaluate: received 0 results and 1 failures
+[2024-05-13 18:00:39,461][flwr][INFO] - 
+[2024-05-13 18:00:39,462][flwr][INFO] - [ROUND 5]
+[2024-05-13 18:00:39,463][flwr][INFO] - configure_fit: strategy sampled 1 clients (out of 13)
+[2024-05-13 18:01:14,852][flwr][INFO] - aggregate_fit: received 1 results and 0 failures
+[2024-05-13 18:01:14,854][flwr][INFO] - configure_evaluate: strategy sampled 1 clients (out of 13)
+[2024-05-13 18:01:18,386][flwr][ERROR] - Traceback (most recent call last):
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_client_proxy.py", line 73, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 399, in get_client_result
+    return self._fetch_future_result(cid)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 280, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\auto_init_hook.py", line 24, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\worker.py", line 2524, in get
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(ClientAppException): [36mray::ClientAppActor.run()[39m (pid=18404, ip=127.0.0.1, actor_id=6001d96844ca7825febe32c901000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x000001302E588100>)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\message_handler\message_handler.py", line 137, in handle_legacy_message_from_msgtype
+    evaluate_res = maybe_call_evaluate(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client.py", line 254, in maybe_call_evaluate
+    return client.evaluate(evaluate_ins)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\numpy_client.py", line 262, in _evaluate
+    results = self.numpy_client.evaluate(parameters, ins.config)  # type: ignore
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\client.py", line 53, in evaluate
+    loss, accuracy = test(self.model, self.valloader)
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\centralized.py", line 120, in test
+    outputs = net(inputs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\torch\nn\modules\module.py", line 1511, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\torch\nn\modules\module.py", line 1520, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\centralized.py", line 45, in forward
+    x = self.l1(x)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\torch\nn\modules\module.py", line 1511, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\torch\nn\modules\module.py", line 1520, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\torch\nn\modules\linear.py", line 116, in forward
+    return F.linear(input, self.weight, self.bias)
+RuntimeError: mat1 and mat2 must have the same dtype, but got Double and Float
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=18404, ip=127.0.0.1, actor_id=6001d96844ca7825febe32c901000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x000001302E588100>)
+  File "python\ray\_raylet.pyx", line 1418, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1498, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1424, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1364, in ray._raylet.execute_task.function_executor
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\function_manager.py", line 726, in actor_method_executor
+    return method(__ray_actor, *args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\util\tracing\tracing_helper.py", line 464, in _resume_span
+    return method(self, *_args, **_kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: mat1 and mat2 must have the same dtype, but got Double and Float
+
+[2024-05-13 18:01:18,398][flwr][ERROR] - [36mray::ClientAppActor.run()[39m (pid=18404, ip=127.0.0.1, actor_id=6001d96844ca7825febe32c901000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x000001302E588100>)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\message_handler\message_handler.py", line 137, in handle_legacy_message_from_msgtype
+    evaluate_res = maybe_call_evaluate(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client.py", line 254, in maybe_call_evaluate
+    return client.evaluate(evaluate_ins)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\numpy_client.py", line 262, in _evaluate
+    results = self.numpy_client.evaluate(parameters, ins.config)  # type: ignore
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\client.py", line 53, in evaluate
+    loss, accuracy = test(self.model, self.valloader)
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\centralized.py", line 120, in test
+    outputs = net(inputs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\torch\nn\modules\module.py", line 1511, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\torch\nn\modules\module.py", line 1520, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\centralized.py", line 45, in forward
+    x = self.l1(x)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\torch\nn\modules\module.py", line 1511, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\torch\nn\modules\module.py", line 1520, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\torch\nn\modules\linear.py", line 116, in forward
+    return F.linear(input, self.weight, self.bias)
+RuntimeError: mat1 and mat2 must have the same dtype, but got Double and Float
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=18404, ip=127.0.0.1, actor_id=6001d96844ca7825febe32c901000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x000001302E588100>)
+  File "python\ray\_raylet.pyx", line 1418, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1498, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1424, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1364, in ray._raylet.execute_task.function_executor
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\function_manager.py", line 726, in actor_method_executor
+    return method(__ray_actor, *args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\util\tracing\tracing_helper.py", line 464, in _resume_span
+    return method(self, *_args, **_kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: mat1 and mat2 must have the same dtype, but got Double and Float
+[2024-05-13 18:01:18,409][flwr][INFO] - aggregate_evaluate: received 0 results and 1 failures
+[2024-05-13 18:01:18,410][flwr][INFO] - 
+[2024-05-13 18:01:18,410][flwr][INFO] - [ROUND 6]
+[2024-05-13 18:01:18,411][flwr][INFO] - configure_fit: strategy sampled 1 clients (out of 13)

@@ -1,0 +1,52 @@
+[2024-05-11 21:38:17,054][flwr][INFO] - Starting Flower simulation, config: num_rounds=5, no round_timeout
+[2024-05-11 21:38:22,578][flwr][INFO] - Flower VCE: Ray initialized with resources: {'object_store_memory': 6395970355.0, 'node:127.0.0.1': 1.0, 'memory': 12791940711.0, 'node:__internal_head__': 1.0, 'CPU': 8.0}
+[2024-05-11 21:38:22,579][flwr][INFO] - Optimize your simulation with Flower VCE: https://flower.ai/docs/framework/how-to-run-simulations.html
+[2024-05-11 21:38:22,580][flwr][INFO] - No `client_resources` specified. Using minimal resources for clients.
+[2024-05-11 21:38:22,580][flwr][INFO] - Flower VCE: Resources for each Virtual Client: {'num_cpus': 1, 'num_gpus': 0.0}
+[2024-05-11 21:38:22,592][flwr][INFO] - Flower VCE: Creating VirtualClientEngineActorPool with 8 actors
+[2024-05-11 21:38:22,593][flwr][INFO] - [INIT]
+[2024-05-11 21:38:22,594][flwr][INFO] - Requesting initial parameters from one random client
+[2024-05-11 21:38:27,675][flwr][INFO] - Received initial parameters from one random client
+[2024-05-11 21:38:27,677][flwr][INFO] - Evaluating initial global parameters
+[2024-05-11 21:38:27,678][flwr][INFO] - 
+[2024-05-11 21:38:27,678][flwr][INFO] - [ROUND 1]
+[2024-05-11 21:38:27,679][flwr][INFO] - configure_fit: strategy sampled 1 clients (out of 2)
+[2024-05-11 21:39:04,398][flwr][INFO] - aggregate_fit: received 1 results and 0 failures
+[2024-05-11 21:39:04,400][flwr][WARNING] - No fit_metrics_aggregation_fn provided
+[2024-05-11 21:39:04,401][flwr][INFO] - configure_evaluate: strategy sampled 2 clients (out of 2)
+[2024-05-11 21:39:11,185][flwr][INFO] - aggregate_evaluate: received 2 results and 0 failures
+[2024-05-11 21:39:11,186][flwr][WARNING] - No evaluate_metrics_aggregation_fn provided
+[2024-05-11 21:39:11,186][flwr][INFO] - 
+[2024-05-11 21:39:11,187][flwr][INFO] - [ROUND 2]
+[2024-05-11 21:39:11,187][flwr][INFO] - configure_fit: strategy sampled 1 clients (out of 2)
+[2024-05-11 21:39:44,113][flwr][INFO] - aggregate_fit: received 1 results and 0 failures
+[2024-05-11 21:39:44,114][flwr][INFO] - configure_evaluate: strategy sampled 2 clients (out of 2)
+[2024-05-11 21:39:47,847][flwr][INFO] - aggregate_evaluate: received 2 results and 0 failures
+[2024-05-11 21:39:47,848][flwr][INFO] - 
+[2024-05-11 21:39:47,849][flwr][INFO] - [ROUND 3]
+[2024-05-11 21:39:47,850][flwr][INFO] - configure_fit: strategy sampled 1 clients (out of 2)
+[2024-05-11 21:40:20,432][flwr][INFO] - aggregate_fit: received 1 results and 0 failures
+[2024-05-11 21:40:20,434][flwr][INFO] - configure_evaluate: strategy sampled 2 clients (out of 2)
+[2024-05-11 21:40:24,213][flwr][INFO] - aggregate_evaluate: received 2 results and 0 failures
+[2024-05-11 21:40:24,213][flwr][INFO] - 
+[2024-05-11 21:40:24,215][flwr][INFO] - [ROUND 4]
+[2024-05-11 21:40:24,215][flwr][INFO] - configure_fit: strategy sampled 1 clients (out of 2)
+[2024-05-11 21:40:57,012][flwr][INFO] - aggregate_fit: received 1 results and 0 failures
+[2024-05-11 21:40:57,015][flwr][INFO] - configure_evaluate: strategy sampled 2 clients (out of 2)
+[2024-05-11 21:41:00,760][flwr][INFO] - aggregate_evaluate: received 2 results and 0 failures
+[2024-05-11 21:41:00,761][flwr][INFO] - 
+[2024-05-11 21:41:00,761][flwr][INFO] - [ROUND 5]
+[2024-05-11 21:41:00,762][flwr][INFO] - configure_fit: strategy sampled 1 clients (out of 2)
+[2024-05-11 21:41:33,341][flwr][INFO] - aggregate_fit: received 1 results and 0 failures
+[2024-05-11 21:41:33,342][flwr][INFO] - configure_evaluate: strategy sampled 2 clients (out of 2)
+[2024-05-11 21:41:37,149][flwr][INFO] - aggregate_evaluate: received 2 results and 0 failures
+[2024-05-11 21:41:37,150][flwr][INFO] - 
+[2024-05-11 21:41:37,150][flwr][INFO] - [SUMMARY]
+[2024-05-11 21:41:37,151][flwr][INFO] - Run finished 5 rounds in 189.47s
+[2024-05-11 21:41:37,151][flwr][INFO] - History (loss, distributed):
+[2024-05-11 21:41:37,152][flwr][INFO] - 	('\tround 1: 92.19198240214388\n'
+[2024-05-11 21:41:37,152][flwr][INFO] - 	 '\tround 2: 16.578221781241744\n'
+[2024-05-11 21:41:37,152][flwr][INFO] - 	 '\tround 3: 4.084781477772168\n'
+[2024-05-11 21:41:37,153][flwr][INFO] - 	 '\tround 4: 2.09910932745421\n'
+[2024-05-11 21:41:37,153][flwr][INFO] - 	 '\tround 5: 2.9976608137679674\n')
+[2024-05-11 21:41:37,154][flwr][INFO] - 

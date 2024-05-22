@@ -1,0 +1,28 @@
+[2024-05-18 15:09:00,649][flwr][INFO] - Starting Flower simulation, config: num_rounds=2, no round_timeout
+[2024-05-18 15:09:05,563][flwr][INFO] - Flower VCE: Ray initialized with resources: {'CPU': 8.0, 'object_store_memory': 7467316838.0, 'node:127.0.0.1': 1.0, 'memory': 14934633678.0, 'node:__internal_head__': 1.0}
+[2024-05-18 15:09:05,564][flwr][INFO] - Optimize your simulation with Flower VCE: https://flower.ai/docs/framework/how-to-run-simulations.html
+[2024-05-18 15:09:05,564][flwr][INFO] - Flower VCE: Resources for each Virtual Client: {'num_cpus': 2, 'num_gpus': 0.0}
+[2024-05-18 15:09:05,574][flwr][INFO] - Flower VCE: Creating VirtualClientEngineActorPool with 4 actors
+[2024-05-18 15:09:05,575][flwr][INFO] - [INIT]
+[2024-05-18 15:09:05,575][flwr][INFO] - Using initial global parameters provided by strategy
+[2024-05-18 15:09:05,576][flwr][INFO] - Evaluating initial global parameters
+[2024-05-18 15:09:05,576][flwr][INFO] - 
+[2024-05-18 15:09:05,577][flwr][INFO] - [ROUND 1]
+[2024-05-18 15:09:05,578][flwr][INFO] - configure_fit: strategy sampled 13 clients (out of 13)
+[2024-05-18 15:09:37,418][flwr][INFO] - aggregate_fit: received 13 results and 0 failures
+[2024-05-18 15:09:37,430][flwr][WARNING] - No fit_metrics_aggregation_fn provided
+[2024-05-18 15:09:37,432][flwr][INFO] - configure_evaluate: strategy sampled 13 clients (out of 13)
+[2024-05-18 15:10:03,141][flwr][INFO] - aggregate_evaluate: received 13 results and 0 failures
+[2024-05-18 15:10:03,142][flwr][WARNING] - No evaluate_metrics_aggregation_fn provided
+[2024-05-18 15:10:03,142][flwr][INFO] - 
+[2024-05-18 15:10:03,143][flwr][INFO] - [ROUND 2]
+[2024-05-18 15:10:03,144][flwr][INFO] - configure_fit: strategy sampled 13 clients (out of 13)
+[2024-05-18 15:10:29,604][flwr][INFO] - aggregate_fit: received 13 results and 0 failures
+[2024-05-18 15:10:29,616][flwr][INFO] - configure_evaluate: strategy sampled 13 clients (out of 13)
+[2024-05-18 15:10:54,113][flwr][INFO] - aggregate_evaluate: received 13 results and 0 failures
+[2024-05-18 15:10:54,114][flwr][INFO] - 
+[2024-05-18 15:10:54,114][flwr][INFO] - [SUMMARY]
+[2024-05-18 15:10:54,114][flwr][INFO] - Run finished 2 rounds in 108.54s
+[2024-05-18 15:10:54,115][flwr][INFO] - History (loss, distributed):
+[2024-05-18 15:10:54,115][flwr][INFO] - 	'\tround 1: 5427.1212400260765\n\tround 2: 895.5802307938848\n'
+[2024-05-18 15:10:54,116][flwr][INFO] - 

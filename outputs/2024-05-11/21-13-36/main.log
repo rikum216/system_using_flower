@@ -1,0 +1,323 @@
+[2024-05-11 21:13:37,333][flwr][INFO] - Starting Flower simulation, config: num_rounds=2, no round_timeout
+[2024-05-11 21:13:42,460][flwr][INFO] - Flower VCE: Ray initialized with resources: {'CPU': 8.0, 'memory': 10845460071.0, 'node:127.0.0.1': 1.0, 'object_store_memory': 5422730035.0, 'node:__internal_head__': 1.0}
+[2024-05-11 21:13:42,461][flwr][INFO] - Optimize your simulation with Flower VCE: https://flower.ai/docs/framework/how-to-run-simulations.html
+[2024-05-11 21:13:42,462][flwr][INFO] - No `client_resources` specified. Using minimal resources for clients.
+[2024-05-11 21:13:42,462][flwr][INFO] - Flower VCE: Resources for each Virtual Client: {'num_cpus': 1, 'num_gpus': 0.0}
+[2024-05-11 21:13:42,473][flwr][INFO] - Flower VCE: Creating VirtualClientEngineActorPool with 8 actors
+[2024-05-11 21:13:42,474][flwr][INFO] - [INIT]
+[2024-05-11 21:13:42,475][flwr][INFO] - Requesting initial parameters from one random client
+[2024-05-11 21:13:47,103][flwr][INFO] - Received initial parameters from one random client
+[2024-05-11 21:13:47,104][flwr][INFO] - Evaluating initial global parameters
+[2024-05-11 21:13:47,105][flwr][INFO] - 
+[2024-05-11 21:13:47,106][flwr][INFO] - [ROUND 1]
+[2024-05-11 21:13:47,106][flwr][INFO] - configure_fit: strategy sampled 1 clients (out of 2)
+[2024-05-11 21:13:51,287][flwr][INFO] - aggregate_fit: received 1 results and 0 failures
+[2024-05-11 21:13:51,289][flwr][WARNING] - No fit_metrics_aggregation_fn provided
+[2024-05-11 21:13:51,290][flwr][INFO] - configure_evaluate: strategy sampled 2 clients (out of 2)
+[2024-05-11 21:13:51,306][flwr][ERROR] - Traceback (most recent call last):
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_client_proxy.py", line 73, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 399, in get_client_result
+    return self._fetch_future_result(cid)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 280, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\auto_init_hook.py", line 24, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\worker.py", line 2524, in get
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(ClientAppException): [36mray::ClientAppActor.run()[39m (pid=5340, ip=127.0.0.1, actor_id=69caa20ba8f8d620e507912b01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x0000023D2ABDB100>)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\message_handler\message_handler.py", line 137, in handle_legacy_message_from_msgtype
+    evaluate_res = maybe_call_evaluate(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client.py", line 254, in maybe_call_evaluate
+    return client.evaluate(evaluate_ins)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\numpy_client.py", line 262, in _evaluate
+    results = self.numpy_client.evaluate(parameters, ins.config)  # type: ignore
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\client.py", line 50, in evaluate
+    loss, accuracy = test(self.modle, self.valloader)
+AttributeError: 'FlowerClient' object has no attribute 'modle'
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=5340, ip=127.0.0.1, actor_id=69caa20ba8f8d620e507912b01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x0000023D2ABDB100>)
+  File "python\ray\_raylet.pyx", line 1418, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1498, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1424, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1364, in ray._raylet.execute_task.function_executor
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\function_manager.py", line 726, in actor_method_executor
+    return method(__ray_actor, *args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\util\tracing\tracing_helper.py", line 464, in _resume_span
+    return method(self, *_args, **_kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: 'FlowerClient' object has no attribute 'modle'
+
+[2024-05-11 21:13:51,316][flwr][ERROR] - [36mray::ClientAppActor.run()[39m (pid=5340, ip=127.0.0.1, actor_id=69caa20ba8f8d620e507912b01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x0000023D2ABDB100>)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\message_handler\message_handler.py", line 137, in handle_legacy_message_from_msgtype
+    evaluate_res = maybe_call_evaluate(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client.py", line 254, in maybe_call_evaluate
+    return client.evaluate(evaluate_ins)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\numpy_client.py", line 262, in _evaluate
+    results = self.numpy_client.evaluate(parameters, ins.config)  # type: ignore
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\client.py", line 50, in evaluate
+    loss, accuracy = test(self.modle, self.valloader)
+AttributeError: 'FlowerClient' object has no attribute 'modle'
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=5340, ip=127.0.0.1, actor_id=69caa20ba8f8d620e507912b01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x0000023D2ABDB100>)
+  File "python\ray\_raylet.pyx", line 1418, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1498, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1424, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1364, in ray._raylet.execute_task.function_executor
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\function_manager.py", line 726, in actor_method_executor
+    return method(__ray_actor, *args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\util\tracing\tracing_helper.py", line 464, in _resume_span
+    return method(self, *_args, **_kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: 'FlowerClient' object has no attribute 'modle'
+[2024-05-11 21:13:54,025][flwr][ERROR] - Traceback (most recent call last):
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_client_proxy.py", line 73, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 399, in get_client_result
+    return self._fetch_future_result(cid)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 280, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\auto_init_hook.py", line 24, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\worker.py", line 2524, in get
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(ClientAppException): [36mray::ClientAppActor.run()[39m (pid=10152, ip=127.0.0.1, actor_id=1e4f144e3dc0fa669e340a0e01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x000002B7D8B8B100>)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\message_handler\message_handler.py", line 137, in handle_legacy_message_from_msgtype
+    evaluate_res = maybe_call_evaluate(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client.py", line 254, in maybe_call_evaluate
+    return client.evaluate(evaluate_ins)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\numpy_client.py", line 262, in _evaluate
+    results = self.numpy_client.evaluate(parameters, ins.config)  # type: ignore
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\client.py", line 50, in evaluate
+    loss, accuracy = test(self.modle, self.valloader)
+AttributeError: 'FlowerClient' object has no attribute 'modle'
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=10152, ip=127.0.0.1, actor_id=1e4f144e3dc0fa669e340a0e01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x000002B7D8B8B100>)
+  File "python\ray\_raylet.pyx", line 1418, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1498, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1424, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1364, in ray._raylet.execute_task.function_executor
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\function_manager.py", line 726, in actor_method_executor
+    return method(__ray_actor, *args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\util\tracing\tracing_helper.py", line 464, in _resume_span
+    return method(self, *_args, **_kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: 'FlowerClient' object has no attribute 'modle'
+
+[2024-05-11 21:13:54,035][flwr][ERROR] - [36mray::ClientAppActor.run()[39m (pid=10152, ip=127.0.0.1, actor_id=1e4f144e3dc0fa669e340a0e01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x000002B7D8B8B100>)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\message_handler\message_handler.py", line 137, in handle_legacy_message_from_msgtype
+    evaluate_res = maybe_call_evaluate(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client.py", line 254, in maybe_call_evaluate
+    return client.evaluate(evaluate_ins)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\numpy_client.py", line 262, in _evaluate
+    results = self.numpy_client.evaluate(parameters, ins.config)  # type: ignore
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\client.py", line 50, in evaluate
+    loss, accuracy = test(self.modle, self.valloader)
+AttributeError: 'FlowerClient' object has no attribute 'modle'
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=10152, ip=127.0.0.1, actor_id=1e4f144e3dc0fa669e340a0e01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x000002B7D8B8B100>)
+  File "python\ray\_raylet.pyx", line 1418, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1498, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1424, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1364, in ray._raylet.execute_task.function_executor
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\function_manager.py", line 726, in actor_method_executor
+    return method(__ray_actor, *args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\util\tracing\tracing_helper.py", line 464, in _resume_span
+    return method(self, *_args, **_kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: 'FlowerClient' object has no attribute 'modle'
+[2024-05-11 21:13:54,042][flwr][INFO] - aggregate_evaluate: received 0 results and 2 failures
+[2024-05-11 21:13:54,042][flwr][INFO] - 
+[2024-05-11 21:13:54,043][flwr][INFO] - [ROUND 2]
+[2024-05-11 21:13:54,043][flwr][INFO] - configure_fit: strategy sampled 1 clients (out of 2)
+[2024-05-11 21:13:58,205][flwr][INFO] - aggregate_fit: received 1 results and 0 failures
+[2024-05-11 21:13:58,206][flwr][INFO] - configure_evaluate: strategy sampled 2 clients (out of 2)
+[2024-05-11 21:13:58,217][flwr][ERROR] - Traceback (most recent call last):
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_client_proxy.py", line 73, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 399, in get_client_result
+    return self._fetch_future_result(cid)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 280, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\auto_init_hook.py", line 24, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\worker.py", line 2524, in get
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(ClientAppException): [36mray::ClientAppActor.run()[39m (pid=10152, ip=127.0.0.1, actor_id=1e4f144e3dc0fa669e340a0e01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x000002B7D8B8B100>)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\message_handler\message_handler.py", line 137, in handle_legacy_message_from_msgtype
+    evaluate_res = maybe_call_evaluate(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client.py", line 254, in maybe_call_evaluate
+    return client.evaluate(evaluate_ins)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\numpy_client.py", line 262, in _evaluate
+    results = self.numpy_client.evaluate(parameters, ins.config)  # type: ignore
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\client.py", line 50, in evaluate
+    loss, accuracy = test(self.modle, self.valloader)
+AttributeError: 'FlowerClient' object has no attribute 'modle'
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=10152, ip=127.0.0.1, actor_id=1e4f144e3dc0fa669e340a0e01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x000002B7D8B8B100>)
+  File "python\ray\_raylet.pyx", line 1418, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1498, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1424, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1364, in ray._raylet.execute_task.function_executor
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\function_manager.py", line 726, in actor_method_executor
+    return method(__ray_actor, *args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\util\tracing\tracing_helper.py", line 464, in _resume_span
+    return method(self, *_args, **_kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: 'FlowerClient' object has no attribute 'modle'
+
+[2024-05-11 21:13:58,220][flwr][ERROR] - Traceback (most recent call last):
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_client_proxy.py", line 73, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 399, in get_client_result
+    return self._fetch_future_result(cid)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 280, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\auto_init_hook.py", line 24, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\worker.py", line 2524, in get
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(ClientAppException): [36mray::ClientAppActor.run()[39m (pid=5340, ip=127.0.0.1, actor_id=69caa20ba8f8d620e507912b01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x0000023D2ABDB100>)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\message_handler\message_handler.py", line 137, in handle_legacy_message_from_msgtype
+    evaluate_res = maybe_call_evaluate(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client.py", line 254, in maybe_call_evaluate
+    return client.evaluate(evaluate_ins)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\numpy_client.py", line 262, in _evaluate
+    results = self.numpy_client.evaluate(parameters, ins.config)  # type: ignore
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\client.py", line 50, in evaluate
+    loss, accuracy = test(self.modle, self.valloader)
+AttributeError: 'FlowerClient' object has no attribute 'modle'
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=5340, ip=127.0.0.1, actor_id=69caa20ba8f8d620e507912b01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x0000023D2ABDB100>)
+  File "python\ray\_raylet.pyx", line 1418, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1498, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1424, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1364, in ray._raylet.execute_task.function_executor
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\function_manager.py", line 726, in actor_method_executor
+    return method(__ray_actor, *args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\util\tracing\tracing_helper.py", line 464, in _resume_span
+    return method(self, *_args, **_kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: 'FlowerClient' object has no attribute 'modle'
+
+[2024-05-11 21:13:58,227][flwr][ERROR] - [36mray::ClientAppActor.run()[39m (pid=10152, ip=127.0.0.1, actor_id=1e4f144e3dc0fa669e340a0e01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x000002B7D8B8B100>)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\message_handler\message_handler.py", line 137, in handle_legacy_message_from_msgtype
+    evaluate_res = maybe_call_evaluate(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client.py", line 254, in maybe_call_evaluate
+    return client.evaluate(evaluate_ins)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\numpy_client.py", line 262, in _evaluate
+    results = self.numpy_client.evaluate(parameters, ins.config)  # type: ignore
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\client.py", line 50, in evaluate
+    loss, accuracy = test(self.modle, self.valloader)
+AttributeError: 'FlowerClient' object has no attribute 'modle'
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=10152, ip=127.0.0.1, actor_id=1e4f144e3dc0fa669e340a0e01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x000002B7D8B8B100>)
+  File "python\ray\_raylet.pyx", line 1418, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1498, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1424, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1364, in ray._raylet.execute_task.function_executor
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\function_manager.py", line 726, in actor_method_executor
+    return method(__ray_actor, *args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\util\tracing\tracing_helper.py", line 464, in _resume_span
+    return method(self, *_args, **_kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: 'FlowerClient' object has no attribute 'modle'
+[2024-05-11 21:13:58,234][flwr][ERROR] - [36mray::ClientAppActor.run()[39m (pid=5340, ip=127.0.0.1, actor_id=69caa20ba8f8d620e507912b01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x0000023D2ABDB100>)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\message_handler\message_handler.py", line 137, in handle_legacy_message_from_msgtype
+    evaluate_res = maybe_call_evaluate(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client.py", line 254, in maybe_call_evaluate
+    return client.evaluate(evaluate_ins)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\numpy_client.py", line 262, in _evaluate
+    results = self.numpy_client.evaluate(parameters, ins.config)  # type: ignore
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\client.py", line 50, in evaluate
+    loss, accuracy = test(self.modle, self.valloader)
+AttributeError: 'FlowerClient' object has no attribute 'modle'
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=5340, ip=127.0.0.1, actor_id=69caa20ba8f8d620e507912b01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x0000023D2ABDB100>)
+  File "python\ray\_raylet.pyx", line 1418, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1498, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1424, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1364, in ray._raylet.execute_task.function_executor
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\function_manager.py", line 726, in actor_method_executor
+    return method(__ray_actor, *args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\util\tracing\tracing_helper.py", line 464, in _resume_span
+    return method(self, *_args, **_kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: 'FlowerClient' object has no attribute 'modle'
+[2024-05-11 21:13:58,244][flwr][INFO] - aggregate_evaluate: received 0 results and 2 failures
+[2024-05-11 21:13:58,245][flwr][INFO] - 
+[2024-05-11 21:13:58,245][flwr][INFO] - [SUMMARY]
+[2024-05-11 21:13:58,245][flwr][INFO] - Run finished 2 rounds in 11.14s
+[2024-05-11 21:13:58,246][flwr][INFO] - 

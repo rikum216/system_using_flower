@@ -1,0 +1,2294 @@
+[2024-05-11 20:59:14,685][flwr][INFO] - Starting Flower simulation, config: num_rounds=10, no round_timeout
+[2024-05-11 20:59:20,002][flwr][INFO] - Flower VCE: Ray initialized with resources: {'object_store_memory': 5371135180.0, 'memory': 10742270363.0, 'node:127.0.0.1': 1.0, 'node:__internal_head__': 1.0, 'CPU': 8.0}
+[2024-05-11 20:59:20,003][flwr][INFO] - Optimize your simulation with Flower VCE: https://flower.ai/docs/framework/how-to-run-simulations.html
+[2024-05-11 20:59:20,003][flwr][INFO] - No `client_resources` specified. Using minimal resources for clients.
+[2024-05-11 20:59:20,004][flwr][INFO] - Flower VCE: Resources for each Virtual Client: {'num_cpus': 1, 'num_gpus': 0.0}
+[2024-05-11 20:59:20,014][flwr][INFO] - Flower VCE: Creating VirtualClientEngineActorPool with 8 actors
+[2024-05-11 20:59:20,015][flwr][INFO] - [INIT]
+[2024-05-11 20:59:20,015][flwr][INFO] - Requesting initial parameters from one random client
+[2024-05-11 20:59:24,761][flwr][INFO] - Received initial parameters from one random client
+[2024-05-11 20:59:24,762][flwr][INFO] - Evaluating initial global parameters
+[2024-05-11 20:59:24,763][flwr][INFO] - 
+[2024-05-11 20:59:24,764][flwr][INFO] - [ROUND 1]
+[2024-05-11 20:59:24,764][flwr][INFO] - configure_fit: strategy sampled 1 clients (out of 2)
+[2024-05-11 20:59:24,781][flwr][ERROR] - Traceback (most recent call last):
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_client_proxy.py", line 73, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 399, in get_client_result
+    return self._fetch_future_result(cid)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 280, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\auto_init_hook.py", line 24, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\worker.py", line 2524, in get
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(ClientAppException): [36mray::ClientAppActor.run()[39m (pid=2132, ip=127.0.0.1, actor_id=46c9dc61d794c153506ae7a501000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x00000280D89C4FD0>)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\message_handler\message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\client.py", line 33, in fit
+    self.set_parameters(self.model, parameters)
+TypeError: set_parameters() takes 2 positional arguments but 3 were given
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=2132, ip=127.0.0.1, actor_id=46c9dc61d794c153506ae7a501000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x00000280D89C4FD0>)
+  File "python\ray\_raylet.pyx", line 1418, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1498, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1424, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1364, in ray._raylet.execute_task.function_executor
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\function_manager.py", line 726, in actor_method_executor
+    return method(__ray_actor, *args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\util\tracing\tracing_helper.py", line 464, in _resume_span
+    return method(self, *_args, **_kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: set_parameters() takes 2 positional arguments but 3 were given
+
+[2024-05-11 20:59:24,794][flwr][ERROR] - [36mray::ClientAppActor.run()[39m (pid=2132, ip=127.0.0.1, actor_id=46c9dc61d794c153506ae7a501000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x00000280D89C4FD0>)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\message_handler\message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\client.py", line 33, in fit
+    self.set_parameters(self.model, parameters)
+TypeError: set_parameters() takes 2 positional arguments but 3 were given
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=2132, ip=127.0.0.1, actor_id=46c9dc61d794c153506ae7a501000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x00000280D89C4FD0>)
+  File "python\ray\_raylet.pyx", line 1418, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1498, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1424, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1364, in ray._raylet.execute_task.function_executor
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\function_manager.py", line 726, in actor_method_executor
+    return method(__ray_actor, *args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\util\tracing\tracing_helper.py", line 464, in _resume_span
+    return method(self, *_args, **_kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: set_parameters() takes 2 positional arguments but 3 were given
+[2024-05-11 20:59:24,801][flwr][INFO] - aggregate_fit: received 0 results and 1 failures
+[2024-05-11 20:59:24,802][flwr][INFO] - configure_evaluate: strategy sampled 2 clients (out of 2)
+[2024-05-11 20:59:24,814][flwr][ERROR] - Traceback (most recent call last):
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_client_proxy.py", line 73, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 399, in get_client_result
+    return self._fetch_future_result(cid)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 280, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\auto_init_hook.py", line 24, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\worker.py", line 2524, in get
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(ClientAppException): [36mray::ClientAppActor.run()[39m (pid=2132, ip=127.0.0.1, actor_id=46c9dc61d794c153506ae7a501000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x00000280D89C4FD0>)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\message_handler\message_handler.py", line 137, in handle_legacy_message_from_msgtype
+    evaluate_res = maybe_call_evaluate(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client.py", line 254, in maybe_call_evaluate
+    return client.evaluate(evaluate_ins)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\numpy_client.py", line 262, in _evaluate
+    results = self.numpy_client.evaluate(parameters, ins.config)  # type: ignore
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\client.py", line 45, in evaluate
+    self.set_parameters(self.model, parameters)
+TypeError: set_parameters() takes 2 positional arguments but 3 were given
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=2132, ip=127.0.0.1, actor_id=46c9dc61d794c153506ae7a501000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x00000280D89C4FD0>)
+  File "python\ray\_raylet.pyx", line 1418, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1498, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1424, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1364, in ray._raylet.execute_task.function_executor
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\function_manager.py", line 726, in actor_method_executor
+    return method(__ray_actor, *args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\util\tracing\tracing_helper.py", line 464, in _resume_span
+    return method(self, *_args, **_kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: set_parameters() takes 2 positional arguments but 3 were given
+
+[2024-05-11 20:59:24,827][flwr][ERROR] - [36mray::ClientAppActor.run()[39m (pid=2132, ip=127.0.0.1, actor_id=46c9dc61d794c153506ae7a501000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x00000280D89C4FD0>)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\message_handler\message_handler.py", line 137, in handle_legacy_message_from_msgtype
+    evaluate_res = maybe_call_evaluate(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client.py", line 254, in maybe_call_evaluate
+    return client.evaluate(evaluate_ins)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\numpy_client.py", line 262, in _evaluate
+    results = self.numpy_client.evaluate(parameters, ins.config)  # type: ignore
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\client.py", line 45, in evaluate
+    self.set_parameters(self.model, parameters)
+TypeError: set_parameters() takes 2 positional arguments but 3 were given
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=2132, ip=127.0.0.1, actor_id=46c9dc61d794c153506ae7a501000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x00000280D89C4FD0>)
+  File "python\ray\_raylet.pyx", line 1418, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1498, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1424, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1364, in ray._raylet.execute_task.function_executor
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\function_manager.py", line 726, in actor_method_executor
+    return method(__ray_actor, *args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\util\tracing\tracing_helper.py", line 464, in _resume_span
+    return method(self, *_args, **_kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: set_parameters() takes 2 positional arguments but 3 were given
+[2024-05-11 20:59:27,588][flwr][ERROR] - Traceback (most recent call last):
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_client_proxy.py", line 73, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 399, in get_client_result
+    return self._fetch_future_result(cid)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 280, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\auto_init_hook.py", line 24, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\worker.py", line 2524, in get
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(ClientAppException): [36mray::ClientAppActor.run()[39m (pid=13056, ip=127.0.0.1, actor_id=5120259cd2f9d54648fbfe9e01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x000001ECA8BA2130>)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\message_handler\message_handler.py", line 137, in handle_legacy_message_from_msgtype
+    evaluate_res = maybe_call_evaluate(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client.py", line 254, in maybe_call_evaluate
+    return client.evaluate(evaluate_ins)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\numpy_client.py", line 262, in _evaluate
+    results = self.numpy_client.evaluate(parameters, ins.config)  # type: ignore
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\client.py", line 45, in evaluate
+    self.set_parameters(self.model, parameters)
+TypeError: set_parameters() takes 2 positional arguments but 3 were given
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=13056, ip=127.0.0.1, actor_id=5120259cd2f9d54648fbfe9e01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x000001ECA8BA2130>)
+  File "python\ray\_raylet.pyx", line 1418, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1498, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1424, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1364, in ray._raylet.execute_task.function_executor
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\function_manager.py", line 726, in actor_method_executor
+    return method(__ray_actor, *args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\util\tracing\tracing_helper.py", line 464, in _resume_span
+    return method(self, *_args, **_kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: set_parameters() takes 2 positional arguments but 3 were given
+
+[2024-05-11 20:59:27,600][flwr][ERROR] - [36mray::ClientAppActor.run()[39m (pid=13056, ip=127.0.0.1, actor_id=5120259cd2f9d54648fbfe9e01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x000001ECA8BA2130>)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\message_handler\message_handler.py", line 137, in handle_legacy_message_from_msgtype
+    evaluate_res = maybe_call_evaluate(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client.py", line 254, in maybe_call_evaluate
+    return client.evaluate(evaluate_ins)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\numpy_client.py", line 262, in _evaluate
+    results = self.numpy_client.evaluate(parameters, ins.config)  # type: ignore
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\client.py", line 45, in evaluate
+    self.set_parameters(self.model, parameters)
+TypeError: set_parameters() takes 2 positional arguments but 3 were given
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=13056, ip=127.0.0.1, actor_id=5120259cd2f9d54648fbfe9e01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x000001ECA8BA2130>)
+  File "python\ray\_raylet.pyx", line 1418, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1498, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1424, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1364, in ray._raylet.execute_task.function_executor
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\function_manager.py", line 726, in actor_method_executor
+    return method(__ray_actor, *args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\util\tracing\tracing_helper.py", line 464, in _resume_span
+    return method(self, *_args, **_kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: set_parameters() takes 2 positional arguments but 3 were given
+[2024-05-11 20:59:27,609][flwr][INFO] - aggregate_evaluate: received 0 results and 2 failures
+[2024-05-11 20:59:27,609][flwr][INFO] - 
+[2024-05-11 20:59:27,610][flwr][INFO] - [ROUND 2]
+[2024-05-11 20:59:27,610][flwr][INFO] - configure_fit: strategy sampled 1 clients (out of 2)
+[2024-05-11 20:59:27,622][flwr][ERROR] - Traceback (most recent call last):
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_client_proxy.py", line 73, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 399, in get_client_result
+    return self._fetch_future_result(cid)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 280, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\auto_init_hook.py", line 24, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\worker.py", line 2524, in get
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(ClientAppException): [36mray::ClientAppActor.run()[39m (pid=13056, ip=127.0.0.1, actor_id=5120259cd2f9d54648fbfe9e01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x000001ECA8BA2130>)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\message_handler\message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\client.py", line 33, in fit
+    self.set_parameters(self.model, parameters)
+TypeError: set_parameters() takes 2 positional arguments but 3 were given
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=13056, ip=127.0.0.1, actor_id=5120259cd2f9d54648fbfe9e01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x000001ECA8BA2130>)
+  File "python\ray\_raylet.pyx", line 1418, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1498, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1424, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1364, in ray._raylet.execute_task.function_executor
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\function_manager.py", line 726, in actor_method_executor
+    return method(__ray_actor, *args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\util\tracing\tracing_helper.py", line 464, in _resume_span
+    return method(self, *_args, **_kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: set_parameters() takes 2 positional arguments but 3 were given
+
+[2024-05-11 20:59:27,633][flwr][ERROR] - [36mray::ClientAppActor.run()[39m (pid=13056, ip=127.0.0.1, actor_id=5120259cd2f9d54648fbfe9e01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x000001ECA8BA2130>)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\message_handler\message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\client.py", line 33, in fit
+    self.set_parameters(self.model, parameters)
+TypeError: set_parameters() takes 2 positional arguments but 3 were given
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=13056, ip=127.0.0.1, actor_id=5120259cd2f9d54648fbfe9e01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x000001ECA8BA2130>)
+  File "python\ray\_raylet.pyx", line 1418, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1498, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1424, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1364, in ray._raylet.execute_task.function_executor
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\function_manager.py", line 726, in actor_method_executor
+    return method(__ray_actor, *args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\util\tracing\tracing_helper.py", line 464, in _resume_span
+    return method(self, *_args, **_kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: set_parameters() takes 2 positional arguments but 3 were given
+[2024-05-11 20:59:27,639][flwr][INFO] - aggregate_fit: received 0 results and 1 failures
+[2024-05-11 20:59:27,639][flwr][INFO] - configure_evaluate: strategy sampled 2 clients (out of 2)
+[2024-05-11 20:59:27,651][flwr][ERROR] - Traceback (most recent call last):
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_client_proxy.py", line 73, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 399, in get_client_result
+    return self._fetch_future_result(cid)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 280, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\auto_init_hook.py", line 24, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\worker.py", line 2524, in get
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(ClientAppException): [36mray::ClientAppActor.run()[39m (pid=13056, ip=127.0.0.1, actor_id=5120259cd2f9d54648fbfe9e01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x000001ECA8BA2130>)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\message_handler\message_handler.py", line 137, in handle_legacy_message_from_msgtype
+    evaluate_res = maybe_call_evaluate(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client.py", line 254, in maybe_call_evaluate
+    return client.evaluate(evaluate_ins)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\numpy_client.py", line 262, in _evaluate
+    results = self.numpy_client.evaluate(parameters, ins.config)  # type: ignore
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\client.py", line 45, in evaluate
+    self.set_parameters(self.model, parameters)
+TypeError: set_parameters() takes 2 positional arguments but 3 were given
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=13056, ip=127.0.0.1, actor_id=5120259cd2f9d54648fbfe9e01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x000001ECA8BA2130>)
+  File "python\ray\_raylet.pyx", line 1418, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1498, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1424, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1364, in ray._raylet.execute_task.function_executor
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\function_manager.py", line 726, in actor_method_executor
+    return method(__ray_actor, *args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\util\tracing\tracing_helper.py", line 464, in _resume_span
+    return method(self, *_args, **_kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: set_parameters() takes 2 positional arguments but 3 were given
+
+[2024-05-11 20:59:27,654][flwr][ERROR] - Traceback (most recent call last):
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_client_proxy.py", line 73, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 399, in get_client_result
+    return self._fetch_future_result(cid)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 280, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\auto_init_hook.py", line 24, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\worker.py", line 2524, in get
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(ClientAppException): [36mray::ClientAppActor.run()[39m (pid=2132, ip=127.0.0.1, actor_id=46c9dc61d794c153506ae7a501000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x00000280D89C4FD0>)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\message_handler\message_handler.py", line 137, in handle_legacy_message_from_msgtype
+    evaluate_res = maybe_call_evaluate(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client.py", line 254, in maybe_call_evaluate
+    return client.evaluate(evaluate_ins)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\numpy_client.py", line 262, in _evaluate
+    results = self.numpy_client.evaluate(parameters, ins.config)  # type: ignore
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\client.py", line 45, in evaluate
+    self.set_parameters(self.model, parameters)
+TypeError: set_parameters() takes 2 positional arguments but 3 were given
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=2132, ip=127.0.0.1, actor_id=46c9dc61d794c153506ae7a501000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x00000280D89C4FD0>)
+  File "python\ray\_raylet.pyx", line 1418, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1498, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1424, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1364, in ray._raylet.execute_task.function_executor
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\function_manager.py", line 726, in actor_method_executor
+    return method(__ray_actor, *args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\util\tracing\tracing_helper.py", line 464, in _resume_span
+    return method(self, *_args, **_kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: set_parameters() takes 2 positional arguments but 3 were given
+
+[2024-05-11 20:59:27,663][flwr][ERROR] - [36mray::ClientAppActor.run()[39m (pid=13056, ip=127.0.0.1, actor_id=5120259cd2f9d54648fbfe9e01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x000001ECA8BA2130>)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\message_handler\message_handler.py", line 137, in handle_legacy_message_from_msgtype
+    evaluate_res = maybe_call_evaluate(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client.py", line 254, in maybe_call_evaluate
+    return client.evaluate(evaluate_ins)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\numpy_client.py", line 262, in _evaluate
+    results = self.numpy_client.evaluate(parameters, ins.config)  # type: ignore
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\client.py", line 45, in evaluate
+    self.set_parameters(self.model, parameters)
+TypeError: set_parameters() takes 2 positional arguments but 3 were given
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=13056, ip=127.0.0.1, actor_id=5120259cd2f9d54648fbfe9e01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x000001ECA8BA2130>)
+  File "python\ray\_raylet.pyx", line 1418, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1498, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1424, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1364, in ray._raylet.execute_task.function_executor
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\function_manager.py", line 726, in actor_method_executor
+    return method(__ray_actor, *args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\util\tracing\tracing_helper.py", line 464, in _resume_span
+    return method(self, *_args, **_kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: set_parameters() takes 2 positional arguments but 3 were given
+[2024-05-11 20:59:27,671][flwr][ERROR] - [36mray::ClientAppActor.run()[39m (pid=2132, ip=127.0.0.1, actor_id=46c9dc61d794c153506ae7a501000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x00000280D89C4FD0>)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\message_handler\message_handler.py", line 137, in handle_legacy_message_from_msgtype
+    evaluate_res = maybe_call_evaluate(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client.py", line 254, in maybe_call_evaluate
+    return client.evaluate(evaluate_ins)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\numpy_client.py", line 262, in _evaluate
+    results = self.numpy_client.evaluate(parameters, ins.config)  # type: ignore
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\client.py", line 45, in evaluate
+    self.set_parameters(self.model, parameters)
+TypeError: set_parameters() takes 2 positional arguments but 3 were given
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=2132, ip=127.0.0.1, actor_id=46c9dc61d794c153506ae7a501000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x00000280D89C4FD0>)
+  File "python\ray\_raylet.pyx", line 1418, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1498, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1424, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1364, in ray._raylet.execute_task.function_executor
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\function_manager.py", line 726, in actor_method_executor
+    return method(__ray_actor, *args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\util\tracing\tracing_helper.py", line 464, in _resume_span
+    return method(self, *_args, **_kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: set_parameters() takes 2 positional arguments but 3 were given
+[2024-05-11 20:59:27,684][flwr][INFO] - aggregate_evaluate: received 0 results and 2 failures
+[2024-05-11 20:59:27,685][flwr][INFO] - 
+[2024-05-11 20:59:27,685][flwr][INFO] - [ROUND 3]
+[2024-05-11 20:59:27,686][flwr][INFO] - configure_fit: strategy sampled 1 clients (out of 2)
+[2024-05-11 20:59:27,697][flwr][ERROR] - Traceback (most recent call last):
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_client_proxy.py", line 73, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 399, in get_client_result
+    return self._fetch_future_result(cid)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 280, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\auto_init_hook.py", line 24, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\worker.py", line 2524, in get
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(ClientAppException): [36mray::ClientAppActor.run()[39m (pid=2132, ip=127.0.0.1, actor_id=46c9dc61d794c153506ae7a501000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x00000280D89C4FD0>)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\message_handler\message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\client.py", line 33, in fit
+    self.set_parameters(self.model, parameters)
+TypeError: set_parameters() takes 2 positional arguments but 3 were given
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=2132, ip=127.0.0.1, actor_id=46c9dc61d794c153506ae7a501000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x00000280D89C4FD0>)
+  File "python\ray\_raylet.pyx", line 1418, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1498, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1424, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1364, in ray._raylet.execute_task.function_executor
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\function_manager.py", line 726, in actor_method_executor
+    return method(__ray_actor, *args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\util\tracing\tracing_helper.py", line 464, in _resume_span
+    return method(self, *_args, **_kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: set_parameters() takes 2 positional arguments but 3 were given
+
+[2024-05-11 20:59:27,708][flwr][ERROR] - [36mray::ClientAppActor.run()[39m (pid=2132, ip=127.0.0.1, actor_id=46c9dc61d794c153506ae7a501000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x00000280D89C4FD0>)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\message_handler\message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\client.py", line 33, in fit
+    self.set_parameters(self.model, parameters)
+TypeError: set_parameters() takes 2 positional arguments but 3 were given
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=2132, ip=127.0.0.1, actor_id=46c9dc61d794c153506ae7a501000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x00000280D89C4FD0>)
+  File "python\ray\_raylet.pyx", line 1418, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1498, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1424, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1364, in ray._raylet.execute_task.function_executor
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\function_manager.py", line 726, in actor_method_executor
+    return method(__ray_actor, *args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\util\tracing\tracing_helper.py", line 464, in _resume_span
+    return method(self, *_args, **_kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: set_parameters() takes 2 positional arguments but 3 were given
+[2024-05-11 20:59:27,715][flwr][INFO] - aggregate_fit: received 0 results and 1 failures
+[2024-05-11 20:59:27,715][flwr][INFO] - configure_evaluate: strategy sampled 2 clients (out of 2)
+[2024-05-11 20:59:27,728][flwr][ERROR] - Traceback (most recent call last):
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_client_proxy.py", line 73, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 399, in get_client_result
+    return self._fetch_future_result(cid)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 280, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\auto_init_hook.py", line 24, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\worker.py", line 2524, in get
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(ClientAppException): [36mray::ClientAppActor.run()[39m (pid=2132, ip=127.0.0.1, actor_id=46c9dc61d794c153506ae7a501000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x00000280D89C4FD0>)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\message_handler\message_handler.py", line 137, in handle_legacy_message_from_msgtype
+    evaluate_res = maybe_call_evaluate(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client.py", line 254, in maybe_call_evaluate
+    return client.evaluate(evaluate_ins)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\numpy_client.py", line 262, in _evaluate
+    results = self.numpy_client.evaluate(parameters, ins.config)  # type: ignore
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\client.py", line 45, in evaluate
+    self.set_parameters(self.model, parameters)
+TypeError: set_parameters() takes 2 positional arguments but 3 were given
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=2132, ip=127.0.0.1, actor_id=46c9dc61d794c153506ae7a501000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x00000280D89C4FD0>)
+  File "python\ray\_raylet.pyx", line 1418, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1498, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1424, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1364, in ray._raylet.execute_task.function_executor
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\function_manager.py", line 726, in actor_method_executor
+    return method(__ray_actor, *args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\util\tracing\tracing_helper.py", line 464, in _resume_span
+    return method(self, *_args, **_kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: set_parameters() takes 2 positional arguments but 3 were given
+
+[2024-05-11 20:59:27,731][flwr][ERROR] - Traceback (most recent call last):
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_client_proxy.py", line 73, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 399, in get_client_result
+    return self._fetch_future_result(cid)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 280, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\auto_init_hook.py", line 24, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\worker.py", line 2524, in get
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(ClientAppException): [36mray::ClientAppActor.run()[39m (pid=13056, ip=127.0.0.1, actor_id=5120259cd2f9d54648fbfe9e01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x000001ECA8BA2130>)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\message_handler\message_handler.py", line 137, in handle_legacy_message_from_msgtype
+    evaluate_res = maybe_call_evaluate(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client.py", line 254, in maybe_call_evaluate
+    return client.evaluate(evaluate_ins)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\numpy_client.py", line 262, in _evaluate
+    results = self.numpy_client.evaluate(parameters, ins.config)  # type: ignore
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\client.py", line 45, in evaluate
+    self.set_parameters(self.model, parameters)
+TypeError: set_parameters() takes 2 positional arguments but 3 were given
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=13056, ip=127.0.0.1, actor_id=5120259cd2f9d54648fbfe9e01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x000001ECA8BA2130>)
+  File "python\ray\_raylet.pyx", line 1418, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1498, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1424, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1364, in ray._raylet.execute_task.function_executor
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\function_manager.py", line 726, in actor_method_executor
+    return method(__ray_actor, *args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\util\tracing\tracing_helper.py", line 464, in _resume_span
+    return method(self, *_args, **_kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: set_parameters() takes 2 positional arguments but 3 were given
+
+[2024-05-11 20:59:27,741][flwr][ERROR] - [36mray::ClientAppActor.run()[39m (pid=2132, ip=127.0.0.1, actor_id=46c9dc61d794c153506ae7a501000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x00000280D89C4FD0>)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\message_handler\message_handler.py", line 137, in handle_legacy_message_from_msgtype
+    evaluate_res = maybe_call_evaluate(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client.py", line 254, in maybe_call_evaluate
+    return client.evaluate(evaluate_ins)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\numpy_client.py", line 262, in _evaluate
+    results = self.numpy_client.evaluate(parameters, ins.config)  # type: ignore
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\client.py", line 45, in evaluate
+    self.set_parameters(self.model, parameters)
+TypeError: set_parameters() takes 2 positional arguments but 3 were given
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=2132, ip=127.0.0.1, actor_id=46c9dc61d794c153506ae7a501000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x00000280D89C4FD0>)
+  File "python\ray\_raylet.pyx", line 1418, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1498, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1424, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1364, in ray._raylet.execute_task.function_executor
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\function_manager.py", line 726, in actor_method_executor
+    return method(__ray_actor, *args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\util\tracing\tracing_helper.py", line 464, in _resume_span
+    return method(self, *_args, **_kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: set_parameters() takes 2 positional arguments but 3 were given
+[2024-05-11 20:59:27,748][flwr][ERROR] - [36mray::ClientAppActor.run()[39m (pid=13056, ip=127.0.0.1, actor_id=5120259cd2f9d54648fbfe9e01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x000001ECA8BA2130>)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\message_handler\message_handler.py", line 137, in handle_legacy_message_from_msgtype
+    evaluate_res = maybe_call_evaluate(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client.py", line 254, in maybe_call_evaluate
+    return client.evaluate(evaluate_ins)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\numpy_client.py", line 262, in _evaluate
+    results = self.numpy_client.evaluate(parameters, ins.config)  # type: ignore
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\client.py", line 45, in evaluate
+    self.set_parameters(self.model, parameters)
+TypeError: set_parameters() takes 2 positional arguments but 3 were given
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=13056, ip=127.0.0.1, actor_id=5120259cd2f9d54648fbfe9e01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x000001ECA8BA2130>)
+  File "python\ray\_raylet.pyx", line 1418, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1498, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1424, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1364, in ray._raylet.execute_task.function_executor
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\function_manager.py", line 726, in actor_method_executor
+    return method(__ray_actor, *args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\util\tracing\tracing_helper.py", line 464, in _resume_span
+    return method(self, *_args, **_kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: set_parameters() takes 2 positional arguments but 3 were given
+[2024-05-11 20:59:27,764][flwr][INFO] - aggregate_evaluate: received 0 results and 2 failures
+[2024-05-11 20:59:27,765][flwr][INFO] - 
+[2024-05-11 20:59:27,765][flwr][INFO] - [ROUND 4]
+[2024-05-11 20:59:27,766][flwr][INFO] - configure_fit: strategy sampled 1 clients (out of 2)
+[2024-05-11 20:59:27,780][flwr][ERROR] - Traceback (most recent call last):
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_client_proxy.py", line 73, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 399, in get_client_result
+    return self._fetch_future_result(cid)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 280, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\auto_init_hook.py", line 24, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\worker.py", line 2524, in get
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(ClientAppException): [36mray::ClientAppActor.run()[39m (pid=13056, ip=127.0.0.1, actor_id=5120259cd2f9d54648fbfe9e01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x000001ECA8BA2130>)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\message_handler\message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\client.py", line 33, in fit
+    self.set_parameters(self.model, parameters)
+TypeError: set_parameters() takes 2 positional arguments but 3 were given
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=13056, ip=127.0.0.1, actor_id=5120259cd2f9d54648fbfe9e01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x000001ECA8BA2130>)
+  File "python\ray\_raylet.pyx", line 1418, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1498, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1424, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1364, in ray._raylet.execute_task.function_executor
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\function_manager.py", line 726, in actor_method_executor
+    return method(__ray_actor, *args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\util\tracing\tracing_helper.py", line 464, in _resume_span
+    return method(self, *_args, **_kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: set_parameters() takes 2 positional arguments but 3 were given
+
+[2024-05-11 20:59:27,792][flwr][ERROR] - [36mray::ClientAppActor.run()[39m (pid=13056, ip=127.0.0.1, actor_id=5120259cd2f9d54648fbfe9e01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x000001ECA8BA2130>)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\message_handler\message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\client.py", line 33, in fit
+    self.set_parameters(self.model, parameters)
+TypeError: set_parameters() takes 2 positional arguments but 3 were given
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=13056, ip=127.0.0.1, actor_id=5120259cd2f9d54648fbfe9e01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x000001ECA8BA2130>)
+  File "python\ray\_raylet.pyx", line 1418, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1498, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1424, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1364, in ray._raylet.execute_task.function_executor
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\function_manager.py", line 726, in actor_method_executor
+    return method(__ray_actor, *args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\util\tracing\tracing_helper.py", line 464, in _resume_span
+    return method(self, *_args, **_kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: set_parameters() takes 2 positional arguments but 3 were given
+[2024-05-11 20:59:27,800][flwr][INFO] - aggregate_fit: received 0 results and 1 failures
+[2024-05-11 20:59:27,801][flwr][INFO] - configure_evaluate: strategy sampled 2 clients (out of 2)
+[2024-05-11 20:59:27,816][flwr][ERROR] - Traceback (most recent call last):
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_client_proxy.py", line 73, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 399, in get_client_result
+    return self._fetch_future_result(cid)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 280, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\auto_init_hook.py", line 24, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\worker.py", line 2524, in get
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(ClientAppException): [36mray::ClientAppActor.run()[39m (pid=13056, ip=127.0.0.1, actor_id=5120259cd2f9d54648fbfe9e01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x000001ECA8BA2130>)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\message_handler\message_handler.py", line 137, in handle_legacy_message_from_msgtype
+    evaluate_res = maybe_call_evaluate(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client.py", line 254, in maybe_call_evaluate
+    return client.evaluate(evaluate_ins)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\numpy_client.py", line 262, in _evaluate
+    results = self.numpy_client.evaluate(parameters, ins.config)  # type: ignore
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\client.py", line 45, in evaluate
+    self.set_parameters(self.model, parameters)
+TypeError: set_parameters() takes 2 positional arguments but 3 were given
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=13056, ip=127.0.0.1, actor_id=5120259cd2f9d54648fbfe9e01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x000001ECA8BA2130>)
+  File "python\ray\_raylet.pyx", line 1418, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1498, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1424, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1364, in ray._raylet.execute_task.function_executor
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\function_manager.py", line 726, in actor_method_executor
+    return method(__ray_actor, *args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\util\tracing\tracing_helper.py", line 464, in _resume_span
+    return method(self, *_args, **_kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: set_parameters() takes 2 positional arguments but 3 were given
+
+[2024-05-11 20:59:27,819][flwr][ERROR] - Traceback (most recent call last):
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_client_proxy.py", line 73, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 399, in get_client_result
+    return self._fetch_future_result(cid)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 280, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\auto_init_hook.py", line 24, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\worker.py", line 2524, in get
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(ClientAppException): [36mray::ClientAppActor.run()[39m (pid=2132, ip=127.0.0.1, actor_id=46c9dc61d794c153506ae7a501000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x00000280D89C4FD0>)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\message_handler\message_handler.py", line 137, in handle_legacy_message_from_msgtype
+    evaluate_res = maybe_call_evaluate(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client.py", line 254, in maybe_call_evaluate
+    return client.evaluate(evaluate_ins)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\numpy_client.py", line 262, in _evaluate
+    results = self.numpy_client.evaluate(parameters, ins.config)  # type: ignore
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\client.py", line 45, in evaluate
+    self.set_parameters(self.model, parameters)
+TypeError: set_parameters() takes 2 positional arguments but 3 were given
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=2132, ip=127.0.0.1, actor_id=46c9dc61d794c153506ae7a501000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x00000280D89C4FD0>)
+  File "python\ray\_raylet.pyx", line 1418, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1498, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1424, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1364, in ray._raylet.execute_task.function_executor
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\function_manager.py", line 726, in actor_method_executor
+    return method(__ray_actor, *args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\util\tracing\tracing_helper.py", line 464, in _resume_span
+    return method(self, *_args, **_kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: set_parameters() takes 2 positional arguments but 3 were given
+
+[2024-05-11 20:59:27,828][flwr][ERROR] - [36mray::ClientAppActor.run()[39m (pid=13056, ip=127.0.0.1, actor_id=5120259cd2f9d54648fbfe9e01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x000001ECA8BA2130>)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\message_handler\message_handler.py", line 137, in handle_legacy_message_from_msgtype
+    evaluate_res = maybe_call_evaluate(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client.py", line 254, in maybe_call_evaluate
+    return client.evaluate(evaluate_ins)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\numpy_client.py", line 262, in _evaluate
+    results = self.numpy_client.evaluate(parameters, ins.config)  # type: ignore
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\client.py", line 45, in evaluate
+    self.set_parameters(self.model, parameters)
+TypeError: set_parameters() takes 2 positional arguments but 3 were given
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=13056, ip=127.0.0.1, actor_id=5120259cd2f9d54648fbfe9e01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x000001ECA8BA2130>)
+  File "python\ray\_raylet.pyx", line 1418, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1498, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1424, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1364, in ray._raylet.execute_task.function_executor
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\function_manager.py", line 726, in actor_method_executor
+    return method(__ray_actor, *args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\util\tracing\tracing_helper.py", line 464, in _resume_span
+    return method(self, *_args, **_kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: set_parameters() takes 2 positional arguments but 3 were given
+[2024-05-11 20:59:27,839][flwr][ERROR] - [36mray::ClientAppActor.run()[39m (pid=2132, ip=127.0.0.1, actor_id=46c9dc61d794c153506ae7a501000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x00000280D89C4FD0>)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\message_handler\message_handler.py", line 137, in handle_legacy_message_from_msgtype
+    evaluate_res = maybe_call_evaluate(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client.py", line 254, in maybe_call_evaluate
+    return client.evaluate(evaluate_ins)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\numpy_client.py", line 262, in _evaluate
+    results = self.numpy_client.evaluate(parameters, ins.config)  # type: ignore
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\client.py", line 45, in evaluate
+    self.set_parameters(self.model, parameters)
+TypeError: set_parameters() takes 2 positional arguments but 3 were given
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=2132, ip=127.0.0.1, actor_id=46c9dc61d794c153506ae7a501000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x00000280D89C4FD0>)
+  File "python\ray\_raylet.pyx", line 1418, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1498, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1424, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1364, in ray._raylet.execute_task.function_executor
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\function_manager.py", line 726, in actor_method_executor
+    return method(__ray_actor, *args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\util\tracing\tracing_helper.py", line 464, in _resume_span
+    return method(self, *_args, **_kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: set_parameters() takes 2 positional arguments but 3 were given
+[2024-05-11 20:59:27,852][flwr][INFO] - aggregate_evaluate: received 0 results and 2 failures
+[2024-05-11 20:59:27,853][flwr][INFO] - 
+[2024-05-11 20:59:27,853][flwr][INFO] - [ROUND 5]
+[2024-05-11 20:59:27,854][flwr][INFO] - configure_fit: strategy sampled 1 clients (out of 2)
+[2024-05-11 20:59:27,864][flwr][ERROR] - Traceback (most recent call last):
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_client_proxy.py", line 73, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 399, in get_client_result
+    return self._fetch_future_result(cid)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 280, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\auto_init_hook.py", line 24, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\worker.py", line 2524, in get
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(ClientAppException): [36mray::ClientAppActor.run()[39m (pid=2132, ip=127.0.0.1, actor_id=46c9dc61d794c153506ae7a501000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x00000280D89C4FD0>)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\message_handler\message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\client.py", line 33, in fit
+    self.set_parameters(self.model, parameters)
+TypeError: set_parameters() takes 2 positional arguments but 3 were given
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=2132, ip=127.0.0.1, actor_id=46c9dc61d794c153506ae7a501000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x00000280D89C4FD0>)
+  File "python\ray\_raylet.pyx", line 1418, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1498, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1424, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1364, in ray._raylet.execute_task.function_executor
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\function_manager.py", line 726, in actor_method_executor
+    return method(__ray_actor, *args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\util\tracing\tracing_helper.py", line 464, in _resume_span
+    return method(self, *_args, **_kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: set_parameters() takes 2 positional arguments but 3 were given
+
+[2024-05-11 20:59:27,874][flwr][ERROR] - [36mray::ClientAppActor.run()[39m (pid=2132, ip=127.0.0.1, actor_id=46c9dc61d794c153506ae7a501000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x00000280D89C4FD0>)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\message_handler\message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\client.py", line 33, in fit
+    self.set_parameters(self.model, parameters)
+TypeError: set_parameters() takes 2 positional arguments but 3 were given
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=2132, ip=127.0.0.1, actor_id=46c9dc61d794c153506ae7a501000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x00000280D89C4FD0>)
+  File "python\ray\_raylet.pyx", line 1418, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1498, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1424, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1364, in ray._raylet.execute_task.function_executor
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\function_manager.py", line 726, in actor_method_executor
+    return method(__ray_actor, *args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\util\tracing\tracing_helper.py", line 464, in _resume_span
+    return method(self, *_args, **_kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: set_parameters() takes 2 positional arguments but 3 were given
+[2024-05-11 20:59:27,879][flwr][INFO] - aggregate_fit: received 0 results and 1 failures
+[2024-05-11 20:59:27,879][flwr][INFO] - configure_evaluate: strategy sampled 2 clients (out of 2)
+[2024-05-11 20:59:27,890][flwr][ERROR] - Traceback (most recent call last):
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_client_proxy.py", line 73, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 399, in get_client_result
+    return self._fetch_future_result(cid)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 280, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\auto_init_hook.py", line 24, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\worker.py", line 2524, in get
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(ClientAppException): [36mray::ClientAppActor.run()[39m (pid=2132, ip=127.0.0.1, actor_id=46c9dc61d794c153506ae7a501000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x00000280D89C4FD0>)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\message_handler\message_handler.py", line 137, in handle_legacy_message_from_msgtype
+    evaluate_res = maybe_call_evaluate(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client.py", line 254, in maybe_call_evaluate
+    return client.evaluate(evaluate_ins)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\numpy_client.py", line 262, in _evaluate
+    results = self.numpy_client.evaluate(parameters, ins.config)  # type: ignore
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\client.py", line 45, in evaluate
+    self.set_parameters(self.model, parameters)
+TypeError: set_parameters() takes 2 positional arguments but 3 were given
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=2132, ip=127.0.0.1, actor_id=46c9dc61d794c153506ae7a501000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x00000280D89C4FD0>)
+  File "python\ray\_raylet.pyx", line 1418, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1498, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1424, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1364, in ray._raylet.execute_task.function_executor
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\function_manager.py", line 726, in actor_method_executor
+    return method(__ray_actor, *args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\util\tracing\tracing_helper.py", line 464, in _resume_span
+    return method(self, *_args, **_kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: set_parameters() takes 2 positional arguments but 3 were given
+
+[2024-05-11 20:59:27,893][flwr][ERROR] - Traceback (most recent call last):
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_client_proxy.py", line 73, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 399, in get_client_result
+    return self._fetch_future_result(cid)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 280, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\auto_init_hook.py", line 24, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\worker.py", line 2524, in get
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(ClientAppException): [36mray::ClientAppActor.run()[39m (pid=13056, ip=127.0.0.1, actor_id=5120259cd2f9d54648fbfe9e01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x000001ECA8BA2130>)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\message_handler\message_handler.py", line 137, in handle_legacy_message_from_msgtype
+    evaluate_res = maybe_call_evaluate(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client.py", line 254, in maybe_call_evaluate
+    return client.evaluate(evaluate_ins)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\numpy_client.py", line 262, in _evaluate
+    results = self.numpy_client.evaluate(parameters, ins.config)  # type: ignore
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\client.py", line 45, in evaluate
+    self.set_parameters(self.model, parameters)
+TypeError: set_parameters() takes 2 positional arguments but 3 were given
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=13056, ip=127.0.0.1, actor_id=5120259cd2f9d54648fbfe9e01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x000001ECA8BA2130>)
+  File "python\ray\_raylet.pyx", line 1418, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1498, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1424, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1364, in ray._raylet.execute_task.function_executor
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\function_manager.py", line 726, in actor_method_executor
+    return method(__ray_actor, *args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\util\tracing\tracing_helper.py", line 464, in _resume_span
+    return method(self, *_args, **_kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: set_parameters() takes 2 positional arguments but 3 were given
+
+[2024-05-11 20:59:27,899][flwr][ERROR] - [36mray::ClientAppActor.run()[39m (pid=2132, ip=127.0.0.1, actor_id=46c9dc61d794c153506ae7a501000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x00000280D89C4FD0>)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\message_handler\message_handler.py", line 137, in handle_legacy_message_from_msgtype
+    evaluate_res = maybe_call_evaluate(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client.py", line 254, in maybe_call_evaluate
+    return client.evaluate(evaluate_ins)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\numpy_client.py", line 262, in _evaluate
+    results = self.numpy_client.evaluate(parameters, ins.config)  # type: ignore
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\client.py", line 45, in evaluate
+    self.set_parameters(self.model, parameters)
+TypeError: set_parameters() takes 2 positional arguments but 3 were given
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=2132, ip=127.0.0.1, actor_id=46c9dc61d794c153506ae7a501000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x00000280D89C4FD0>)
+  File "python\ray\_raylet.pyx", line 1418, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1498, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1424, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1364, in ray._raylet.execute_task.function_executor
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\function_manager.py", line 726, in actor_method_executor
+    return method(__ray_actor, *args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\util\tracing\tracing_helper.py", line 464, in _resume_span
+    return method(self, *_args, **_kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: set_parameters() takes 2 positional arguments but 3 were given
+[2024-05-11 20:59:27,907][flwr][ERROR] - [36mray::ClientAppActor.run()[39m (pid=13056, ip=127.0.0.1, actor_id=5120259cd2f9d54648fbfe9e01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x000001ECA8BA2130>)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\message_handler\message_handler.py", line 137, in handle_legacy_message_from_msgtype
+    evaluate_res = maybe_call_evaluate(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client.py", line 254, in maybe_call_evaluate
+    return client.evaluate(evaluate_ins)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\numpy_client.py", line 262, in _evaluate
+    results = self.numpy_client.evaluate(parameters, ins.config)  # type: ignore
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\client.py", line 45, in evaluate
+    self.set_parameters(self.model, parameters)
+TypeError: set_parameters() takes 2 positional arguments but 3 were given
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=13056, ip=127.0.0.1, actor_id=5120259cd2f9d54648fbfe9e01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x000001ECA8BA2130>)
+  File "python\ray\_raylet.pyx", line 1418, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1498, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1424, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1364, in ray._raylet.execute_task.function_executor
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\function_manager.py", line 726, in actor_method_executor
+    return method(__ray_actor, *args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\util\tracing\tracing_helper.py", line 464, in _resume_span
+    return method(self, *_args, **_kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: set_parameters() takes 2 positional arguments but 3 were given
+[2024-05-11 20:59:27,917][flwr][INFO] - aggregate_evaluate: received 0 results and 2 failures
+[2024-05-11 20:59:27,918][flwr][INFO] - 
+[2024-05-11 20:59:27,919][flwr][INFO] - [ROUND 6]
+[2024-05-11 20:59:27,919][flwr][INFO] - configure_fit: strategy sampled 1 clients (out of 2)
+[2024-05-11 20:59:27,929][flwr][ERROR] - Traceback (most recent call last):
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_client_proxy.py", line 73, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 399, in get_client_result
+    return self._fetch_future_result(cid)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 280, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\auto_init_hook.py", line 24, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\worker.py", line 2524, in get
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(ClientAppException): [36mray::ClientAppActor.run()[39m (pid=13056, ip=127.0.0.1, actor_id=5120259cd2f9d54648fbfe9e01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x000001ECA8BA2130>)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\message_handler\message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\client.py", line 33, in fit
+    self.set_parameters(self.model, parameters)
+TypeError: set_parameters() takes 2 positional arguments but 3 were given
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=13056, ip=127.0.0.1, actor_id=5120259cd2f9d54648fbfe9e01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x000001ECA8BA2130>)
+  File "python\ray\_raylet.pyx", line 1418, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1498, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1424, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1364, in ray._raylet.execute_task.function_executor
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\function_manager.py", line 726, in actor_method_executor
+    return method(__ray_actor, *args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\util\tracing\tracing_helper.py", line 464, in _resume_span
+    return method(self, *_args, **_kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: set_parameters() takes 2 positional arguments but 3 were given
+
+[2024-05-11 20:59:27,939][flwr][ERROR] - [36mray::ClientAppActor.run()[39m (pid=13056, ip=127.0.0.1, actor_id=5120259cd2f9d54648fbfe9e01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x000001ECA8BA2130>)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\message_handler\message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\client.py", line 33, in fit
+    self.set_parameters(self.model, parameters)
+TypeError: set_parameters() takes 2 positional arguments but 3 were given
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=13056, ip=127.0.0.1, actor_id=5120259cd2f9d54648fbfe9e01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x000001ECA8BA2130>)
+  File "python\ray\_raylet.pyx", line 1418, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1498, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1424, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1364, in ray._raylet.execute_task.function_executor
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\function_manager.py", line 726, in actor_method_executor
+    return method(__ray_actor, *args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\util\tracing\tracing_helper.py", line 464, in _resume_span
+    return method(self, *_args, **_kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: set_parameters() takes 2 positional arguments but 3 were given
+[2024-05-11 20:59:27,945][flwr][INFO] - aggregate_fit: received 0 results and 1 failures
+[2024-05-11 20:59:27,945][flwr][INFO] - configure_evaluate: strategy sampled 2 clients (out of 2)
+[2024-05-11 20:59:27,957][flwr][ERROR] - Traceback (most recent call last):
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_client_proxy.py", line 73, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 399, in get_client_result
+    return self._fetch_future_result(cid)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 280, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\auto_init_hook.py", line 24, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\worker.py", line 2524, in get
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(ClientAppException): [36mray::ClientAppActor.run()[39m (pid=13056, ip=127.0.0.1, actor_id=5120259cd2f9d54648fbfe9e01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x000001ECA8BA2130>)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\message_handler\message_handler.py", line 137, in handle_legacy_message_from_msgtype
+    evaluate_res = maybe_call_evaluate(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client.py", line 254, in maybe_call_evaluate
+    return client.evaluate(evaluate_ins)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\numpy_client.py", line 262, in _evaluate
+    results = self.numpy_client.evaluate(parameters, ins.config)  # type: ignore
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\client.py", line 45, in evaluate
+    self.set_parameters(self.model, parameters)
+TypeError: set_parameters() takes 2 positional arguments but 3 were given
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=13056, ip=127.0.0.1, actor_id=5120259cd2f9d54648fbfe9e01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x000001ECA8BA2130>)
+  File "python\ray\_raylet.pyx", line 1418, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1498, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1424, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1364, in ray._raylet.execute_task.function_executor
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\function_manager.py", line 726, in actor_method_executor
+    return method(__ray_actor, *args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\util\tracing\tracing_helper.py", line 464, in _resume_span
+    return method(self, *_args, **_kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: set_parameters() takes 2 positional arguments but 3 were given
+
+[2024-05-11 20:59:27,959][flwr][ERROR] - Traceback (most recent call last):
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_client_proxy.py", line 73, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 399, in get_client_result
+    return self._fetch_future_result(cid)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 280, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\auto_init_hook.py", line 24, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\worker.py", line 2524, in get
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(ClientAppException): [36mray::ClientAppActor.run()[39m (pid=2132, ip=127.0.0.1, actor_id=46c9dc61d794c153506ae7a501000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x00000280D89C4FD0>)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\message_handler\message_handler.py", line 137, in handle_legacy_message_from_msgtype
+    evaluate_res = maybe_call_evaluate(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client.py", line 254, in maybe_call_evaluate
+    return client.evaluate(evaluate_ins)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\numpy_client.py", line 262, in _evaluate
+    results = self.numpy_client.evaluate(parameters, ins.config)  # type: ignore
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\client.py", line 45, in evaluate
+    self.set_parameters(self.model, parameters)
+TypeError: set_parameters() takes 2 positional arguments but 3 were given
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=2132, ip=127.0.0.1, actor_id=46c9dc61d794c153506ae7a501000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x00000280D89C4FD0>)
+  File "python\ray\_raylet.pyx", line 1418, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1498, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1424, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1364, in ray._raylet.execute_task.function_executor
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\function_manager.py", line 726, in actor_method_executor
+    return method(__ray_actor, *args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\util\tracing\tracing_helper.py", line 464, in _resume_span
+    return method(self, *_args, **_kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: set_parameters() takes 2 positional arguments but 3 were given
+
+[2024-05-11 20:59:27,966][flwr][ERROR] - [36mray::ClientAppActor.run()[39m (pid=13056, ip=127.0.0.1, actor_id=5120259cd2f9d54648fbfe9e01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x000001ECA8BA2130>)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\message_handler\message_handler.py", line 137, in handle_legacy_message_from_msgtype
+    evaluate_res = maybe_call_evaluate(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client.py", line 254, in maybe_call_evaluate
+    return client.evaluate(evaluate_ins)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\numpy_client.py", line 262, in _evaluate
+    results = self.numpy_client.evaluate(parameters, ins.config)  # type: ignore
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\client.py", line 45, in evaluate
+    self.set_parameters(self.model, parameters)
+TypeError: set_parameters() takes 2 positional arguments but 3 were given
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=13056, ip=127.0.0.1, actor_id=5120259cd2f9d54648fbfe9e01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x000001ECA8BA2130>)
+  File "python\ray\_raylet.pyx", line 1418, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1498, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1424, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1364, in ray._raylet.execute_task.function_executor
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\function_manager.py", line 726, in actor_method_executor
+    return method(__ray_actor, *args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\util\tracing\tracing_helper.py", line 464, in _resume_span
+    return method(self, *_args, **_kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: set_parameters() takes 2 positional arguments but 3 were given
+[2024-05-11 20:59:27,975][flwr][ERROR] - [36mray::ClientAppActor.run()[39m (pid=2132, ip=127.0.0.1, actor_id=46c9dc61d794c153506ae7a501000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x00000280D89C4FD0>)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\message_handler\message_handler.py", line 137, in handle_legacy_message_from_msgtype
+    evaluate_res = maybe_call_evaluate(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client.py", line 254, in maybe_call_evaluate
+    return client.evaluate(evaluate_ins)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\numpy_client.py", line 262, in _evaluate
+    results = self.numpy_client.evaluate(parameters, ins.config)  # type: ignore
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\client.py", line 45, in evaluate
+    self.set_parameters(self.model, parameters)
+TypeError: set_parameters() takes 2 positional arguments but 3 were given
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=2132, ip=127.0.0.1, actor_id=46c9dc61d794c153506ae7a501000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x00000280D89C4FD0>)
+  File "python\ray\_raylet.pyx", line 1418, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1498, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1424, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1364, in ray._raylet.execute_task.function_executor
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\function_manager.py", line 726, in actor_method_executor
+    return method(__ray_actor, *args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\util\tracing\tracing_helper.py", line 464, in _resume_span
+    return method(self, *_args, **_kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: set_parameters() takes 2 positional arguments but 3 were given
+[2024-05-11 20:59:27,988][flwr][INFO] - aggregate_evaluate: received 0 results and 2 failures
+[2024-05-11 20:59:27,989][flwr][INFO] - 
+[2024-05-11 20:59:27,989][flwr][INFO] - [ROUND 7]
+[2024-05-11 20:59:27,990][flwr][INFO] - configure_fit: strategy sampled 1 clients (out of 2)
+[2024-05-11 20:59:28,000][flwr][ERROR] - Traceback (most recent call last):
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_client_proxy.py", line 73, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 399, in get_client_result
+    return self._fetch_future_result(cid)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 280, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\auto_init_hook.py", line 24, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\worker.py", line 2524, in get
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(ClientAppException): [36mray::ClientAppActor.run()[39m (pid=2132, ip=127.0.0.1, actor_id=46c9dc61d794c153506ae7a501000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x00000280D89C4FD0>)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\message_handler\message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\client.py", line 33, in fit
+    self.set_parameters(self.model, parameters)
+TypeError: set_parameters() takes 2 positional arguments but 3 were given
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=2132, ip=127.0.0.1, actor_id=46c9dc61d794c153506ae7a501000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x00000280D89C4FD0>)
+  File "python\ray\_raylet.pyx", line 1418, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1498, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1424, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1364, in ray._raylet.execute_task.function_executor
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\function_manager.py", line 726, in actor_method_executor
+    return method(__ray_actor, *args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\util\tracing\tracing_helper.py", line 464, in _resume_span
+    return method(self, *_args, **_kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: set_parameters() takes 2 positional arguments but 3 were given
+
+[2024-05-11 20:59:28,009][flwr][ERROR] - [36mray::ClientAppActor.run()[39m (pid=2132, ip=127.0.0.1, actor_id=46c9dc61d794c153506ae7a501000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x00000280D89C4FD0>)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\message_handler\message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\client.py", line 33, in fit
+    self.set_parameters(self.model, parameters)
+TypeError: set_parameters() takes 2 positional arguments but 3 were given
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=2132, ip=127.0.0.1, actor_id=46c9dc61d794c153506ae7a501000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x00000280D89C4FD0>)
+  File "python\ray\_raylet.pyx", line 1418, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1498, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1424, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1364, in ray._raylet.execute_task.function_executor
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\function_manager.py", line 726, in actor_method_executor
+    return method(__ray_actor, *args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\util\tracing\tracing_helper.py", line 464, in _resume_span
+    return method(self, *_args, **_kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: set_parameters() takes 2 positional arguments but 3 were given
+[2024-05-11 20:59:28,015][flwr][INFO] - aggregate_fit: received 0 results and 1 failures
+[2024-05-11 20:59:28,015][flwr][INFO] - configure_evaluate: strategy sampled 2 clients (out of 2)
+[2024-05-11 20:59:28,026][flwr][ERROR] - Traceback (most recent call last):
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_client_proxy.py", line 73, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 399, in get_client_result
+    return self._fetch_future_result(cid)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 280, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\auto_init_hook.py", line 24, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\worker.py", line 2524, in get
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(ClientAppException): [36mray::ClientAppActor.run()[39m (pid=2132, ip=127.0.0.1, actor_id=46c9dc61d794c153506ae7a501000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x00000280D89C4FD0>)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\message_handler\message_handler.py", line 137, in handle_legacy_message_from_msgtype
+    evaluate_res = maybe_call_evaluate(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client.py", line 254, in maybe_call_evaluate
+    return client.evaluate(evaluate_ins)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\numpy_client.py", line 262, in _evaluate
+    results = self.numpy_client.evaluate(parameters, ins.config)  # type: ignore
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\client.py", line 45, in evaluate
+    self.set_parameters(self.model, parameters)
+TypeError: set_parameters() takes 2 positional arguments but 3 were given
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=2132, ip=127.0.0.1, actor_id=46c9dc61d794c153506ae7a501000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x00000280D89C4FD0>)
+  File "python\ray\_raylet.pyx", line 1418, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1498, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1424, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1364, in ray._raylet.execute_task.function_executor
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\function_manager.py", line 726, in actor_method_executor
+    return method(__ray_actor, *args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\util\tracing\tracing_helper.py", line 464, in _resume_span
+    return method(self, *_args, **_kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: set_parameters() takes 2 positional arguments but 3 were given
+
+[2024-05-11 20:59:28,029][flwr][ERROR] - Traceback (most recent call last):
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_client_proxy.py", line 73, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 399, in get_client_result
+    return self._fetch_future_result(cid)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 280, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\auto_init_hook.py", line 24, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\worker.py", line 2524, in get
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(ClientAppException): [36mray::ClientAppActor.run()[39m (pid=13056, ip=127.0.0.1, actor_id=5120259cd2f9d54648fbfe9e01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x000001ECA8BA2130>)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\message_handler\message_handler.py", line 137, in handle_legacy_message_from_msgtype
+    evaluate_res = maybe_call_evaluate(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client.py", line 254, in maybe_call_evaluate
+    return client.evaluate(evaluate_ins)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\numpy_client.py", line 262, in _evaluate
+    results = self.numpy_client.evaluate(parameters, ins.config)  # type: ignore
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\client.py", line 45, in evaluate
+    self.set_parameters(self.model, parameters)
+TypeError: set_parameters() takes 2 positional arguments but 3 were given
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=13056, ip=127.0.0.1, actor_id=5120259cd2f9d54648fbfe9e01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x000001ECA8BA2130>)
+  File "python\ray\_raylet.pyx", line 1418, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1498, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1424, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1364, in ray._raylet.execute_task.function_executor
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\function_manager.py", line 726, in actor_method_executor
+    return method(__ray_actor, *args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\util\tracing\tracing_helper.py", line 464, in _resume_span
+    return method(self, *_args, **_kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: set_parameters() takes 2 positional arguments but 3 were given
+
+[2024-05-11 20:59:28,035][flwr][ERROR] - [36mray::ClientAppActor.run()[39m (pid=2132, ip=127.0.0.1, actor_id=46c9dc61d794c153506ae7a501000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x00000280D89C4FD0>)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\message_handler\message_handler.py", line 137, in handle_legacy_message_from_msgtype
+    evaluate_res = maybe_call_evaluate(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client.py", line 254, in maybe_call_evaluate
+    return client.evaluate(evaluate_ins)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\numpy_client.py", line 262, in _evaluate
+    results = self.numpy_client.evaluate(parameters, ins.config)  # type: ignore
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\client.py", line 45, in evaluate
+    self.set_parameters(self.model, parameters)
+TypeError: set_parameters() takes 2 positional arguments but 3 were given
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=2132, ip=127.0.0.1, actor_id=46c9dc61d794c153506ae7a501000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x00000280D89C4FD0>)
+  File "python\ray\_raylet.pyx", line 1418, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1498, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1424, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1364, in ray._raylet.execute_task.function_executor
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\function_manager.py", line 726, in actor_method_executor
+    return method(__ray_actor, *args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\util\tracing\tracing_helper.py", line 464, in _resume_span
+    return method(self, *_args, **_kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: set_parameters() takes 2 positional arguments but 3 were given
+[2024-05-11 20:59:28,042][flwr][ERROR] - [36mray::ClientAppActor.run()[39m (pid=13056, ip=127.0.0.1, actor_id=5120259cd2f9d54648fbfe9e01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x000001ECA8BA2130>)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\message_handler\message_handler.py", line 137, in handle_legacy_message_from_msgtype
+    evaluate_res = maybe_call_evaluate(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client.py", line 254, in maybe_call_evaluate
+    return client.evaluate(evaluate_ins)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\numpy_client.py", line 262, in _evaluate
+    results = self.numpy_client.evaluate(parameters, ins.config)  # type: ignore
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\client.py", line 45, in evaluate
+    self.set_parameters(self.model, parameters)
+TypeError: set_parameters() takes 2 positional arguments but 3 were given
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=13056, ip=127.0.0.1, actor_id=5120259cd2f9d54648fbfe9e01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x000001ECA8BA2130>)
+  File "python\ray\_raylet.pyx", line 1418, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1498, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1424, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1364, in ray._raylet.execute_task.function_executor
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\function_manager.py", line 726, in actor_method_executor
+    return method(__ray_actor, *args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\util\tracing\tracing_helper.py", line 464, in _resume_span
+    return method(self, *_args, **_kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: set_parameters() takes 2 positional arguments but 3 were given
+[2024-05-11 20:59:28,053][flwr][INFO] - aggregate_evaluate: received 0 results and 2 failures
+[2024-05-11 20:59:28,054][flwr][INFO] - 
+[2024-05-11 20:59:28,054][flwr][INFO] - [ROUND 8]
+[2024-05-11 20:59:28,055][flwr][INFO] - configure_fit: strategy sampled 1 clients (out of 2)
+[2024-05-11 20:59:28,064][flwr][ERROR] - Traceback (most recent call last):
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_client_proxy.py", line 73, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 399, in get_client_result
+    return self._fetch_future_result(cid)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 280, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\auto_init_hook.py", line 24, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\worker.py", line 2524, in get
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(ClientAppException): [36mray::ClientAppActor.run()[39m (pid=13056, ip=127.0.0.1, actor_id=5120259cd2f9d54648fbfe9e01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x000001ECA8BA2130>)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\message_handler\message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\client.py", line 33, in fit
+    self.set_parameters(self.model, parameters)
+TypeError: set_parameters() takes 2 positional arguments but 3 were given
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=13056, ip=127.0.0.1, actor_id=5120259cd2f9d54648fbfe9e01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x000001ECA8BA2130>)
+  File "python\ray\_raylet.pyx", line 1418, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1498, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1424, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1364, in ray._raylet.execute_task.function_executor
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\function_manager.py", line 726, in actor_method_executor
+    return method(__ray_actor, *args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\util\tracing\tracing_helper.py", line 464, in _resume_span
+    return method(self, *_args, **_kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: set_parameters() takes 2 positional arguments but 3 were given
+
+[2024-05-11 20:59:28,073][flwr][ERROR] - [36mray::ClientAppActor.run()[39m (pid=13056, ip=127.0.0.1, actor_id=5120259cd2f9d54648fbfe9e01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x000001ECA8BA2130>)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\message_handler\message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\client.py", line 33, in fit
+    self.set_parameters(self.model, parameters)
+TypeError: set_parameters() takes 2 positional arguments but 3 were given
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=13056, ip=127.0.0.1, actor_id=5120259cd2f9d54648fbfe9e01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x000001ECA8BA2130>)
+  File "python\ray\_raylet.pyx", line 1418, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1498, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1424, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1364, in ray._raylet.execute_task.function_executor
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\function_manager.py", line 726, in actor_method_executor
+    return method(__ray_actor, *args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\util\tracing\tracing_helper.py", line 464, in _resume_span
+    return method(self, *_args, **_kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: set_parameters() takes 2 positional arguments but 3 were given
+[2024-05-11 20:59:28,078][flwr][INFO] - aggregate_fit: received 0 results and 1 failures
+[2024-05-11 20:59:28,078][flwr][INFO] - configure_evaluate: strategy sampled 2 clients (out of 2)
+[2024-05-11 20:59:28,090][flwr][ERROR] - Traceback (most recent call last):
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_client_proxy.py", line 73, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 399, in get_client_result
+    return self._fetch_future_result(cid)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 280, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\auto_init_hook.py", line 24, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\worker.py", line 2524, in get
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(ClientAppException): [36mray::ClientAppActor.run()[39m (pid=13056, ip=127.0.0.1, actor_id=5120259cd2f9d54648fbfe9e01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x000001ECA8BA2130>)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\message_handler\message_handler.py", line 137, in handle_legacy_message_from_msgtype
+    evaluate_res = maybe_call_evaluate(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client.py", line 254, in maybe_call_evaluate
+    return client.evaluate(evaluate_ins)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\numpy_client.py", line 262, in _evaluate
+    results = self.numpy_client.evaluate(parameters, ins.config)  # type: ignore
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\client.py", line 45, in evaluate
+    self.set_parameters(self.model, parameters)
+TypeError: set_parameters() takes 2 positional arguments but 3 were given
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=13056, ip=127.0.0.1, actor_id=5120259cd2f9d54648fbfe9e01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x000001ECA8BA2130>)
+  File "python\ray\_raylet.pyx", line 1418, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1498, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1424, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1364, in ray._raylet.execute_task.function_executor
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\function_manager.py", line 726, in actor_method_executor
+    return method(__ray_actor, *args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\util\tracing\tracing_helper.py", line 464, in _resume_span
+    return method(self, *_args, **_kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: set_parameters() takes 2 positional arguments but 3 were given
+
+[2024-05-11 20:59:28,092][flwr][ERROR] - Traceback (most recent call last):
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_client_proxy.py", line 73, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 399, in get_client_result
+    return self._fetch_future_result(cid)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 280, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\auto_init_hook.py", line 24, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\worker.py", line 2524, in get
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(ClientAppException): [36mray::ClientAppActor.run()[39m (pid=2132, ip=127.0.0.1, actor_id=46c9dc61d794c153506ae7a501000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x00000280D89C4FD0>)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\message_handler\message_handler.py", line 137, in handle_legacy_message_from_msgtype
+    evaluate_res = maybe_call_evaluate(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client.py", line 254, in maybe_call_evaluate
+    return client.evaluate(evaluate_ins)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\numpy_client.py", line 262, in _evaluate
+    results = self.numpy_client.evaluate(parameters, ins.config)  # type: ignore
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\client.py", line 45, in evaluate
+    self.set_parameters(self.model, parameters)
+TypeError: set_parameters() takes 2 positional arguments but 3 were given
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=2132, ip=127.0.0.1, actor_id=46c9dc61d794c153506ae7a501000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x00000280D89C4FD0>)
+  File "python\ray\_raylet.pyx", line 1418, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1498, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1424, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1364, in ray._raylet.execute_task.function_executor
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\function_manager.py", line 726, in actor_method_executor
+    return method(__ray_actor, *args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\util\tracing\tracing_helper.py", line 464, in _resume_span
+    return method(self, *_args, **_kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: set_parameters() takes 2 positional arguments but 3 were given
+
+[2024-05-11 20:59:28,099][flwr][ERROR] - [36mray::ClientAppActor.run()[39m (pid=13056, ip=127.0.0.1, actor_id=5120259cd2f9d54648fbfe9e01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x000001ECA8BA2130>)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\message_handler\message_handler.py", line 137, in handle_legacy_message_from_msgtype
+    evaluate_res = maybe_call_evaluate(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client.py", line 254, in maybe_call_evaluate
+    return client.evaluate(evaluate_ins)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\numpy_client.py", line 262, in _evaluate
+    results = self.numpy_client.evaluate(parameters, ins.config)  # type: ignore
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\client.py", line 45, in evaluate
+    self.set_parameters(self.model, parameters)
+TypeError: set_parameters() takes 2 positional arguments but 3 were given
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=13056, ip=127.0.0.1, actor_id=5120259cd2f9d54648fbfe9e01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x000001ECA8BA2130>)
+  File "python\ray\_raylet.pyx", line 1418, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1498, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1424, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1364, in ray._raylet.execute_task.function_executor
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\function_manager.py", line 726, in actor_method_executor
+    return method(__ray_actor, *args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\util\tracing\tracing_helper.py", line 464, in _resume_span
+    return method(self, *_args, **_kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: set_parameters() takes 2 positional arguments but 3 were given
+[2024-05-11 20:59:28,109][flwr][ERROR] - [36mray::ClientAppActor.run()[39m (pid=2132, ip=127.0.0.1, actor_id=46c9dc61d794c153506ae7a501000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x00000280D89C4FD0>)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\message_handler\message_handler.py", line 137, in handle_legacy_message_from_msgtype
+    evaluate_res = maybe_call_evaluate(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client.py", line 254, in maybe_call_evaluate
+    return client.evaluate(evaluate_ins)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\numpy_client.py", line 262, in _evaluate
+    results = self.numpy_client.evaluate(parameters, ins.config)  # type: ignore
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\client.py", line 45, in evaluate
+    self.set_parameters(self.model, parameters)
+TypeError: set_parameters() takes 2 positional arguments but 3 were given
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=2132, ip=127.0.0.1, actor_id=46c9dc61d794c153506ae7a501000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x00000280D89C4FD0>)
+  File "python\ray\_raylet.pyx", line 1418, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1498, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1424, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1364, in ray._raylet.execute_task.function_executor
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\function_manager.py", line 726, in actor_method_executor
+    return method(__ray_actor, *args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\util\tracing\tracing_helper.py", line 464, in _resume_span
+    return method(self, *_args, **_kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: set_parameters() takes 2 positional arguments but 3 were given
+[2024-05-11 20:59:28,122][flwr][INFO] - aggregate_evaluate: received 0 results and 2 failures
+[2024-05-11 20:59:28,123][flwr][INFO] - 
+[2024-05-11 20:59:28,123][flwr][INFO] - [ROUND 9]
+[2024-05-11 20:59:28,123][flwr][INFO] - configure_fit: strategy sampled 1 clients (out of 2)
+[2024-05-11 20:59:28,134][flwr][ERROR] - Traceback (most recent call last):
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_client_proxy.py", line 73, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 399, in get_client_result
+    return self._fetch_future_result(cid)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 280, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\auto_init_hook.py", line 24, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\worker.py", line 2524, in get
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(ClientAppException): [36mray::ClientAppActor.run()[39m (pid=2132, ip=127.0.0.1, actor_id=46c9dc61d794c153506ae7a501000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x00000280D89C4FD0>)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\message_handler\message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\client.py", line 33, in fit
+    self.set_parameters(self.model, parameters)
+TypeError: set_parameters() takes 2 positional arguments but 3 were given
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=2132, ip=127.0.0.1, actor_id=46c9dc61d794c153506ae7a501000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x00000280D89C4FD0>)
+  File "python\ray\_raylet.pyx", line 1418, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1498, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1424, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1364, in ray._raylet.execute_task.function_executor
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\function_manager.py", line 726, in actor_method_executor
+    return method(__ray_actor, *args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\util\tracing\tracing_helper.py", line 464, in _resume_span
+    return method(self, *_args, **_kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: set_parameters() takes 2 positional arguments but 3 were given
+
+[2024-05-11 20:59:28,143][flwr][ERROR] - [36mray::ClientAppActor.run()[39m (pid=2132, ip=127.0.0.1, actor_id=46c9dc61d794c153506ae7a501000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x00000280D89C4FD0>)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\message_handler\message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\client.py", line 33, in fit
+    self.set_parameters(self.model, parameters)
+TypeError: set_parameters() takes 2 positional arguments but 3 were given
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=2132, ip=127.0.0.1, actor_id=46c9dc61d794c153506ae7a501000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x00000280D89C4FD0>)
+  File "python\ray\_raylet.pyx", line 1418, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1498, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1424, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1364, in ray._raylet.execute_task.function_executor
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\function_manager.py", line 726, in actor_method_executor
+    return method(__ray_actor, *args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\util\tracing\tracing_helper.py", line 464, in _resume_span
+    return method(self, *_args, **_kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: set_parameters() takes 2 positional arguments but 3 were given
+[2024-05-11 20:59:28,149][flwr][INFO] - aggregate_fit: received 0 results and 1 failures
+[2024-05-11 20:59:28,149][flwr][INFO] - configure_evaluate: strategy sampled 2 clients (out of 2)
+[2024-05-11 20:59:28,160][flwr][ERROR] - Traceback (most recent call last):
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_client_proxy.py", line 73, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 399, in get_client_result
+    return self._fetch_future_result(cid)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 280, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\auto_init_hook.py", line 24, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\worker.py", line 2524, in get
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(ClientAppException): [36mray::ClientAppActor.run()[39m (pid=2132, ip=127.0.0.1, actor_id=46c9dc61d794c153506ae7a501000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x00000280D89C4FD0>)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\message_handler\message_handler.py", line 137, in handle_legacy_message_from_msgtype
+    evaluate_res = maybe_call_evaluate(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client.py", line 254, in maybe_call_evaluate
+    return client.evaluate(evaluate_ins)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\numpy_client.py", line 262, in _evaluate
+    results = self.numpy_client.evaluate(parameters, ins.config)  # type: ignore
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\client.py", line 45, in evaluate
+    self.set_parameters(self.model, parameters)
+TypeError: set_parameters() takes 2 positional arguments but 3 were given
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=2132, ip=127.0.0.1, actor_id=46c9dc61d794c153506ae7a501000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x00000280D89C4FD0>)
+  File "python\ray\_raylet.pyx", line 1418, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1498, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1424, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1364, in ray._raylet.execute_task.function_executor
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\function_manager.py", line 726, in actor_method_executor
+    return method(__ray_actor, *args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\util\tracing\tracing_helper.py", line 464, in _resume_span
+    return method(self, *_args, **_kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: set_parameters() takes 2 positional arguments but 3 were given
+
+[2024-05-11 20:59:28,163][flwr][ERROR] - Traceback (most recent call last):
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_client_proxy.py", line 73, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 399, in get_client_result
+    return self._fetch_future_result(cid)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 280, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\auto_init_hook.py", line 24, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\worker.py", line 2524, in get
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(ClientAppException): [36mray::ClientAppActor.run()[39m (pid=13056, ip=127.0.0.1, actor_id=5120259cd2f9d54648fbfe9e01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x000001ECA8BA2130>)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\message_handler\message_handler.py", line 137, in handle_legacy_message_from_msgtype
+    evaluate_res = maybe_call_evaluate(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client.py", line 254, in maybe_call_evaluate
+    return client.evaluate(evaluate_ins)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\numpy_client.py", line 262, in _evaluate
+    results = self.numpy_client.evaluate(parameters, ins.config)  # type: ignore
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\client.py", line 45, in evaluate
+    self.set_parameters(self.model, parameters)
+TypeError: set_parameters() takes 2 positional arguments but 3 were given
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=13056, ip=127.0.0.1, actor_id=5120259cd2f9d54648fbfe9e01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x000001ECA8BA2130>)
+  File "python\ray\_raylet.pyx", line 1418, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1498, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1424, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1364, in ray._raylet.execute_task.function_executor
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\function_manager.py", line 726, in actor_method_executor
+    return method(__ray_actor, *args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\util\tracing\tracing_helper.py", line 464, in _resume_span
+    return method(self, *_args, **_kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: set_parameters() takes 2 positional arguments but 3 were given
+
+[2024-05-11 20:59:28,171][flwr][ERROR] - [36mray::ClientAppActor.run()[39m (pid=2132, ip=127.0.0.1, actor_id=46c9dc61d794c153506ae7a501000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x00000280D89C4FD0>)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\message_handler\message_handler.py", line 137, in handle_legacy_message_from_msgtype
+    evaluate_res = maybe_call_evaluate(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client.py", line 254, in maybe_call_evaluate
+    return client.evaluate(evaluate_ins)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\numpy_client.py", line 262, in _evaluate
+    results = self.numpy_client.evaluate(parameters, ins.config)  # type: ignore
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\client.py", line 45, in evaluate
+    self.set_parameters(self.model, parameters)
+TypeError: set_parameters() takes 2 positional arguments but 3 were given
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=2132, ip=127.0.0.1, actor_id=46c9dc61d794c153506ae7a501000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x00000280D89C4FD0>)
+  File "python\ray\_raylet.pyx", line 1418, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1498, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1424, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1364, in ray._raylet.execute_task.function_executor
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\function_manager.py", line 726, in actor_method_executor
+    return method(__ray_actor, *args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\util\tracing\tracing_helper.py", line 464, in _resume_span
+    return method(self, *_args, **_kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: set_parameters() takes 2 positional arguments but 3 were given
+[2024-05-11 20:59:28,179][flwr][ERROR] - [36mray::ClientAppActor.run()[39m (pid=13056, ip=127.0.0.1, actor_id=5120259cd2f9d54648fbfe9e01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x000001ECA8BA2130>)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\message_handler\message_handler.py", line 137, in handle_legacy_message_from_msgtype
+    evaluate_res = maybe_call_evaluate(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client.py", line 254, in maybe_call_evaluate
+    return client.evaluate(evaluate_ins)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\numpy_client.py", line 262, in _evaluate
+    results = self.numpy_client.evaluate(parameters, ins.config)  # type: ignore
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\client.py", line 45, in evaluate
+    self.set_parameters(self.model, parameters)
+TypeError: set_parameters() takes 2 positional arguments but 3 were given
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=13056, ip=127.0.0.1, actor_id=5120259cd2f9d54648fbfe9e01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x000001ECA8BA2130>)
+  File "python\ray\_raylet.pyx", line 1418, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1498, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1424, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1364, in ray._raylet.execute_task.function_executor
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\function_manager.py", line 726, in actor_method_executor
+    return method(__ray_actor, *args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\util\tracing\tracing_helper.py", line 464, in _resume_span
+    return method(self, *_args, **_kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: set_parameters() takes 2 positional arguments but 3 were given
+[2024-05-11 20:59:28,189][flwr][INFO] - aggregate_evaluate: received 0 results and 2 failures
+[2024-05-11 20:59:28,190][flwr][INFO] - 
+[2024-05-11 20:59:28,190][flwr][INFO] - [ROUND 10]
+[2024-05-11 20:59:28,191][flwr][INFO] - configure_fit: strategy sampled 1 clients (out of 2)
+[2024-05-11 20:59:28,236][flwr][ERROR] - Traceback (most recent call last):
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_client_proxy.py", line 73, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 399, in get_client_result
+    return self._fetch_future_result(cid)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 280, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\auto_init_hook.py", line 24, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\worker.py", line 2524, in get
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(ClientAppException): [36mray::ClientAppActor.run()[39m (pid=13056, ip=127.0.0.1, actor_id=5120259cd2f9d54648fbfe9e01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x000001ECA8BA2130>)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\message_handler\message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\client.py", line 33, in fit
+    self.set_parameters(self.model, parameters)
+TypeError: set_parameters() takes 2 positional arguments but 3 were given
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=13056, ip=127.0.0.1, actor_id=5120259cd2f9d54648fbfe9e01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x000001ECA8BA2130>)
+  File "python\ray\_raylet.pyx", line 1418, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1498, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1424, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1364, in ray._raylet.execute_task.function_executor
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\function_manager.py", line 726, in actor_method_executor
+    return method(__ray_actor, *args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\util\tracing\tracing_helper.py", line 464, in _resume_span
+    return method(self, *_args, **_kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: set_parameters() takes 2 positional arguments but 3 were given
+
+[2024-05-11 20:59:28,247][flwr][ERROR] - [36mray::ClientAppActor.run()[39m (pid=13056, ip=127.0.0.1, actor_id=5120259cd2f9d54648fbfe9e01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x000001ECA8BA2130>)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\message_handler\message_handler.py", line 130, in handle_legacy_message_from_msgtype
+    fit_res = maybe_call_fit(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client.py", line 234, in maybe_call_fit
+    return client.fit(fit_ins)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\numpy_client.py", line 238, in _fit
+    results = self.numpy_client.fit(parameters, ins.config)  # type: ignore
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\client.py", line 33, in fit
+    self.set_parameters(self.model, parameters)
+TypeError: set_parameters() takes 2 positional arguments but 3 were given
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=13056, ip=127.0.0.1, actor_id=5120259cd2f9d54648fbfe9e01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x000001ECA8BA2130>)
+  File "python\ray\_raylet.pyx", line 1418, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1498, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1424, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1364, in ray._raylet.execute_task.function_executor
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\function_manager.py", line 726, in actor_method_executor
+    return method(__ray_actor, *args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\util\tracing\tracing_helper.py", line 464, in _resume_span
+    return method(self, *_args, **_kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: set_parameters() takes 2 positional arguments but 3 were given
+[2024-05-11 20:59:28,256][flwr][INFO] - aggregate_fit: received 0 results and 1 failures
+[2024-05-11 20:59:28,257][flwr][INFO] - configure_evaluate: strategy sampled 2 clients (out of 2)
+[2024-05-11 20:59:28,271][flwr][ERROR] - Traceback (most recent call last):
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_client_proxy.py", line 73, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 399, in get_client_result
+    return self._fetch_future_result(cid)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 280, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\auto_init_hook.py", line 24, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\worker.py", line 2524, in get
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(ClientAppException): [36mray::ClientAppActor.run()[39m (pid=13056, ip=127.0.0.1, actor_id=5120259cd2f9d54648fbfe9e01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x000001ECA8BA2130>)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\message_handler\message_handler.py", line 137, in handle_legacy_message_from_msgtype
+    evaluate_res = maybe_call_evaluate(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client.py", line 254, in maybe_call_evaluate
+    return client.evaluate(evaluate_ins)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\numpy_client.py", line 262, in _evaluate
+    results = self.numpy_client.evaluate(parameters, ins.config)  # type: ignore
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\client.py", line 45, in evaluate
+    self.set_parameters(self.model, parameters)
+TypeError: set_parameters() takes 2 positional arguments but 3 were given
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=13056, ip=127.0.0.1, actor_id=5120259cd2f9d54648fbfe9e01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x000001ECA8BA2130>)
+  File "python\ray\_raylet.pyx", line 1418, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1498, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1424, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1364, in ray._raylet.execute_task.function_executor
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\function_manager.py", line 726, in actor_method_executor
+    return method(__ray_actor, *args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\util\tracing\tracing_helper.py", line 464, in _resume_span
+    return method(self, *_args, **_kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: set_parameters() takes 2 positional arguments but 3 were given
+
+[2024-05-11 20:59:28,274][flwr][ERROR] - Traceback (most recent call last):
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_client_proxy.py", line 73, in _submit_job
+    out_mssg, updated_context = self.actor_pool.get_client_result(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 399, in get_client_result
+    return self._fetch_future_result(cid)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 280, in _fetch_future_result
+    res_cid, out_mssg, updated_context = ray.get(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\auto_init_hook.py", line 24, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\worker.py", line 2524, in get
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(ClientAppException): [36mray::ClientAppActor.run()[39m (pid=2132, ip=127.0.0.1, actor_id=46c9dc61d794c153506ae7a501000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x00000280D89C4FD0>)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\message_handler\message_handler.py", line 137, in handle_legacy_message_from_msgtype
+    evaluate_res = maybe_call_evaluate(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client.py", line 254, in maybe_call_evaluate
+    return client.evaluate(evaluate_ins)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\numpy_client.py", line 262, in _evaluate
+    results = self.numpy_client.evaluate(parameters, ins.config)  # type: ignore
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\client.py", line 45, in evaluate
+    self.set_parameters(self.model, parameters)
+TypeError: set_parameters() takes 2 positional arguments but 3 were given
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=2132, ip=127.0.0.1, actor_id=46c9dc61d794c153506ae7a501000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x00000280D89C4FD0>)
+  File "python\ray\_raylet.pyx", line 1418, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1498, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1424, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1364, in ray._raylet.execute_task.function_executor
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\function_manager.py", line 726, in actor_method_executor
+    return method(__ray_actor, *args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\util\tracing\tracing_helper.py", line 464, in _resume_span
+    return method(self, *_args, **_kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: set_parameters() takes 2 positional arguments but 3 were given
+
+[2024-05-11 20:59:28,281][flwr][ERROR] - [36mray::ClientAppActor.run()[39m (pid=13056, ip=127.0.0.1, actor_id=5120259cd2f9d54648fbfe9e01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x000001ECA8BA2130>)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\message_handler\message_handler.py", line 137, in handle_legacy_message_from_msgtype
+    evaluate_res = maybe_call_evaluate(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client.py", line 254, in maybe_call_evaluate
+    return client.evaluate(evaluate_ins)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\numpy_client.py", line 262, in _evaluate
+    results = self.numpy_client.evaluate(parameters, ins.config)  # type: ignore
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\client.py", line 45, in evaluate
+    self.set_parameters(self.model, parameters)
+TypeError: set_parameters() takes 2 positional arguments but 3 were given
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=13056, ip=127.0.0.1, actor_id=5120259cd2f9d54648fbfe9e01000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x000001ECA8BA2130>)
+  File "python\ray\_raylet.pyx", line 1418, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1498, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1424, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1364, in ray._raylet.execute_task.function_executor
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\function_manager.py", line 726, in actor_method_executor
+    return method(__ray_actor, *args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\util\tracing\tracing_helper.py", line 464, in _resume_span
+    return method(self, *_args, **_kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: set_parameters() takes 2 positional arguments but 3 were given
+[2024-05-11 20:59:28,290][flwr][ERROR] - [36mray::ClientAppActor.run()[39m (pid=2132, ip=127.0.0.1, actor_id=46c9dc61d794c153506ae7a501000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x00000280D89C4FD0>)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 98, in __call__
+    return self._call(message, context)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client_app.py", line 81, in ffn
+    out_message = handle_legacy_message_from_msgtype(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\message_handler\message_handler.py", line 137, in handle_legacy_message_from_msgtype
+    evaluate_res = maybe_call_evaluate(
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\client.py", line 254, in maybe_call_evaluate
+    return client.evaluate(evaluate_ins)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\client\numpy_client.py", line 262, in _evaluate
+    results = self.numpy_client.evaluate(parameters, ins.config)  # type: ignore
+  File "C:\Users\jyaka\Documents\research\flower_tutorial\client.py", line 45, in evaluate
+    self.set_parameters(self.model, parameters)
+TypeError: set_parameters() takes 2 positional arguments but 3 were given
+
+The above exception was the direct cause of the following exception:
+
+[36mray::ClientAppActor.run()[39m (pid=2132, ip=127.0.0.1, actor_id=46c9dc61d794c153506ae7a501000000, repr=<flwr.simulation.ray_transport.ray_actor.ClientAppActor object at 0x00000280D89C4FD0>)
+  File "python\ray\_raylet.pyx", line 1418, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1498, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1424, in ray._raylet.execute_task
+  File "python\ray\_raylet.pyx", line 1364, in ray._raylet.execute_task.function_executor
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\_private\function_manager.py", line 726, in actor_method_executor
+    return method(__ray_actor, *args, **kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\ray\util\tracing\tracing_helper.py", line 464, in _resume_span
+    return method(self, *_args, **_kwargs)
+  File "C:\Users\jyaka\anaconda3\envs\flower\lib\site-packages\flwr\simulation\ray_transport\ray_actor.py", line 64, in run
+    raise ClientAppException(str(ex)) from ex
+flwr.client.client_app.ClientAppException: 
+Exception ClientAppException occurred. Message: set_parameters() takes 2 positional arguments but 3 were given
+[2024-05-11 20:59:28,301][flwr][INFO] - aggregate_evaluate: received 0 results and 2 failures
+[2024-05-11 20:59:28,302][flwr][INFO] - 
+[2024-05-11 20:59:28,302][flwr][INFO] - [SUMMARY]
+[2024-05-11 20:59:28,303][flwr][INFO] - Run finished 10 rounds in 3.54s
+[2024-05-11 20:59:28,303][flwr][INFO] - 

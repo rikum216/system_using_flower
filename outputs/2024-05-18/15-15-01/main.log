@@ -1,0 +1,25 @@
+[2024-05-18 15:15:02,419][flwr][INFO] - Starting Flower simulation, config: num_rounds=10, no round_timeout
+[2024-05-18 15:15:07,793][flwr][INFO] - Flower VCE: Ray initialized with resources: {'node:127.0.0.1': 1.0, 'object_store_memory': 7494988185.0, 'memory': 14989976372.0, 'node:__internal_head__': 1.0, 'CPU': 8.0}
+[2024-05-18 15:15:07,794][flwr][INFO] - Optimize your simulation with Flower VCE: https://flower.ai/docs/framework/how-to-run-simulations.html
+[2024-05-18 15:15:07,794][flwr][INFO] - Flower VCE: Resources for each Virtual Client: {'num_cpus': 2, 'num_gpus': 0.0}
+[2024-05-18 15:15:07,806][flwr][INFO] - Flower VCE: Creating VirtualClientEngineActorPool with 4 actors
+[2024-05-18 15:15:07,807][flwr][INFO] - [INIT]
+[2024-05-18 15:15:07,808][flwr][INFO] - Using initial global parameters provided by strategy
+[2024-05-18 15:15:07,808][flwr][INFO] - Evaluating initial global parameters
+[2024-05-18 15:15:07,809][flwr][INFO] - 
+[2024-05-18 15:15:07,810][flwr][INFO] - [ROUND 1]
+[2024-05-18 15:15:07,811][flwr][INFO] - configure_fit: strategy sampled 13 clients (out of 13)
+[2024-05-18 15:19:21,768][flwr][INFO] - aggregate_fit: received 13 results and 0 failures
+[2024-05-18 15:19:21,778][flwr][WARNING] - No fit_metrics_aggregation_fn provided
+[2024-05-18 15:19:21,780][flwr][INFO] - configure_evaluate: strategy sampled 13 clients (out of 13)
+[2024-05-18 15:19:44,186][flwr][INFO] - aggregate_evaluate: received 13 results and 0 failures
+[2024-05-18 15:19:44,187][flwr][WARNING] - No evaluate_metrics_aggregation_fn provided
+[2024-05-18 15:19:44,188][flwr][INFO] - 
+[2024-05-18 15:19:44,188][flwr][INFO] - [ROUND 2]
+[2024-05-18 15:19:44,189][flwr][INFO] - configure_fit: strategy sampled 13 clients (out of 13)
+[2024-05-18 15:23:48,903][flwr][INFO] - aggregate_fit: received 13 results and 0 failures
+[2024-05-18 15:23:48,915][flwr][INFO] - configure_evaluate: strategy sampled 13 clients (out of 13)
+[2024-05-18 15:24:11,330][flwr][INFO] - aggregate_evaluate: received 13 results and 0 failures
+[2024-05-18 15:24:11,330][flwr][INFO] - 
+[2024-05-18 15:24:11,331][flwr][INFO] - [ROUND 3]
+[2024-05-18 15:24:11,331][flwr][INFO] - configure_fit: strategy sampled 13 clients (out of 13)
