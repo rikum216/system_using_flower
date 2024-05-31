@@ -1,0 +1,28 @@
+[2024-05-29 00:53:07,366][flwr][INFO] - Starting Flower simulation, config: num_rounds=50, no round_timeout
+[2024-05-29 00:53:12,644][flwr][INFO] - Flower VCE: Ray initialized with resources: {'CPU': 8.0, 'node:__internal_head__': 1.0, 'object_store_memory': 4855928832.0, 'memory': 9711857664.0, 'node:127.0.0.1': 1.0}
+[2024-05-29 00:53:12,645][flwr][INFO] - Optimize your simulation with Flower VCE: https://flower.ai/docs/framework/how-to-run-simulations.html
+[2024-05-29 00:53:12,646][flwr][INFO] - Flower VCE: Resources for each Virtual Client: {'num_cpus': 2, 'num_gpus': 0.0}
+[2024-05-29 00:53:12,655][flwr][INFO] - Flower VCE: Creating VirtualClientEngineActorPool with 4 actors
+[2024-05-29 00:53:12,656][flwr][INFO] - [INIT]
+[2024-05-29 00:53:12,656][flwr][INFO] - Requesting initial parameters from one random client
+[2024-05-29 00:53:16,905][flwr][INFO] - Received initial parameters from one random client
+[2024-05-29 00:53:16,906][flwr][INFO] - Evaluating initial global parameters
+[2024-05-29 00:53:16,907][flwr][INFO] - 
+[2024-05-29 00:53:16,907][flwr][INFO] - [ROUND 1]
+[2024-05-29 00:53:16,908][flwr][INFO] - configure_fit: strategy sampled 2 clients (out of 25)
+[2024-05-29 00:54:59,879][flwr][INFO] - aggregate_fit: received 2 results and 0 failures
+[2024-05-29 00:54:59,882][flwr][WARNING] - No fit_metrics_aggregation_fn provided
+[2024-05-29 00:54:59,883][flwr][INFO] - configure_evaluate: strategy sampled 25 clients (out of 25)
+[2024-05-29 00:55:43,722][flwr][INFO] - aggregate_evaluate: received 25 results and 0 failures
+[2024-05-29 00:55:43,723][flwr][WARNING] - No evaluate_metrics_aggregation_fn provided
+[2024-05-29 00:55:43,724][flwr][INFO] - 
+[2024-05-29 00:55:43,724][flwr][INFO] - [ROUND 2]
+[2024-05-29 00:55:43,724][flwr][INFO] - configure_fit: strategy sampled 2 clients (out of 25)
+[2024-05-29 00:57:25,474][flwr][INFO] - aggregate_fit: received 2 results and 0 failures
+[2024-05-29 00:57:25,477][flwr][INFO] - configure_evaluate: strategy sampled 25 clients (out of 25)
+[2024-05-29 00:58:10,784][flwr][INFO] - aggregate_evaluate: received 25 results and 0 failures
+[2024-05-29 00:58:10,785][flwr][INFO] - 
+[2024-05-29 00:58:10,785][flwr][INFO] - [ROUND 3]
+[2024-05-29 00:58:10,786][flwr][INFO] - configure_fit: strategy sampled 2 clients (out of 25)
+[2024-05-29 00:59:50,711][flwr][INFO] - aggregate_fit: received 2 results and 0 failures
+[2024-05-29 00:59:50,714][flwr][INFO] - configure_evaluate: strategy sampled 25 clients (out of 25)

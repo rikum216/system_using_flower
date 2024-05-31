@@ -13,4 +13,4 @@ eta_l: 0.01
 tau: 0.1
 initial_parameters:
   _target_: centralized.model_to_parameters
-  model: ${model}
+  model: ${model}>>

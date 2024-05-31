@@ -239,6 +239,7 @@ def prepare_dataset_beta(num_partitions: int,
     trainsets = []
     for folder in folders:
         # データを保持する空のDataFrameを作成
+
         merged_data = pd.DataFrame()
         # 選択されたフォルダーのパス
         input_folder = os.path.join('data_of_client_folders', folder)
@@ -361,16 +362,16 @@ def prepare_dataset_alldata(num_partitions: int,
     for batch in DataLoader(for_train, batch_size=batch_size,shuffle=True, num_workers=2):
         for tensor in batch:
                 print(tensor.dtype)  # Tensorのdtypeを表示
-               # break  # 最初のバッチのみを調べるため、ループを終了
+                break  # 最初のバッチのみを調べるため、ループを終了
 
     for batch in DataLoader(for_val, batch_size=batch_size,shuffle=True, num_workers=2):
         for tensor in batch:
                 print(tensor.dtype)  # Tensorのdtypeを表示
-                #break  # 最初のバッチのみを調べるため、ループを終了
+                break  # 最初のバッチのみを調べるため、ループを終了
     for batch in testloader:
             for tensor in batch:
                 print(tensor.dtype)  # Tensorのdtypeを表示
-                #break  # 最初のバッチのみを調べるため、ループを終了
+                break  # 最初のバッチのみを調べるため、ループを終了
     print("trainloaders, valloaders, testloader", type(trainloaders), type(valloaders), type(testloader))
 
     return trainloaders, valloaders, testloader

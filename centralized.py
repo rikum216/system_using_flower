@@ -17,7 +17,7 @@ import sys
 from sklearn import datasets
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
-from sklearn.metrics import r2_score
+from sklearn.metrics import r2_score, mean_absolute_error, mean_squared_error, mean_squared_log_error
 #from torch.optim import LBFGS 
 import pandas as pd
 import torch
@@ -28,6 +28,7 @@ import flwr as fl
 import data_loading
 from sklearn.utils import shuffle
 from data_set import base, load
+from data_set import prepare_dataset_alldata
 
 warnings.filterwarnings("ignore", category=UserWarning)
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
@@ -38,8 +39,8 @@ class Net(nn.Module):
         super().__init__()
 
         # 出力層の定義
-        self.l1 = nn.Linear(16, 100)
-        self.l2 = nn.Linear(100, 1)
+        self.l1 = nn.Linear(16, 30)
+        self.l2 = nn.Linear(30, 1)
         
     # 予測関数の定義
     def forward(self, x):
@@ -103,58 +104,42 @@ def train(net, trainloader,optimizer, epochs):
 
         #torch.save(net.state_dict(), 'model.pth')
 
-def train_local(net, trainloader,optimizer, epochs):
-    loss_func = torch.nn.functional.cross_entropy 
-    #定義
-    net.train()
-    net.to(device)
-    criterion = nn.MSELoss()
-    
-    # 学習
-    for i, data in enumerate(trainloader, 0):
-        inputs, targets = data
-        inputs, targets = inputs.float(), targets.float()
-        targets = targets.reshape((targets.shape[0], 1))
-        # Zero the gradients
-        optimizer.zero_grad()
-        # Perform forward pass
-        outputs = net(inputs)
-        # Compute loss
-        loss = criterion(outputs, targets)
-        # Perform backward pass
-        loss.backward()
-        optimizer.step()
-
-        #torch.save(net.state_dict(), 'model.pth')
-
-
-
 def test(net, testloader):
-    loss_func = torch.nn.functional.cross_entropy 
     #定義
     net.eval()
     net.to(device)
-    criterion = nn.MSELoss()
+    MSE_criterion = nn.MSELoss()
     #Test
     test_loss = 0
     epoch = 0
     correct = 0
+    mae_loss = 0
+    mse_loss = 0
+    rmse_loss = 0
+    
     with torch.no_grad():
+        pred_y = torch.Tensor()
         for i, data in enumerate(testloader, 0):
             inputs, targets = data
             #inputs, targets = inputs.float(), targets.float()
             targets = targets.reshape((targets.shape[0], 1))
             outputs = net(inputs)
-            loss = criterion(outputs, targets)
+            loss = MSE_criterion(outputs, targets)
+            #平均絶対誤差
+            mae = mean_absolute_error(targets, outputs)
+            mae_loss += mae
+            #平均２乗誤差
+            mse= mean_squared_error(targets, outputs)
+            mse_loss += mse
+            #二乗平均平方根誤差
+            rmse = np.sqrt(mean_squared_error(targets, outputs))
+            rmse_loss+= rmse
             test_loss += loss
             #print('\nTest loss (avg)', loss)
             #pred = outputs.argmax(dim=1, keepdim=True)
             epoch = epoch+1
 
-    print('test_Loss: %.4f' %(test_loss/epoch))
-
-
-    return test_loss/epoch, correct
+    return mae_loss/epoch, mse_loss/epoch, rmse_loss/epoch
 
 # インスタンス生成
 def load_model():
@@ -187,7 +172,6 @@ if __name__ == "__main__":
             data = pd.read_csv(file_path)             
             merged_data = pd.concat([merged_data, data], ignore_index=True)
           # マージされたデータをCSVファイルとして保存
-
     csvdata = "garbage/garbage.csv"
     merged_data.to_csv(csvdata, index=False)
     
@@ -219,29 +203,17 @@ if __name__ == "__main__":
     trainloader = DataLoader(trainset, batch_size=32, shuffle=True)    
     valloader = DataLoader(validset, batch_size=32, shuffle=True)
     testloader = DataLoader(testset, batch_size=32, shuffle=True)
-
-
     n_epochs = 500
     for epoch in range(n_epochs):
         #train 
-        train_local(net, trainloader,optimizer, epochs=1)
+        train(net, trainloader,optimizer, epochs=1)
         torch.save(net.state_dict(), 'model.pth')
         #val loss
-        prediction_val = net(X_val.to(device)).squeeze(axis = 1)
-        val_loss = criterion(prediction_val, Y_val)
-        # R2score
-        R2_score = r2_score(Y_val.detach().numpy(), prediction_val.detach().numpy())
-        #print("\nval R2score:",R2_score)
-        #print("\nLoss:", val_loss)
-        if (epoch+1) % 100 == 0:
-            print(f"epochs{epoch+1:.0f},Loss:{val_loss:.5f}")
+        mae_loss, mse_loss, rmse_loss = test(net, valloader) 
+
+        #if (epoch+1) % 100 == 0:
+        print(f"epochs{epoch+1:.0f},mae_Loss:{mae_loss:.5f}, mse_oss:{mae_loss:.5f}, rmse_loss:{rmse_loss:.5f}")
 
     #test loss
-    prediction_test = net(X_test.to(device)).squeeze(axis = 1)
-    test_loss = criterion(prediction_test, Y_test)
-    # R2score
-    R2_score = r2_score(Y_test.detach().numpy(), prediction_test.detach().numpy())
-    #print("\ntest R2score:",R2_score)
-    #print("\ntest_Loss:", test_loss)
-    print(f"Loss:{test_loss:.5f}")
-
+    mae_loss, mse_loss, rmse_loss = test(net, testloader)
+    print(f"testloss : mae_Loss:{mae_loss:.5f}, mse_oss:{mae_loss:.5f}, rmse_loss:{rmse_loss:.5f}")

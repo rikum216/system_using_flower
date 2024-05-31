@@ -13,7 +13,6 @@ from flwr.common import NDArrays, Scalar
 from omegaconf import DictConfig
 from hydra.utils import instantiate
 
-from centralized import Net, train, test
 from torch.utils.data import DataLoader
 
 class FlowerClient(fl.client.NumPyClient):
@@ -58,8 +57,8 @@ class FlowerClient(fl.client.NumPyClient):
   def evaluate(self, parameters:NDArrays, config: Dict[str, Scalar]):
       
       self.set_parameters(parameters)
-      loss, accuracy = test(self.model, self.valloader)
-      return float(loss), len(self.valloader), {"accuracy": float(accuracy)}
+      mae_loss, mse_loss, rmse_loss = test(self.model, self.valloader)
+      return float(mae_loss), len(self.valloader), {"mse_loss": float(mse_loss)}
 
 class FedBNFlowerClient(FlowerClient):
     """Similar to FlowerClient but this is used by FedBN clients."""
