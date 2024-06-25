@@ -29,7 +29,7 @@ class FlowerClient(fl.client.NumPyClient):
      self.device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
   #サーバーから受け取ったパラメータでローカルモデルの重みを更新します
-  def set_parameters(self, parameters):
+  def set_parameters(self, parameters: NDArrays):
    params_dict = zip(self.model.state_dict().keys(), parameters)
    state_dict = OrderedDict({k: torch.tensor(v) for k, v in params_dict})
    self.model.load_state_dict(state_dict, strict=True)
@@ -52,13 +52,15 @@ class FlowerClient(fl.client.NumPyClient):
     optim = torch.optim.Adam(self.model.parameters(),lr=lr)
 
     train(self.model, self.trainloader,optim,epochs)
-    return self.get_parameters(config={}), len(self.trainloader), {}
+    return self.get_parameters({}), len(self.trainloader), {}
+  
   #ローカルモデルをテストする
   def evaluate(self, parameters:NDArrays, config: Dict[str, Scalar]):
       
       self.set_parameters(parameters)
-      mae_loss, mse_loss, rmse_loss = test(self.model, self.valloader)
-      return float(mae_loss), len(self.valloader), {"mse_loss": float(mse_loss)}
+      loss, mae_loss, mse_loss, rmse_loss = test(self.model, self.valloader)
+      #print("vall_mse_loss:", mse_loss)
+      return float(loss), len(self.valloader), {"mae_loss": float(mae_loss)}
 
 class FedBNFlowerClient(FlowerClient):
     """Similar to FlowerClient but this is used by FedBN clients."""
@@ -123,19 +125,16 @@ class FedBNFlowerClient(FlowerClient):
             self.model.load_state_dict(bn_state_dict, strict=False)
 
 
+def generate_client_fn(trainloaders, valloaders, model_cfg): 
+    def client_fn(cid: str): 
+        client = FlowerClient(trainloader=trainloaders[int(cid)], 
+                            valloader=valloaders[int(cid)], 
+                            model_cfg=model_cfg,
+                            )
+        return client
+        #return client.to_client() 
 
-def generate_client_fn(trainloaders,valloaders, model_cfg):
-  #cidでログをとっている
-  def client_fn(cid: str):
-     
-     return FlowerClient(trainloader=trainloaders[int(cid)],
-                         valloader=valloaders[int(cid)],
-                         model_cfg=model_cfg,
-                         )
-
-  
-  return  client_fn
-  
+    return client_fn
       
 # Start Flower client
 #fl.client.start_numpy_client(

@@ -1,0 +1,38 @@
+[2024-06-11 20:25:45,043][flwr][INFO] - Starting Flower simulation, config: num_rounds=2, no round_timeout
+[2024-06-11 20:25:50,283][flwr][INFO] - Flower VCE: Ray initialized with resources: {'memory': 14266277070.0, 'node:127.0.0.1': 1.0, 'object_store_memory': 7133138534.0, 'node:__internal_head__': 1.0, 'CPU': 8.0}
+[2024-06-11 20:25:50,283][flwr][INFO] - Optimize your simulation with Flower VCE: https://flower.ai/docs/framework/how-to-run-simulations.html
+[2024-06-11 20:25:50,283][flwr][INFO] - Flower VCE: Resources for each Virtual Client: {'num_cpus': 4, 'num_gpus': 0.0}
+[2024-06-11 20:25:50,305][flwr][INFO] - Flower VCE: Creating VirtualClientEngineActorPool with 2 actors
+[2024-06-11 20:25:50,306][flwr][INFO] - [INIT]
+[2024-06-11 20:25:50,306][flwr][INFO] - Requesting initial parameters from one random client
+[2024-06-11 20:25:54,737][flwr][INFO] - Received initial parameters from one random client
+[2024-06-11 20:25:54,738][flwr][INFO] - Evaluating initial global parameters
+[2024-06-11 20:25:54,747][flwr][INFO] - initial parameters (loss, other metrics): tensor(698.2295, dtype=torch.float64), {'mae_loss, mse_loss': (26.397287902832034, 698.2294701799137)}
+[2024-06-11 20:25:54,749][flwr][INFO] - 
+[2024-06-11 20:25:54,750][flwr][INFO] - [ROUND 1]
+[2024-06-11 20:25:54,751][flwr][INFO] - configure_fit: strategy sampled 17 clients (out of 25)
+[2024-06-11 20:26:16,917][flwr][INFO] - aggregate_fit: received 17 results and 0 failures
+[2024-06-11 20:26:16,917][flwr][WARNING] - No fit_metrics_aggregation_fn provided
+[2024-06-11 20:26:16,938][flwr][INFO] - fit progress: (1, tensor(0.4604, dtype=torch.float64), {'mae_loss, mse_loss': (0.6652944946289054, 0.46044171238876774)}, 22.1896019)
+[2024-06-11 20:26:16,940][flwr][INFO] - configure_evaluate: strategy sampled 25 clients (out of 25)
+[2024-06-11 20:26:17,218][flwr][INFO] - aggregate_evaluate: received 25 results and 0 failures
+[2024-06-11 20:26:17,218][flwr][WARNING] - No evaluate_metrics_aggregation_fn provided
+[2024-06-11 20:26:17,218][flwr][INFO] - 
+[2024-06-11 20:26:17,218][flwr][INFO] - [ROUND 2]
+[2024-06-11 20:26:17,218][flwr][INFO] - configure_fit: strategy sampled 17 clients (out of 25)
+[2024-06-11 20:26:35,133][flwr][INFO] - aggregate_fit: received 17 results and 0 failures
+[2024-06-11 20:26:35,150][flwr][INFO] - fit progress: (2, tensor(0.0476, dtype=torch.float64), {'mae_loss, mse_loss': (0.20578750610351476, 0.047639061678549866)}, 40.416032799999996)
+[2024-06-11 20:26:35,168][flwr][INFO] - configure_evaluate: strategy sampled 25 clients (out of 25)
+[2024-06-11 20:26:35,434][flwr][INFO] - aggregate_evaluate: received 25 results and 0 failures
+[2024-06-11 20:26:35,434][flwr][INFO] - 
+[2024-06-11 20:26:35,434][flwr][INFO] - [SUMMARY]
+[2024-06-11 20:26:35,434][flwr][INFO] - Run finished 2 rounds in 40.70s
+[2024-06-11 20:26:35,434][flwr][INFO] - History (loss, distributed):
+[2024-06-11 20:26:35,434][flwr][INFO] - 	'\tround 1: 0.7565299759599177\n\tround 2: 0.5623330534318987\n'History (loss, centralized):
+[2024-06-11 20:26:35,434][flwr][INFO] - 	('\tround 0: 698.2294701799137\n'
+[2024-06-11 20:26:35,434][flwr][INFO] - 	 '\tround 1: 0.46044171238876774\n'
+[2024-06-11 20:26:35,434][flwr][INFO] - 	 '\tround 2: 0.047639061678549866\n')History (metrics, centralized):
+[2024-06-11 20:26:35,434][flwr][INFO] - 	{'mae_loss, mse_loss': [(0, (26.397287902832034, 698.2294701799137)),
+[2024-06-11 20:26:35,450][flwr][INFO] - 	                        (1, (0.6652944946289054, 0.46044171238876774)),
+[2024-06-11 20:26:35,450][flwr][INFO] - 	                        (2, (0.20578750610351476, 0.047639061678549866))]}
+[2024-06-11 20:26:35,451][flwr][INFO] - 

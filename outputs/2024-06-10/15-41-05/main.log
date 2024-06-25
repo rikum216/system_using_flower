@@ -1,0 +1,181 @@
+[2024-06-10 15:41:05,895][flwr][WARNING] - 
+Setting `min_available_clients` lower than `min_fit_clients` or
+`min_evaluate_clients` can cause the server to fail when there are too few clients
+connected to the server. `min_available_clients` must be set to a value larger
+than or equal to the values of `min_fit_clients` and `min_evaluate_clients`.
+
+[2024-06-10 15:41:05,898][flwr][INFO] - Starting Flower simulation, config: num_rounds=50, no round_timeout
+[2024-06-10 15:41:11,249][flwr][INFO] - Flower VCE: Ray initialized with resources: {'object_store_memory': 4256292864.0, 'node:127.0.0.1': 1.0, 'memory': 8512585728.0, 'node:__internal_head__': 1.0, 'CPU': 8.0}
+[2024-06-10 15:41:11,250][flwr][INFO] - Optimize your simulation with Flower VCE: https://flower.ai/docs/framework/how-to-run-simulations.html
+[2024-06-10 15:41:11,250][flwr][INFO] - Flower VCE: Resources for each Virtual Client: {'num_cpus': 8, 'num_gpus': 0.0}
+[2024-06-10 15:41:11,259][flwr][INFO] - Flower VCE: Creating VirtualClientEngineActorPool with 1 actors
+[2024-06-10 15:41:11,260][flwr][INFO] - [INIT]
+[2024-06-10 15:41:11,260][flwr][INFO] - Requesting initial parameters from one random client
+[2024-06-10 15:41:15,322][flwr][INFO] - Received initial parameters from one random client
+[2024-06-10 15:41:15,323][flwr][INFO] - Evaluating initial global parameters
+[2024-06-10 15:41:15,331][flwr][INFO] - initial parameters (loss, other metrics): tensor(1353.4524, dtype=torch.float64), {'mae_loss, mse_loss': (36.77179656982422, 1353.452384376901)}
+[2024-06-10 15:41:15,333][flwr][INFO] - 
+[2024-06-10 15:41:15,333][flwr][INFO] - [ROUND 1]
+[2024-06-10 15:41:15,334][flwr][INFO] - configure_fit: strategy sampled 1 clients (out of 13)
+[2024-06-10 15:41:18,196][flwr][INFO] - aggregate_fit: received 1 results and 0 failures
+[2024-06-10 15:41:18,197][flwr][WARNING] - No fit_metrics_aggregation_fn provided
+[2024-06-10 15:41:18,201][flwr][INFO] - fit progress: (1, tensor(0.2596, dtype=torch.float64), {'mae_loss, mse_loss': (0.44458251953125083, 0.2595811464786544)}, 2.867959599999999)
+[2024-06-10 15:41:18,203][flwr][INFO] - Sampling failed: number of available clients (13) is less than number of requested clients (25).
+[2024-06-10 15:41:18,204][flwr][INFO] - configure_evaluate: no clients selected, skipping evaluation
+[2024-06-10 15:41:18,204][flwr][INFO] - 
+[2024-06-10 15:41:18,205][flwr][INFO] - [ROUND 2]
+[2024-06-10 15:41:18,206][flwr][INFO] - configure_fit: strategy sampled 1 clients (out of 13)
+[2024-06-10 15:41:19,659][flwr][INFO] - aggregate_fit: received 1 results and 0 failures
+[2024-06-10 15:41:19,665][flwr][INFO] - fit progress: (2, tensor(0.8381, dtype=torch.float64), {'mae_loss, mse_loss': (0.8869177246093741, 0.8381385255171908)}, 4.3315301999999996)
+[2024-06-10 15:41:19,666][flwr][INFO] - Sampling failed: number of available clients (13) is less than number of requested clients (25).
+[2024-06-10 15:41:19,667][flwr][INFO] - configure_evaluate: no clients selected, skipping evaluation
+[2024-06-10 15:41:19,669][flwr][INFO] - 
+[2024-06-10 15:41:19,669][flwr][INFO] - [ROUND 3]
+[2024-06-10 15:41:19,670][flwr][INFO] - configure_fit: strategy sampled 1 clients (out of 13)
+[2024-06-10 15:41:21,107][flwr][INFO] - aggregate_fit: received 1 results and 0 failures
+[2024-06-10 15:41:21,112][flwr][INFO] - fit progress: (3, tensor(0.2598, dtype=torch.float64), {'mae_loss, mse_loss': (0.5036508178710946, 0.2597881590083717)}, 5.778870899999998)
+[2024-06-10 15:41:21,114][flwr][INFO] - Sampling failed: number of available clients (13) is less than number of requested clients (25).
+[2024-06-10 15:41:21,114][flwr][INFO] - configure_evaluate: no clients selected, skipping evaluation
+[2024-06-10 15:41:21,115][flwr][INFO] - 
+[2024-06-10 15:41:21,116][flwr][INFO] - [ROUND 4]
+[2024-06-10 15:41:21,117][flwr][INFO] - configure_fit: strategy sampled 1 clients (out of 13)
+[2024-06-10 15:41:22,540][flwr][INFO] - aggregate_fit: received 1 results and 0 failures
+[2024-06-10 15:41:22,545][flwr][INFO] - fit progress: (4, tensor(0.1008, dtype=torch.float64), {'mae_loss, mse_loss': (0.30631576538086025, 0.10076698055292987)}, 7.212001699999998)
+[2024-06-10 15:41:22,547][flwr][INFO] - Sampling failed: number of available clients (13) is less than number of requested clients (25).
+[2024-06-10 15:41:22,547][flwr][INFO] - configure_evaluate: no clients selected, skipping evaluation
+[2024-06-10 15:41:22,548][flwr][INFO] - 
+[2024-06-10 15:41:22,549][flwr][INFO] - [ROUND 5]
+[2024-06-10 15:41:22,549][flwr][INFO] - configure_fit: strategy sampled 1 clients (out of 13)
+[2024-06-10 15:41:23,971][flwr][INFO] - aggregate_fit: received 1 results and 0 failures
+[2024-06-10 15:41:23,977][flwr][INFO] - fit progress: (5, tensor(0.0305, dtype=torch.float64), {'mae_loss, mse_loss': (0.1669577026367179, 0.030499785613268306)}, 8.643473999999998)
+[2024-06-10 15:41:23,979][flwr][INFO] - Sampling failed: number of available clients (13) is less than number of requested clients (25).
+[2024-06-10 15:41:23,979][flwr][INFO] - configure_evaluate: no clients selected, skipping evaluation
+[2024-06-10 15:41:23,980][flwr][INFO] - 
+[2024-06-10 15:41:23,981][flwr][INFO] - [ROUND 6]
+[2024-06-10 15:41:23,982][flwr][INFO] - configure_fit: strategy sampled 1 clients (out of 13)
+[2024-06-10 15:41:25,418][flwr][INFO] - aggregate_fit: received 1 results and 0 failures
+[2024-06-10 15:41:25,427][flwr][INFO] - fit progress: (6, tensor(0.2033, dtype=torch.float64), {'mae_loss, mse_loss': (0.44385208129882725, 0.20329128838411928)}, 10.093289500000001)
+[2024-06-10 15:41:25,429][flwr][INFO] - Sampling failed: number of available clients (13) is less than number of requested clients (25).
+[2024-06-10 15:41:25,429][flwr][INFO] - configure_evaluate: no clients selected, skipping evaluation
+[2024-06-10 15:41:25,430][flwr][INFO] - 
+[2024-06-10 15:41:25,431][flwr][INFO] - [ROUND 7]
+[2024-06-10 15:41:25,431][flwr][INFO] - configure_fit: strategy sampled 1 clients (out of 13)
+[2024-06-10 15:41:26,867][flwr][INFO] - aggregate_fit: received 1 results and 0 failures
+[2024-06-10 15:41:26,872][flwr][INFO] - fit progress: (7, tensor(0.0908, dtype=torch.float64), {'mae_loss, mse_loss': (0.2937509155273446, 0.09075585018470927)}, 11.539417199999999)
+[2024-06-10 15:41:26,874][flwr][INFO] - Sampling failed: number of available clients (13) is less than number of requested clients (25).
+[2024-06-10 15:41:26,874][flwr][INFO] - configure_evaluate: no clients selected, skipping evaluation
+[2024-06-10 15:41:26,875][flwr][INFO] - 
+[2024-06-10 15:41:26,876][flwr][INFO] - [ROUND 8]
+[2024-06-10 15:41:26,877][flwr][INFO] - configure_fit: strategy sampled 1 clients (out of 13)
+[2024-06-10 15:41:28,310][flwr][INFO] - aggregate_fit: received 1 results and 0 failures
+[2024-06-10 15:41:28,315][flwr][INFO] - fit progress: (8, tensor(0.1353, dtype=torch.float64), {'mae_loss, mse_loss': (0.3632325744628915, 0.135292772731395)}, 12.981435599999998)
+[2024-06-10 15:41:28,317][flwr][INFO] - Sampling failed: number of available clients (13) is less than number of requested clients (25).
+[2024-06-10 15:41:28,317][flwr][INFO] - configure_evaluate: no clients selected, skipping evaluation
+[2024-06-10 15:41:28,318][flwr][INFO] - 
+[2024-06-10 15:41:28,319][flwr][INFO] - [ROUND 9]
+[2024-06-10 15:41:28,319][flwr][INFO] - configure_fit: strategy sampled 1 clients (out of 13)
+[2024-06-10 15:41:29,772][flwr][INFO] - aggregate_fit: received 1 results and 0 failures
+[2024-06-10 15:41:29,777][flwr][INFO] - fit progress: (9, tensor(0.0618, dtype=torch.float64), {'mae_loss, mse_loss': (0.24540649414062585, 0.06183343984745476)}, 14.444208)
+[2024-06-10 15:41:29,779][flwr][INFO] - Sampling failed: number of available clients (13) is less than number of requested clients (25).
+[2024-06-10 15:41:29,779][flwr][INFO] - configure_evaluate: no clients selected, skipping evaluation
+[2024-06-10 15:41:29,780][flwr][INFO] - 
+[2024-06-10 15:41:29,781][flwr][INFO] - [ROUND 10]
+[2024-06-10 15:41:29,782][flwr][INFO] - configure_fit: strategy sampled 1 clients (out of 13)
+[2024-06-10 15:41:31,231][flwr][INFO] - aggregate_fit: received 1 results and 0 failures
+[2024-06-10 15:41:31,236][flwr][INFO] - fit progress: (10, tensor(0.0247, dtype=torch.float64), {'mae_loss, mse_loss': (0.1227651977539054, 0.024712550382595178)}, 15.902668599999998)
+[2024-06-10 15:41:31,238][flwr][INFO] - Sampling failed: number of available clients (13) is less than number of requested clients (25).
+[2024-06-10 15:41:31,238][flwr][INFO] - configure_evaluate: no clients selected, skipping evaluation
+[2024-06-10 15:41:31,239][flwr][INFO] - 
+[2024-06-10 15:41:31,240][flwr][INFO] - [ROUND 11]
+[2024-06-10 15:41:31,241][flwr][INFO] - configure_fit: strategy sampled 1 clients (out of 13)
+[2024-06-10 15:41:32,684][flwr][INFO] - aggregate_fit: received 1 results and 0 failures
+[2024-06-10 15:41:32,690][flwr][INFO] - fit progress: (11, tensor(0.0609, dtype=torch.float64), {'mae_loss, mse_loss': (0.2197348022460929, 0.060856362078105776)}, 17.3568218)
+[2024-06-10 15:41:32,691][flwr][INFO] - Sampling failed: number of available clients (13) is less than number of requested clients (25).
+[2024-06-10 15:41:32,692][flwr][INFO] - configure_evaluate: no clients selected, skipping evaluation
+[2024-06-10 15:41:32,693][flwr][INFO] - 
+[2024-06-10 15:41:32,694][flwr][INFO] - [ROUND 12]
+[2024-06-10 15:41:32,695][flwr][INFO] - configure_fit: strategy sampled 1 clients (out of 13)
+[2024-06-10 15:41:34,122][flwr][INFO] - aggregate_fit: received 1 results and 0 failures
+[2024-06-10 15:41:34,128][flwr][INFO] - fit progress: (12, tensor(0.0216, dtype=torch.float64), {'mae_loss, mse_loss': (0.1295816040039071, 0.021641952987760622)}, 18.7938569)
+[2024-06-10 15:41:34,129][flwr][INFO] - Sampling failed: number of available clients (13) is less than number of requested clients (25).
+[2024-06-10 15:41:34,129][flwr][INFO] - configure_evaluate: no clients selected, skipping evaluation
+[2024-06-10 15:41:34,130][flwr][INFO] - 
+[2024-06-10 15:41:34,131][flwr][INFO] - [ROUND 13]
+[2024-06-10 15:41:34,132][flwr][INFO] - configure_fit: strategy sampled 1 clients (out of 13)
+[2024-06-10 15:41:35,625][flwr][INFO] - aggregate_fit: received 1 results and 0 failures
+[2024-06-10 15:41:35,630][flwr][INFO] - fit progress: (13, tensor(0.0716, dtype=torch.float64), {'mae_loss, mse_loss': (0.2666017150878915, 0.07159978484304197)}, 20.2966774)
+[2024-06-10 15:41:35,631][flwr][INFO] - Sampling failed: number of available clients (13) is less than number of requested clients (25).
+[2024-06-10 15:41:35,632][flwr][INFO] - configure_evaluate: no clients selected, skipping evaluation
+[2024-06-10 15:41:35,633][flwr][INFO] - 
+[2024-06-10 15:41:35,633][flwr][INFO] - [ROUND 14]
+[2024-06-10 15:41:35,634][flwr][INFO] - configure_fit: strategy sampled 1 clients (out of 13)
+[2024-06-10 15:41:37,046][flwr][INFO] - aggregate_fit: received 1 results and 0 failures
+[2024-06-10 15:41:37,051][flwr][INFO] - fit progress: (14, tensor(0.0425, dtype=torch.float64), {'mae_loss, mse_loss': (0.19272323608398523, 0.04247187535080625)}, 21.717883299999997)
+[2024-06-10 15:41:37,053][flwr][INFO] - Sampling failed: number of available clients (13) is less than number of requested clients (25).
+[2024-06-10 15:41:37,053][flwr][INFO] - configure_evaluate: no clients selected, skipping evaluation
+[2024-06-10 15:41:37,054][flwr][INFO] - 
+[2024-06-10 15:41:37,055][flwr][INFO] - [ROUND 15]
+[2024-06-10 15:41:37,056][flwr][INFO] - configure_fit: strategy sampled 1 clients (out of 13)
+[2024-06-10 15:41:38,500][flwr][INFO] - aggregate_fit: received 1 results and 0 failures
+[2024-06-10 15:41:38,506][flwr][INFO] - fit progress: (15, tensor(0.2496, dtype=torch.float64), {'mae_loss, mse_loss': (0.4983213806152335, 0.24961550484562664)}, 23.1720093)
+[2024-06-10 15:41:38,507][flwr][INFO] - Sampling failed: number of available clients (13) is less than number of requested clients (25).
+[2024-06-10 15:41:38,507][flwr][INFO] - configure_evaluate: no clients selected, skipping evaluation
+[2024-06-10 15:41:38,508][flwr][INFO] - 
+[2024-06-10 15:41:38,508][flwr][INFO] - [ROUND 16]
+[2024-06-10 15:41:38,509][flwr][INFO] - configure_fit: strategy sampled 1 clients (out of 13)
+[2024-06-10 15:41:39,943][flwr][INFO] - aggregate_fit: received 1 results and 0 failures
+[2024-06-10 15:41:39,949][flwr][INFO] - fit progress: (16, tensor(0.0408, dtype=torch.float64), {'mae_loss, mse_loss': (0.19056228637695227, 0.04081475151737657)}, 24.615961900000002)
+[2024-06-10 15:41:39,950][flwr][INFO] - Sampling failed: number of available clients (13) is less than number of requested clients (25).
+[2024-06-10 15:41:39,951][flwr][INFO] - configure_evaluate: no clients selected, skipping evaluation
+[2024-06-10 15:41:39,952][flwr][INFO] - 
+[2024-06-10 15:41:39,952][flwr][INFO] - [ROUND 17]
+[2024-06-10 15:41:39,953][flwr][INFO] - configure_fit: strategy sampled 1 clients (out of 13)
+[2024-06-10 15:41:41,385][flwr][INFO] - aggregate_fit: received 1 results and 0 failures
+[2024-06-10 15:41:41,390][flwr][INFO] - fit progress: (17, tensor(0.0538, dtype=torch.float64), {'mae_loss, mse_loss': (0.23110183715820226, 0.05378709853196014)}, 26.0570314)
+[2024-06-10 15:41:41,392][flwr][INFO] - Sampling failed: number of available clients (13) is less than number of requested clients (25).
+[2024-06-10 15:41:41,392][flwr][INFO] - configure_evaluate: no clients selected, skipping evaluation
+[2024-06-10 15:41:41,393][flwr][INFO] - 
+[2024-06-10 15:41:41,394][flwr][INFO] - [ROUND 18]
+[2024-06-10 15:41:41,394][flwr][INFO] - configure_fit: strategy sampled 1 clients (out of 13)
+[2024-06-10 15:41:42,834][flwr][INFO] - aggregate_fit: received 1 results and 0 failures
+[2024-06-10 15:41:42,840][flwr][INFO] - fit progress: (18, tensor(0.0043, dtype=torch.float64), {'mae_loss, mse_loss': (0.0594064331054696, 0.004312971587991421)}, 27.5069096)
+[2024-06-10 15:41:42,842][flwr][INFO] - Sampling failed: number of available clients (13) is less than number of requested clients (25).
+[2024-06-10 15:41:42,842][flwr][INFO] - configure_evaluate: no clients selected, skipping evaluation
+[2024-06-10 15:41:42,843][flwr][INFO] - 
+[2024-06-10 15:41:42,844][flwr][INFO] - [ROUND 19]
+[2024-06-10 15:41:42,845][flwr][INFO] - configure_fit: strategy sampled 1 clients (out of 13)
+[2024-06-10 15:41:44,273][flwr][INFO] - aggregate_fit: received 1 results and 0 failures
+[2024-06-10 15:41:44,278][flwr][INFO] - fit progress: (19, tensor(0.9579, dtype=torch.float64), {'mae_loss, mse_loss': (0.8491435241699221, 0.9579208214957051)}, 28.9446624)
+[2024-06-10 15:41:44,280][flwr][INFO] - Sampling failed: number of available clients (13) is less than number of requested clients (25).
+[2024-06-10 15:41:44,280][flwr][INFO] - configure_evaluate: no clients selected, skipping evaluation
+[2024-06-10 15:41:44,281][flwr][INFO] - 
+[2024-06-10 15:41:44,282][flwr][INFO] - [ROUND 20]
+[2024-06-10 15:41:44,283][flwr][INFO] - configure_fit: strategy sampled 1 clients (out of 13)
+[2024-06-10 15:41:45,720][flwr][INFO] - aggregate_fit: received 1 results and 0 failures
+[2024-06-10 15:41:45,724][flwr][INFO] - fit progress: (20, tensor(0.7980, dtype=torch.float64), {'mae_loss, mse_loss': (0.8184080505371085, 0.7980344588534203)}, 30.391023099999998)
+[2024-06-10 15:41:45,726][flwr][INFO] - Sampling failed: number of available clients (13) is less than number of requested clients (25).
+[2024-06-10 15:41:45,726][flwr][INFO] - configure_evaluate: no clients selected, skipping evaluation
+[2024-06-10 15:41:45,727][flwr][INFO] - 
+[2024-06-10 15:41:45,728][flwr][INFO] - [ROUND 21]
+[2024-06-10 15:41:45,729][flwr][INFO] - configure_fit: strategy sampled 1 clients (out of 13)
+[2024-06-10 15:41:47,157][flwr][INFO] - aggregate_fit: received 1 results and 0 failures
+[2024-06-10 15:41:47,162][flwr][INFO] - fit progress: (21, tensor(0.2416, dtype=torch.float64), {'mae_loss, mse_loss': (0.425857696533204, 0.24161680681782452)}, 31.829285)
+[2024-06-10 15:41:47,164][flwr][INFO] - Sampling failed: number of available clients (13) is less than number of requested clients (25).
+[2024-06-10 15:41:47,165][flwr][INFO] - configure_evaluate: no clients selected, skipping evaluation
+[2024-06-10 15:41:47,166][flwr][INFO] - 
+[2024-06-10 15:41:47,167][flwr][INFO] - [ROUND 22]
+[2024-06-10 15:41:47,168][flwr][INFO] - configure_fit: strategy sampled 1 clients (out of 13)
+[2024-06-10 15:41:48,580][flwr][INFO] - aggregate_fit: received 1 results and 0 failures
+[2024-06-10 15:41:48,584][flwr][INFO] - fit progress: (22, tensor(0.1210, dtype=torch.float64), {'mae_loss, mse_loss': (0.28174270629882725, 0.12104593535105235)}, 33.2512325)
+[2024-06-10 15:41:48,586][flwr][INFO] - Sampling failed: number of available clients (13) is less than number of requested clients (25).
+[2024-06-10 15:41:48,586][flwr][INFO] - configure_evaluate: no clients selected, skipping evaluation
+[2024-06-10 15:41:48,587][flwr][INFO] - 
+[2024-06-10 15:41:48,588][flwr][INFO] - [ROUND 23]
+[2024-06-10 15:41:48,589][flwr][INFO] - configure_fit: strategy sampled 1 clients (out of 13)
+[2024-06-10 15:41:50,022][flwr][INFO] - aggregate_fit: received 1 results and 0 failures
+[2024-06-10 15:41:50,027][flwr][INFO] - fit progress: (23, tensor(0.1133, dtype=torch.float64), {'mae_loss, mse_loss': (0.2638986206054696, 0.11329984617978402)}, 34.6937077)
+[2024-06-10 15:41:50,028][flwr][INFO] - Sampling failed: number of available clients (13) is less than number of requested clients (25).
+[2024-06-10 15:41:50,029][flwr][INFO] - configure_evaluate: no clients selected, skipping evaluation
+[2024-06-10 15:41:50,030][flwr][INFO] - 
+[2024-06-10 15:41:50,031][flwr][INFO] - [ROUND 24]
+[2024-06-10 15:41:50,032][flwr][INFO] - configure_fit: strategy sampled 1 clients (out of 13)

@@ -1,15 +1,15 @@
 ---
 
-num_rounds: 20
+num_rounds: 50
 num_clients: 25
-batch_size: 16
-num_classes: 2
+batch_size: 10
+num_classes: 1
 num_clients_per_round_fit: 25
 num_clients_per_round_eval: 25
 config_fit: 
-  lr: 0.01
+  lr: 0.001
   momentum: 0.9
-  local_epochs: 20
+  local_epochs: 100
 
 model: 
   _target_: centralized.Net

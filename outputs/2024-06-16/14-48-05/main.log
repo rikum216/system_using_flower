@@ -1,0 +1,519 @@
+[2024-06-16 14:48:06,712][flwr][INFO] - Starting Flower simulation, config: num_rounds=50, no round_timeout
+[2024-06-16 14:48:11,823][flwr][INFO] - Flower VCE: Ray initialized with resources: {'memory': 15134598759.0, 'node:127.0.0.1': 1.0, 'object_store_memory': 7567299379.0, 'CPU': 8.0, 'node:__internal_head__': 1.0}
+[2024-06-16 14:48:11,824][flwr][INFO] - Optimize your simulation with Flower VCE: https://flower.ai/docs/framework/how-to-run-simulations.html
+[2024-06-16 14:48:11,825][flwr][INFO] - Flower VCE: Resources for each Virtual Client: {'num_cpus': 4, 'num_gpus': 0.0}
+[2024-06-16 14:48:11,833][flwr][INFO] - Flower VCE: Creating VirtualClientEngineActorPool with 2 actors
+[2024-06-16 14:48:11,835][flwr][INFO] - [INIT]
+[2024-06-16 14:48:11,836][flwr][INFO] - Requesting initial parameters from one random client
+[2024-06-16 14:48:15,931][flwr][INFO] - Received initial parameters from one random client
+[2024-06-16 14:48:15,932][flwr][INFO] - Evaluating initial global parameters
+[2024-06-16 14:48:15,940][flwr][INFO] - initial parameters (loss, other metrics): tensor(5596.3716, dtype=torch.float64), {'mae_loss, mse_loss': (74.75811706542969, 5596.3716184588575)}
+[2024-06-16 14:48:15,942][flwr][INFO] - 
+[2024-06-16 14:48:15,943][flwr][INFO] - [ROUND 1]
+[2024-06-16 14:48:15,944][flwr][INFO] - configure_fit: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:48:21,635][flwr][INFO] - aggregate_fit: received 25 results and 0 failures
+[2024-06-16 14:48:21,655][flwr][WARNING] - No fit_metrics_aggregation_fn provided
+[2024-06-16 14:48:21,659][flwr][INFO] - fit progress: (1, tensor(11.5557, dtype=torch.float64), {'mae_loss, mse_loss': (3.0380850219726554, 11.555721439959944)}, 5.717317099999999)
+[2024-06-16 14:48:21,661][flwr][INFO] - configure_evaluate: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:48:21,958][flwr][INFO] - aggregate_evaluate: received 25 results and 0 failures
+[2024-06-16 14:48:21,959][flwr][WARNING] - No evaluate_metrics_aggregation_fn provided
+[2024-06-16 14:48:21,959][flwr][INFO] - 
+[2024-06-16 14:48:21,959][flwr][INFO] - [ROUND 2]
+[2024-06-16 14:48:21,959][flwr][INFO] - configure_fit: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:48:24,663][flwr][INFO] - aggregate_fit: received 25 results and 0 failures
+[2024-06-16 14:48:24,686][flwr][INFO] - fit progress: (2, tensor(1.6995, dtype=torch.float64), {'mae_loss, mse_loss': (1.159927673339844, 1.6995454038013704)}, 8.743763999999999)
+[2024-06-16 14:48:24,688][flwr][INFO] - configure_evaluate: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:48:24,979][flwr][INFO] - aggregate_evaluate: received 25 results and 0 failures
+[2024-06-16 14:48:24,979][flwr][INFO] - 
+[2024-06-16 14:48:24,980][flwr][INFO] - [ROUND 3]
+[2024-06-16 14:48:24,980][flwr][INFO] - configure_fit: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:48:27,728][flwr][INFO] - aggregate_fit: received 25 results and 0 failures
+[2024-06-16 14:48:27,753][flwr][INFO] - fit progress: (3, tensor(2.2550, dtype=torch.float64), {'mae_loss, mse_loss': (1.2304246520996103, 2.2549626286843596)}, 11.811330899999998)
+[2024-06-16 14:48:27,755][flwr][INFO] - configure_evaluate: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:48:28,070][flwr][INFO] - aggregate_evaluate: received 25 results and 0 failures
+[2024-06-16 14:48:28,071][flwr][INFO] - 
+[2024-06-16 14:48:28,072][flwr][INFO] - [ROUND 4]
+[2024-06-16 14:48:28,072][flwr][INFO] - configure_fit: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:48:31,449][flwr][INFO] - aggregate_fit: received 25 results and 0 failures
+[2024-06-16 14:48:31,472][flwr][INFO] - fit progress: (4, tensor(0.4931, dtype=torch.float64), {'mae_loss, mse_loss': (0.6524118041992196, 0.4930822583891)}, 15.530007899999998)
+[2024-06-16 14:48:31,474][flwr][INFO] - configure_evaluate: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:48:31,784][flwr][INFO] - aggregate_evaluate: received 25 results and 0 failures
+[2024-06-16 14:48:31,785][flwr][INFO] - 
+[2024-06-16 14:48:31,785][flwr][INFO] - [ROUND 5]
+[2024-06-16 14:48:31,786][flwr][INFO] - configure_fit: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:48:34,592][flwr][INFO] - aggregate_fit: received 25 results and 0 failures
+[2024-06-16 14:48:34,617][flwr][INFO] - fit progress: (5, tensor(1.3117, dtype=torch.float64), {'mae_loss, mse_loss': (0.9978071594238273, 1.3117369695383818)}, 18.674667299999996)
+[2024-06-16 14:48:34,619][flwr][INFO] - configure_evaluate: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:48:34,917][flwr][INFO] - aggregate_evaluate: received 25 results and 0 failures
+[2024-06-16 14:48:34,918][flwr][INFO] - 
+[2024-06-16 14:48:34,918][flwr][INFO] - [ROUND 6]
+[2024-06-16 14:48:34,919][flwr][INFO] - configure_fit: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:48:37,710][flwr][INFO] - aggregate_fit: received 25 results and 0 failures
+[2024-06-16 14:48:37,734][flwr][INFO] - fit progress: (6, tensor(1.6670, dtype=torch.float64), {'mae_loss, mse_loss': (1.208920898437499, 1.6669583823692509)}, 21.791418899999996)
+[2024-06-16 14:48:37,735][flwr][INFO] - configure_evaluate: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:48:38,074][flwr][INFO] - aggregate_evaluate: received 25 results and 0 failures
+[2024-06-16 14:48:38,075][flwr][INFO] - 
+[2024-06-16 14:48:38,075][flwr][INFO] - [ROUND 7]
+[2024-06-16 14:48:38,076][flwr][INFO] - configure_fit: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:48:40,862][flwr][INFO] - aggregate_fit: received 25 results and 0 failures
+[2024-06-16 14:48:40,884][flwr][INFO] - fit progress: (7, tensor(1.2066, dtype=torch.float64), {'mae_loss, mse_loss': (1.028865661621093, 1.2065983201689074)}, 24.9426354)
+[2024-06-16 14:48:40,887][flwr][INFO] - configure_evaluate: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:48:41,189][flwr][INFO] - aggregate_evaluate: received 25 results and 0 failures
+[2024-06-16 14:48:41,190][flwr][INFO] - 
+[2024-06-16 14:48:41,190][flwr][INFO] - [ROUND 8]
+[2024-06-16 14:48:41,191][flwr][INFO] - configure_fit: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:48:44,175][flwr][INFO] - aggregate_fit: received 25 results and 0 failures
+[2024-06-16 14:48:44,198][flwr][INFO] - fit progress: (8, tensor(1.2018, dtype=torch.float64), {'mae_loss, mse_loss': (1.036306610107421, 1.2018325337782723)}, 28.256269099999997)
+[2024-06-16 14:48:44,201][flwr][INFO] - configure_evaluate: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:48:44,510][flwr][INFO] - aggregate_evaluate: received 25 results and 0 failures
+[2024-06-16 14:48:44,511][flwr][INFO] - 
+[2024-06-16 14:48:44,511][flwr][INFO] - [ROUND 9]
+[2024-06-16 14:48:44,512][flwr][INFO] - configure_fit: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:48:47,516][flwr][INFO] - aggregate_fit: received 25 results and 0 failures
+[2024-06-16 14:48:47,539][flwr][INFO] - fit progress: (9, tensor(0.7722, dtype=torch.float64), {'mae_loss, mse_loss': (0.8104681396484367, 0.7721876253744112)}, 31.5967085)
+[2024-06-16 14:48:47,541][flwr][INFO] - configure_evaluate: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:48:47,836][flwr][INFO] - aggregate_evaluate: received 25 results and 0 failures
+[2024-06-16 14:48:47,837][flwr][INFO] - 
+[2024-06-16 14:48:47,838][flwr][INFO] - [ROUND 10]
+[2024-06-16 14:48:47,839][flwr][INFO] - configure_fit: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:48:50,685][flwr][INFO] - aggregate_fit: received 25 results and 0 failures
+[2024-06-16 14:48:50,771][flwr][INFO] - fit progress: (10, tensor(0.9284, dtype=torch.float64), {'mae_loss, mse_loss': (0.9070600891113273, 0.9284059428636672)}, 34.828539)
+[2024-06-16 14:48:50,772][flwr][INFO] - configure_evaluate: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:48:51,062][flwr][INFO] - aggregate_evaluate: received 25 results and 0 failures
+[2024-06-16 14:48:51,063][flwr][INFO] - 
+[2024-06-16 14:48:51,063][flwr][INFO] - [ROUND 11]
+[2024-06-16 14:48:51,065][flwr][INFO] - configure_fit: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:48:54,063][flwr][INFO] - aggregate_fit: received 25 results and 0 failures
+[2024-06-16 14:48:54,087][flwr][INFO] - fit progress: (11, tensor(0.7693, dtype=torch.float64), {'mae_loss, mse_loss': (0.8190191650390617, 0.7692919363277022)}, 38.1445456)
+[2024-06-16 14:48:54,089][flwr][INFO] - configure_evaluate: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:48:54,396][flwr][INFO] - aggregate_evaluate: received 25 results and 0 failures
+[2024-06-16 14:48:54,397][flwr][INFO] - 
+[2024-06-16 14:48:54,398][flwr][INFO] - [ROUND 12]
+[2024-06-16 14:48:54,399][flwr][INFO] - configure_fit: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:48:57,285][flwr][INFO] - aggregate_fit: received 25 results and 0 failures
+[2024-06-16 14:48:57,309][flwr][INFO] - fit progress: (12, tensor(0.4990, dtype=torch.float64), {'mae_loss, mse_loss': (0.6331137084960929, 0.49897798833064655)}, 41.3665679)
+[2024-06-16 14:48:57,310][flwr][INFO] - configure_evaluate: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:48:57,608][flwr][INFO] - aggregate_evaluate: received 25 results and 0 failures
+[2024-06-16 14:48:57,609][flwr][INFO] - 
+[2024-06-16 14:48:57,609][flwr][INFO] - [ROUND 13]
+[2024-06-16 14:48:57,609][flwr][INFO] - configure_fit: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:49:00,489][flwr][INFO] - aggregate_fit: received 25 results and 0 failures
+[2024-06-16 14:49:00,512][flwr][INFO] - fit progress: (13, tensor(0.1735, dtype=torch.float64), {'mae_loss, mse_loss': (0.2899073791503909, 0.1734874422001892)}, 44.5706839)
+[2024-06-16 14:49:00,515][flwr][INFO] - configure_evaluate: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:49:00,808][flwr][INFO] - aggregate_evaluate: received 25 results and 0 failures
+[2024-06-16 14:49:00,809][flwr][INFO] - 
+[2024-06-16 14:49:00,809][flwr][INFO] - [ROUND 14]
+[2024-06-16 14:49:00,809][flwr][INFO] - configure_fit: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:49:03,808][flwr][INFO] - aggregate_fit: received 25 results and 0 failures
+[2024-06-16 14:49:03,832][flwr][INFO] - fit progress: (14, tensor(0.1458, dtype=torch.float64), {'mae_loss, mse_loss': (0.3340008544921872, 0.14581949169375036)}, 47.8897714)
+[2024-06-16 14:49:03,833][flwr][INFO] - configure_evaluate: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:49:04,137][flwr][INFO] - aggregate_evaluate: received 25 results and 0 failures
+[2024-06-16 14:49:04,138][flwr][INFO] - 
+[2024-06-16 14:49:04,139][flwr][INFO] - [ROUND 15]
+[2024-06-16 14:49:04,140][flwr][INFO] - configure_fit: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:49:08,002][flwr][INFO] - aggregate_fit: received 25 results and 0 failures
+[2024-06-16 14:49:08,027][flwr][INFO] - fit progress: (15, tensor(0.7348, dtype=torch.float64), {'mae_loss, mse_loss': (0.7937864685058585, 0.7348011367538702)}, 52.0854034)
+[2024-06-16 14:49:08,030][flwr][INFO] - configure_evaluate: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:49:08,380][flwr][INFO] - aggregate_evaluate: received 25 results and 0 failures
+[2024-06-16 14:49:08,381][flwr][INFO] - 
+[2024-06-16 14:49:08,381][flwr][INFO] - [ROUND 16]
+[2024-06-16 14:49:08,382][flwr][INFO] - configure_fit: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:49:11,450][flwr][INFO] - aggregate_fit: received 25 results and 0 failures
+[2024-06-16 14:49:11,473][flwr][INFO] - fit progress: (16, tensor(0.4772, dtype=torch.float64), {'mae_loss, mse_loss': (0.6130499267578117, 0.47718622489343315)}, 55.530807599999996)
+[2024-06-16 14:49:11,475][flwr][INFO] - configure_evaluate: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:49:11,776][flwr][INFO] - aggregate_evaluate: received 25 results and 0 failures
+[2024-06-16 14:49:11,777][flwr][INFO] - 
+[2024-06-16 14:49:11,778][flwr][INFO] - [ROUND 17]
+[2024-06-16 14:49:11,779][flwr][INFO] - configure_fit: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:49:14,694][flwr][INFO] - aggregate_fit: received 25 results and 0 failures
+[2024-06-16 14:49:14,722][flwr][INFO] - fit progress: (17, tensor(0.4595, dtype=torch.float64), {'mae_loss, mse_loss': (0.6059729003906241, 0.4594935144714537)}, 58.780635800000006)
+[2024-06-16 14:49:14,724][flwr][INFO] - configure_evaluate: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:49:15,025][flwr][INFO] - aggregate_evaluate: received 25 results and 0 failures
+[2024-06-16 14:49:15,026][flwr][INFO] - 
+[2024-06-16 14:49:15,026][flwr][INFO] - [ROUND 18]
+[2024-06-16 14:49:15,027][flwr][INFO] - configure_fit: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:49:18,226][flwr][INFO] - aggregate_fit: received 25 results and 0 failures
+[2024-06-16 14:49:18,284][flwr][INFO] - fit progress: (18, tensor(0.3008, dtype=torch.float64), {'mae_loss, mse_loss': (0.4876454162597653, 0.30076642064878195)}, 62.341137499999995)
+[2024-06-16 14:49:18,287][flwr][INFO] - configure_evaluate: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:49:18,700][flwr][INFO] - aggregate_evaluate: received 25 results and 0 failures
+[2024-06-16 14:49:18,700][flwr][INFO] - 
+[2024-06-16 14:49:18,700][flwr][INFO] - [ROUND 19]
+[2024-06-16 14:49:18,701][flwr][INFO] - configure_fit: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:49:22,610][flwr][INFO] - aggregate_fit: received 25 results and 0 failures
+[2024-06-16 14:49:22,634][flwr][INFO] - fit progress: (19, tensor(0.3560, dtype=torch.float64), {'mae_loss, mse_loss': (0.5282575988769522, 0.35596202450955683)}, 66.6925468)
+[2024-06-16 14:49:22,637][flwr][INFO] - configure_evaluate: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:49:22,953][flwr][INFO] - aggregate_evaluate: received 25 results and 0 failures
+[2024-06-16 14:49:22,954][flwr][INFO] - 
+[2024-06-16 14:49:22,955][flwr][INFO] - [ROUND 20]
+[2024-06-16 14:49:22,955][flwr][INFO] - configure_fit: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:49:27,325][flwr][INFO] - aggregate_fit: received 25 results and 0 failures
+[2024-06-16 14:49:27,350][flwr][INFO] - fit progress: (20, tensor(0.2293, dtype=torch.float64), {'mae_loss, mse_loss': (0.429494934082031, 0.22925701159029216)}, 71.40754190000001)
+[2024-06-16 14:49:27,352][flwr][INFO] - configure_evaluate: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:49:27,721][flwr][INFO] - aggregate_evaluate: received 25 results and 0 failures
+[2024-06-16 14:49:27,722][flwr][INFO] - 
+[2024-06-16 14:49:27,722][flwr][INFO] - [ROUND 21]
+[2024-06-16 14:49:27,723][flwr][INFO] - configure_fit: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:49:31,195][flwr][INFO] - aggregate_fit: received 25 results and 0 failures
+[2024-06-16 14:49:31,226][flwr][INFO] - fit progress: (21, tensor(0.2422, dtype=torch.float64), {'mae_loss, mse_loss': (0.4347714233398435, 0.24223693776037486)}, 75.2845955)
+[2024-06-16 14:49:31,229][flwr][INFO] - configure_evaluate: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:49:31,595][flwr][INFO] - aggregate_evaluate: received 25 results and 0 failures
+[2024-06-16 14:49:31,596][flwr][INFO] - 
+[2024-06-16 14:49:31,596][flwr][INFO] - [ROUND 22]
+[2024-06-16 14:49:31,597][flwr][INFO] - configure_fit: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:49:34,725][flwr][INFO] - aggregate_fit: received 25 results and 0 failures
+[2024-06-16 14:49:34,756][flwr][INFO] - fit progress: (22, tensor(0.1317, dtype=torch.float64), {'mae_loss, mse_loss': (0.3366253662109372, 0.13167732699867302)}, 78.8141215)
+[2024-06-16 14:49:34,758][flwr][INFO] - configure_evaluate: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:49:35,084][flwr][INFO] - aggregate_evaluate: received 25 results and 0 failures
+[2024-06-16 14:49:35,085][flwr][INFO] - 
+[2024-06-16 14:49:35,085][flwr][INFO] - [ROUND 23]
+[2024-06-16 14:49:35,086][flwr][INFO] - configure_fit: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:49:38,158][flwr][INFO] - aggregate_fit: received 25 results and 0 failures
+[2024-06-16 14:49:38,181][flwr][INFO] - fit progress: (23, tensor(0.1355, dtype=torch.float64), {'mae_loss, mse_loss': (0.33887603759765594, 0.13549298919015526)}, 82.23927029999999)
+[2024-06-16 14:49:38,183][flwr][INFO] - configure_evaluate: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:49:38,476][flwr][INFO] - aggregate_evaluate: received 25 results and 0 failures
+[2024-06-16 14:49:38,477][flwr][INFO] - 
+[2024-06-16 14:49:38,477][flwr][INFO] - [ROUND 24]
+[2024-06-16 14:49:38,478][flwr][INFO] - configure_fit: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:49:41,416][flwr][INFO] - aggregate_fit: received 25 results and 0 failures
+[2024-06-16 14:49:41,441][flwr][INFO] - fit progress: (24, tensor(0.1435, dtype=torch.float64), {'mae_loss, mse_loss': (0.3446110534667966, 0.14348043093609114)}, 85.4991392)
+[2024-06-16 14:49:41,443][flwr][INFO] - configure_evaluate: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:49:41,743][flwr][INFO] - aggregate_evaluate: received 25 results and 0 failures
+[2024-06-16 14:49:41,744][flwr][INFO] - 
+[2024-06-16 14:49:41,745][flwr][INFO] - [ROUND 25]
+[2024-06-16 14:49:41,745][flwr][INFO] - configure_fit: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:49:44,871][flwr][INFO] - aggregate_fit: received 25 results and 0 failures
+[2024-06-16 14:49:44,897][flwr][INFO] - fit progress: (25, tensor(0.1274, dtype=torch.float64), {'mae_loss, mse_loss': (0.32566574096679657, 0.12736597404850142)}, 88.95567449999999)
+[2024-06-16 14:49:44,899][flwr][INFO] - configure_evaluate: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:49:45,194][flwr][INFO] - aggregate_evaluate: received 25 results and 0 failures
+[2024-06-16 14:49:45,195][flwr][INFO] - 
+[2024-06-16 14:49:45,196][flwr][INFO] - [ROUND 26]
+[2024-06-16 14:49:45,196][flwr][INFO] - configure_fit: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:49:48,108][flwr][INFO] - aggregate_fit: received 25 results and 0 failures
+[2024-06-16 14:49:48,130][flwr][INFO] - fit progress: (26, tensor(0.1255, dtype=torch.float64), {'mae_loss, mse_loss': (0.32109268188476536, 0.12548304257017984)}, 92.18839170000001)
+[2024-06-16 14:49:48,132][flwr][INFO] - configure_evaluate: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:49:48,423][flwr][INFO] - aggregate_evaluate: received 25 results and 0 failures
+[2024-06-16 14:49:48,424][flwr][INFO] - 
+[2024-06-16 14:49:48,424][flwr][INFO] - [ROUND 27]
+[2024-06-16 14:49:48,425][flwr][INFO] - configure_fit: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:49:51,233][flwr][INFO] - aggregate_fit: received 25 results and 0 failures
+[2024-06-16 14:49:51,255][flwr][INFO] - fit progress: (27, tensor(0.0847, dtype=torch.float64), {'mae_loss, mse_loss': (0.2710827636718747, 0.08472176971822017)}, 95.31258199999999)
+[2024-06-16 14:49:51,257][flwr][INFO] - configure_evaluate: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:49:51,551][flwr][INFO] - aggregate_evaluate: received 25 results and 0 failures
+[2024-06-16 14:49:51,551][flwr][INFO] - 
+[2024-06-16 14:49:51,552][flwr][INFO] - [ROUND 28]
+[2024-06-16 14:49:51,553][flwr][INFO] - configure_fit: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:49:54,311][flwr][INFO] - aggregate_fit: received 25 results and 0 failures
+[2024-06-16 14:49:54,337][flwr][INFO] - fit progress: (28, tensor(0.1056, dtype=torch.float64), {'mae_loss, mse_loss': (0.29473693847656224, 0.10557322028768208)}, 98.3947133)
+[2024-06-16 14:49:54,339][flwr][INFO] - configure_evaluate: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:49:54,625][flwr][INFO] - aggregate_evaluate: received 25 results and 0 failures
+[2024-06-16 14:49:54,626][flwr][INFO] - 
+[2024-06-16 14:49:54,626][flwr][INFO] - [ROUND 29]
+[2024-06-16 14:49:54,627][flwr][INFO] - configure_fit: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:49:57,369][flwr][INFO] - aggregate_fit: received 25 results and 0 failures
+[2024-06-16 14:49:57,391][flwr][INFO] - fit progress: (29, tensor(0.0833, dtype=torch.float64), {'mae_loss, mse_loss': (0.2656353759765622, 0.08326003143307718)}, 101.44960080000001)
+[2024-06-16 14:49:57,393][flwr][INFO] - configure_evaluate: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:49:57,682][flwr][INFO] - aggregate_evaluate: received 25 results and 0 failures
+[2024-06-16 14:49:57,684][flwr][INFO] - 
+[2024-06-16 14:49:57,685][flwr][INFO] - [ROUND 30]
+[2024-06-16 14:49:57,685][flwr][INFO] - configure_fit: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:50:00,453][flwr][INFO] - aggregate_fit: received 25 results and 0 failures
+[2024-06-16 14:50:00,475][flwr][INFO] - fit progress: (30, tensor(0.0809, dtype=torch.float64), {'mae_loss, mse_loss': (0.26022308349609347, 0.0809231453374956)}, 104.53310350000001)
+[2024-06-16 14:50:00,477][flwr][INFO] - configure_evaluate: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:50:00,781][flwr][INFO] - aggregate_evaluate: received 25 results and 0 failures
+[2024-06-16 14:50:00,782][flwr][INFO] - 
+[2024-06-16 14:50:00,782][flwr][INFO] - [ROUND 31]
+[2024-06-16 14:50:00,783][flwr][INFO] - configure_fit: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:50:03,778][flwr][INFO] - aggregate_fit: received 25 results and 0 failures
+[2024-06-16 14:50:03,801][flwr][INFO] - fit progress: (31, tensor(0.1023, dtype=torch.float64), {'mae_loss, mse_loss': (0.2840023803710935, 0.10233320733625398)}, 107.8590872)
+[2024-06-16 14:50:03,803][flwr][INFO] - configure_evaluate: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:50:04,095][flwr][INFO] - aggregate_evaluate: received 25 results and 0 failures
+[2024-06-16 14:50:04,096][flwr][INFO] - 
+[2024-06-16 14:50:04,096][flwr][INFO] - [ROUND 32]
+[2024-06-16 14:50:04,096][flwr][INFO] - configure_fit: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:50:06,938][flwr][INFO] - aggregate_fit: received 25 results and 0 failures
+[2024-06-16 14:50:06,961][flwr][INFO] - fit progress: (32, tensor(0.0707, dtype=torch.float64), {'mae_loss, mse_loss': (0.24278762817382785, 0.07066287896630787)}, 111.018189)
+[2024-06-16 14:50:06,963][flwr][INFO] - configure_evaluate: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:50:07,248][flwr][INFO] - aggregate_evaluate: received 25 results and 0 failures
+[2024-06-16 14:50:07,249][flwr][INFO] - 
+[2024-06-16 14:50:07,249][flwr][INFO] - [ROUND 33]
+[2024-06-16 14:50:07,250][flwr][INFO] - configure_fit: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:50:10,086][flwr][INFO] - aggregate_fit: received 25 results and 0 failures
+[2024-06-16 14:50:10,113][flwr][INFO] - fit progress: (33, tensor(0.1123, dtype=torch.float64), {'mae_loss, mse_loss': (0.29627136230468665, 0.11227223785570772)}, 114.17089729999998)
+[2024-06-16 14:50:10,115][flwr][INFO] - configure_evaluate: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:50:10,470][flwr][INFO] - aggregate_evaluate: received 25 results and 0 failures
+[2024-06-16 14:50:10,470][flwr][INFO] - 
+[2024-06-16 14:50:10,471][flwr][INFO] - [ROUND 34]
+[2024-06-16 14:50:10,472][flwr][INFO] - configure_fit: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:50:13,404][flwr][INFO] - aggregate_fit: received 25 results and 0 failures
+[2024-06-16 14:50:13,433][flwr][INFO] - fit progress: (34, tensor(0.0705, dtype=torch.float64), {'mae_loss, mse_loss': (0.23945739746093722, 0.0705134422120169)}, 117.49076209999998)
+[2024-06-16 14:50:13,435][flwr][INFO] - configure_evaluate: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:50:13,735][flwr][INFO] - aggregate_evaluate: received 25 results and 0 failures
+[2024-06-16 14:50:13,736][flwr][INFO] - 
+[2024-06-16 14:50:13,737][flwr][INFO] - [ROUND 35]
+[2024-06-16 14:50:13,737][flwr][INFO] - configure_fit: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:50:16,533][flwr][INFO] - aggregate_fit: received 25 results and 0 failures
+[2024-06-16 14:50:16,556][flwr][INFO] - fit progress: (35, tensor(0.0676, dtype=torch.float64), {'mae_loss, mse_loss': (0.23415725708007784, 0.06762974166346213)}, 120.6142748)
+[2024-06-16 14:50:16,558][flwr][INFO] - configure_evaluate: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:50:16,855][flwr][INFO] - aggregate_evaluate: received 25 results and 0 failures
+[2024-06-16 14:50:16,856][flwr][INFO] - 
+[2024-06-16 14:50:16,857][flwr][INFO] - [ROUND 36]
+[2024-06-16 14:50:16,858][flwr][INFO] - configure_fit: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:50:19,583][flwr][INFO] - aggregate_fit: received 25 results and 0 failures
+[2024-06-16 14:50:19,625][flwr][INFO] - fit progress: (36, tensor(0.0286, dtype=torch.float64), {'mae_loss, mse_loss': (0.15490005493164033, 0.02863017022178959)}, 123.6826106)
+[2024-06-16 14:50:19,627][flwr][INFO] - configure_evaluate: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:50:19,926][flwr][INFO] - aggregate_evaluate: received 25 results and 0 failures
+[2024-06-16 14:50:19,927][flwr][INFO] - 
+[2024-06-16 14:50:19,927][flwr][INFO] - [ROUND 37]
+[2024-06-16 14:50:19,928][flwr][INFO] - configure_fit: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:50:22,905][flwr][INFO] - aggregate_fit: received 25 results and 0 failures
+[2024-06-16 14:50:22,927][flwr][INFO] - fit progress: (37, tensor(0.0637, dtype=torch.float64), {'mae_loss, mse_loss': (0.2254978942871091, 0.06366713797475641)}, 126.9859123)
+[2024-06-16 14:50:22,931][flwr][INFO] - configure_evaluate: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:50:23,243][flwr][INFO] - aggregate_evaluate: received 25 results and 0 failures
+[2024-06-16 14:50:23,244][flwr][INFO] - 
+[2024-06-16 14:50:23,244][flwr][INFO] - [ROUND 38]
+[2024-06-16 14:50:23,245][flwr][INFO] - configure_fit: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:50:26,108][flwr][INFO] - aggregate_fit: received 25 results and 0 failures
+[2024-06-16 14:50:26,131][flwr][INFO] - fit progress: (38, tensor(0.0613, dtype=torch.float64), {'mae_loss, mse_loss': (0.2209660339355466, 0.06127005055698065)}, 130.1896301)
+[2024-06-16 14:50:26,134][flwr][INFO] - configure_evaluate: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:50:26,421][flwr][INFO] - aggregate_evaluate: received 25 results and 0 failures
+[2024-06-16 14:50:26,422][flwr][INFO] - 
+[2024-06-16 14:50:26,423][flwr][INFO] - [ROUND 39]
+[2024-06-16 14:50:26,423][flwr][INFO] - configure_fit: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:50:29,258][flwr][INFO] - aggregate_fit: received 25 results and 0 failures
+[2024-06-16 14:50:29,284][flwr][INFO] - fit progress: (39, tensor(0.0791, dtype=torch.float64), {'mae_loss, mse_loss': (0.24669479370117103, 0.07912034683313643)}, 133.3418107)
+[2024-06-16 14:50:29,286][flwr][INFO] - configure_evaluate: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:50:29,574][flwr][INFO] - aggregate_evaluate: received 25 results and 0 failures
+[2024-06-16 14:50:29,575][flwr][INFO] - 
+[2024-06-16 14:50:29,576][flwr][INFO] - [ROUND 40]
+[2024-06-16 14:50:29,576][flwr][INFO] - configure_fit: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:50:32,471][flwr][INFO] - aggregate_fit: received 25 results and 0 failures
+[2024-06-16 14:50:32,497][flwr][INFO] - fit progress: (40, tensor(0.0538, dtype=torch.float64), {'mae_loss, mse_loss': (0.20777099609374972, 0.053794109392678036)}, 136.5545371)
+[2024-06-16 14:50:32,499][flwr][INFO] - configure_evaluate: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:50:32,793][flwr][INFO] - aggregate_evaluate: received 25 results and 0 failures
+[2024-06-16 14:50:32,793][flwr][INFO] - 
+[2024-06-16 14:50:32,794][flwr][INFO] - [ROUND 41]
+[2024-06-16 14:50:32,795][flwr][INFO] - configure_fit: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:50:35,675][flwr][INFO] - aggregate_fit: received 25 results and 0 failures
+[2024-06-16 14:50:35,698][flwr][INFO] - fit progress: (41, tensor(0.0392, dtype=torch.float64), {'mae_loss, mse_loss': (0.1809582519531247, 0.039171034244121716)}, 139.75592709999998)
+[2024-06-16 14:50:35,701][flwr][INFO] - configure_evaluate: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:50:36,005][flwr][INFO] - aggregate_evaluate: received 25 results and 0 failures
+[2024-06-16 14:50:36,006][flwr][INFO] - 
+[2024-06-16 14:50:36,007][flwr][INFO] - [ROUND 42]
+[2024-06-16 14:50:36,008][flwr][INFO] - configure_fit: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:50:38,975][flwr][INFO] - aggregate_fit: received 25 results and 0 failures
+[2024-06-16 14:50:39,000][flwr][INFO] - fit progress: (42, tensor(0.0389, dtype=torch.float64), {'mae_loss, mse_loss': (0.17968261718749973, 0.03893631005869219)}, 143.0576443)
+[2024-06-16 14:50:39,001][flwr][INFO] - configure_evaluate: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:50:39,292][flwr][INFO] - aggregate_evaluate: received 25 results and 0 failures
+[2024-06-16 14:50:39,292][flwr][INFO] - 
+[2024-06-16 14:50:39,293][flwr][INFO] - [ROUND 43]
+[2024-06-16 14:50:39,294][flwr][INFO] - configure_fit: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:50:42,160][flwr][INFO] - aggregate_fit: received 25 results and 0 failures
+[2024-06-16 14:50:42,183][flwr][INFO] - fit progress: (43, tensor(0.0430, dtype=torch.float64), {'mae_loss, mse_loss': (0.18686645507812472, 0.04297942313924402)}, 146.24158169999998)
+[2024-06-16 14:50:42,186][flwr][INFO] - configure_evaluate: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:50:42,473][flwr][INFO] - aggregate_evaluate: received 25 results and 0 failures
+[2024-06-16 14:50:42,474][flwr][INFO] - 
+[2024-06-16 14:50:42,474][flwr][INFO] - [ROUND 44]
+[2024-06-16 14:50:42,475][flwr][INFO] - configure_fit: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:50:45,317][flwr][INFO] - aggregate_fit: received 25 results and 0 failures
+[2024-06-16 14:50:45,341][flwr][INFO] - fit progress: (44, tensor(0.0445, dtype=torch.float64), {'mae_loss, mse_loss': (0.1888340759277341, 0.04453402351157243)}, 149.398578)
+[2024-06-16 14:50:45,343][flwr][INFO] - configure_evaluate: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:50:45,633][flwr][INFO] - aggregate_evaluate: received 25 results and 0 failures
+[2024-06-16 14:50:45,633][flwr][INFO] - 
+[2024-06-16 14:50:45,634][flwr][INFO] - [ROUND 45]
+[2024-06-16 14:50:45,635][flwr][INFO] - configure_fit: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:50:48,407][flwr][INFO] - aggregate_fit: received 25 results and 0 failures
+[2024-06-16 14:50:48,430][flwr][INFO] - fit progress: (45, tensor(0.0751, dtype=torch.float64), {'mae_loss, mse_loss': (0.2464498901367179, 0.0750974767839066)}, 152.4885022)
+[2024-06-16 14:50:48,433][flwr][INFO] - configure_evaluate: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:50:48,714][flwr][INFO] - aggregate_evaluate: received 25 results and 0 failures
+[2024-06-16 14:50:48,715][flwr][INFO] - 
+[2024-06-16 14:50:48,716][flwr][INFO] - [ROUND 46]
+[2024-06-16 14:50:48,716][flwr][INFO] - configure_fit: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:50:51,495][flwr][INFO] - aggregate_fit: received 25 results and 0 failures
+[2024-06-16 14:50:51,518][flwr][INFO] - fit progress: (46, tensor(0.0315, dtype=torch.float64), {'mae_loss, mse_loss': (0.1614262390136716, 0.031521585901849655)}, 155.5759295)
+[2024-06-16 14:50:51,520][flwr][INFO] - configure_evaluate: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:50:51,811][flwr][INFO] - aggregate_evaluate: received 25 results and 0 failures
+[2024-06-16 14:50:51,812][flwr][INFO] - 
+[2024-06-16 14:50:51,813][flwr][INFO] - [ROUND 47]
+[2024-06-16 14:50:51,813][flwr][INFO] - configure_fit: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:50:54,596][flwr][INFO] - aggregate_fit: received 25 results and 0 failures
+[2024-06-16 14:50:54,618][flwr][INFO] - fit progress: (47, tensor(0.0500, dtype=torch.float64), {'mae_loss, mse_loss': (0.19418304443359347, 0.04997823180025408)}, 158.67667369999998)
+[2024-06-16 14:50:54,620][flwr][INFO] - configure_evaluate: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:50:54,906][flwr][INFO] - aggregate_evaluate: received 25 results and 0 failures
+[2024-06-16 14:50:54,907][flwr][INFO] - 
+[2024-06-16 14:50:54,908][flwr][INFO] - [ROUND 48]
+[2024-06-16 14:50:54,908][flwr][INFO] - configure_fit: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:50:57,622][flwr][INFO] - aggregate_fit: received 25 results and 0 failures
+[2024-06-16 14:50:57,646][flwr][INFO] - fit progress: (48, tensor(0.0463, dtype=torch.float64), {'mae_loss, mse_loss': (0.18748519897460908, 0.0462666716057571)}, 161.7045118)
+[2024-06-16 14:50:57,648][flwr][INFO] - configure_evaluate: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:50:57,934][flwr][INFO] - aggregate_evaluate: received 25 results and 0 failures
+[2024-06-16 14:50:57,936][flwr][INFO] - 
+[2024-06-16 14:50:57,937][flwr][INFO] - [ROUND 49]
+[2024-06-16 14:50:57,937][flwr][INFO] - configure_fit: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:51:00,735][flwr][INFO] - aggregate_fit: received 25 results and 0 failures
+[2024-06-16 14:51:00,758][flwr][INFO] - fit progress: (49, tensor(0.0426, dtype=torch.float64), {'mae_loss, mse_loss': (0.1807232666015622, 0.04258178726979499)}, 164.8154741)
+[2024-06-16 14:51:00,760][flwr][INFO] - configure_evaluate: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:51:01,093][flwr][INFO] - aggregate_evaluate: received 25 results and 0 failures
+[2024-06-16 14:51:01,094][flwr][INFO] - 
+[2024-06-16 14:51:01,095][flwr][INFO] - [ROUND 50]
+[2024-06-16 14:51:01,095][flwr][INFO] - configure_fit: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:51:03,836][flwr][INFO] - aggregate_fit: received 25 results and 0 failures
+[2024-06-16 14:51:03,859][flwr][INFO] - fit progress: (50, tensor(0.0568, dtype=torch.float64), {'mae_loss, mse_loss': (0.21247238159179602, 0.05680669559200722)}, 167.91651099999999)
+[2024-06-16 14:51:03,860][flwr][INFO] - configure_evaluate: strategy sampled 25 clients (out of 25)
+[2024-06-16 14:51:04,147][flwr][INFO] - aggregate_evaluate: received 25 results and 0 failures
+[2024-06-16 14:51:04,147][flwr][INFO] - 
+[2024-06-16 14:51:04,148][flwr][INFO] - [SUMMARY]
+[2024-06-16 14:51:04,149][flwr][INFO] - Run finished 50 rounds in 168.21s
+[2024-06-16 14:51:04,151][flwr][INFO] - History (loss, distributed):
+[2024-06-16 14:51:04,151][flwr][INFO] - 	('\tround 1: 31.97358029074023\n'
+[2024-06-16 14:51:04,152][flwr][INFO] - 	 '\tround 2: 8.233901398232659\n'
+[2024-06-16 14:51:04,153][flwr][INFO] - 	 '\tround 3: 20.280584217200957\n'
+[2024-06-16 14:51:04,153][flwr][INFO] - 	 '\tround 4: 14.34881519392874\n'
+[2024-06-16 14:51:04,154][flwr][INFO] - 	 '\tround 5: 7.089425882573656\n'
+[2024-06-16 14:51:04,154][flwr][INFO] - 	 '\tround 6: 3.8774314970473585\n'
+[2024-06-16 14:51:04,155][flwr][INFO] - 	 '\tround 7: 1.7989660263646794\n'
+[2024-06-16 14:51:04,155][flwr][INFO] - 	 '\tround 8: 1.241472799133377\n'
+[2024-06-16 14:51:04,156][flwr][INFO] - 	 '\tround 9: 1.1433803316019509\n'
+[2024-06-16 14:51:04,156][flwr][INFO] - 	 '\tround 10: 0.9124242131965856\n'
+[2024-06-16 14:51:04,157][flwr][INFO] - 	 '\tround 11: 0.8259584076599353\n'
+[2024-06-16 14:51:04,157][flwr][INFO] - 	 '\tround 12: 0.7600203023185438\n'
+[2024-06-16 14:51:04,158][flwr][INFO] - 	 '\tround 13: 2.1584274214426973\n'
+[2024-06-16 14:51:04,158][flwr][INFO] - 	 '\tround 14: 6.507348666395551\n'
+[2024-06-16 14:51:04,159][flwr][INFO] - 	 '\tround 15: 1.4714649451552484\n'
+[2024-06-16 14:51:04,159][flwr][INFO] - 	 '\tround 16: 0.7097008118847422\n'
+[2024-06-16 14:51:04,160][flwr][INFO] - 	 '\tround 17: 0.5181674819657519\n'
+[2024-06-16 14:51:04,160][flwr][INFO] - 	 '\tround 18: 0.4614089856166952\n'
+[2024-06-16 14:51:04,160][flwr][INFO] - 	 '\tround 19: 0.3954263697686767\n'
+[2024-06-16 14:51:04,161][flwr][INFO] - 	 '\tround 20: 0.3683113322431966\n'
+[2024-06-16 14:51:04,162][flwr][INFO] - 	 '\tround 21: 0.32400857077609563\n'
+[2024-06-16 14:51:04,162][flwr][INFO] - 	 '\tround 22: 0.3392494425311673\n'
+[2024-06-16 14:51:04,163][flwr][INFO] - 	 '\tround 23: 0.30211323126838907\n'
+[2024-06-16 14:51:04,163][flwr][INFO] - 	 '\tround 24: 0.2733581814046559\n'
+[2024-06-16 14:51:04,164][flwr][INFO] - 	 '\tround 25: 0.2517920217836729\n'
+[2024-06-16 14:51:04,164][flwr][INFO] - 	 '\tround 26: 0.23340868457639843\n'
+[2024-06-16 14:51:04,165][flwr][INFO] - 	 '\tround 27: 0.2402310335342992\n'
+[2024-06-16 14:51:04,165][flwr][INFO] - 	 '\tround 28: 0.2073005680270751\n'
+[2024-06-16 14:51:04,165][flwr][INFO] - 	 '\tround 29: 0.20674480073082446\n'
+[2024-06-16 14:51:04,166][flwr][INFO] - 	 '\tround 30: 0.18944512775503253\n'
+[2024-06-16 14:51:04,166][flwr][INFO] - 	 '\tround 31: 0.17167793512055027\n'
+[2024-06-16 14:51:04,167][flwr][INFO] - 	 '\tround 32: 0.17267869898998234\n'
+[2024-06-16 14:51:04,167][flwr][INFO] - 	 '\tround 33: 0.15484380846757995\n'
+[2024-06-16 14:51:04,168][flwr][INFO] - 	 '\tround 34: 0.15679672171066106\n'
+[2024-06-16 14:51:04,168][flwr][INFO] - 	 '\tround 35: 0.15276267790933348\n'
+[2024-06-16 14:51:04,169][flwr][INFO] - 	 '\tround 36: 0.18281841472025806\n'
+[2024-06-16 14:51:04,169][flwr][INFO] - 	 '\tround 37: 0.14236592805377107\n'
+[2024-06-16 14:51:04,169][flwr][INFO] - 	 '\tround 38: 0.13932209409405918\n'
+[2024-06-16 14:51:04,170][flwr][INFO] - 	 '\tround 39: 0.13293523243891112\n'
+[2024-06-16 14:51:04,170][flwr][INFO] - 	 '\tround 40: 0.13539646310422543\n'
+[2024-06-16 14:51:04,171][flwr][INFO] - 	 '\tround 41: 0.13899611549658833\n'
+[2024-06-16 14:51:04,171][flwr][INFO] - 	 '\tround 42: 0.13561521903440255\n'
+[2024-06-16 14:51:04,171][flwr][INFO] - 	 '\tround 43: 0.13068326486812296\n'
+[2024-06-16 14:51:04,172][flwr][INFO] - 	 '\tround 44: 0.1265451892921774\n'
+[2024-06-16 14:51:04,172][flwr][INFO] - 	 '\tround 45: 0.11727830331048603\n'
+[2024-06-16 14:51:04,172][flwr][INFO] - 	 '\tround 46: 0.1254734122017908\n'
+[2024-06-16 14:51:04,173][flwr][INFO] - 	 '\tround 47: 0.11128727481007562\n'
+[2024-06-16 14:51:04,173][flwr][INFO] - 	 '\tround 48: 0.1135156285166231\n'
+[2024-06-16 14:51:04,173][flwr][INFO] - 	 '\tround 49: 0.11170628410331603\n'
+[2024-06-16 14:51:04,174][flwr][INFO] - 	 '\tround 50: 0.10689260779758472\n')History (loss, centralized):
+[2024-06-16 14:51:04,174][flwr][INFO] - 	('\tround 0: 5596.3716184588575\n'
+[2024-06-16 14:51:04,174][flwr][INFO] - 	 '\tround 1: 11.555721439959944\n'
+[2024-06-16 14:51:04,175][flwr][INFO] - 	 '\tround 2: 1.6995454038013704\n'
+[2024-06-16 14:51:04,175][flwr][INFO] - 	 '\tround 3: 2.2549626286843596\n'
+[2024-06-16 14:51:04,175][flwr][INFO] - 	 '\tround 4: 0.4930822583891\n'
+[2024-06-16 14:51:04,176][flwr][INFO] - 	 '\tround 5: 1.3117369695383818\n'
+[2024-06-16 14:51:04,176][flwr][INFO] - 	 '\tround 6: 1.6669583823692509\n'
+[2024-06-16 14:51:04,176][flwr][INFO] - 	 '\tround 7: 1.2065983201689074\n'
+[2024-06-16 14:51:04,177][flwr][INFO] - 	 '\tround 8: 1.2018325337782723\n'
+[2024-06-16 14:51:04,177][flwr][INFO] - 	 '\tround 9: 0.7721876253744112\n'
+[2024-06-16 14:51:04,178][flwr][INFO] - 	 '\tround 10: 0.9284059428636672\n'
+[2024-06-16 14:51:04,178][flwr][INFO] - 	 '\tround 11: 0.7692919363277022\n'
+[2024-06-16 14:51:04,179][flwr][INFO] - 	 '\tround 12: 0.49897798833064655\n'
+[2024-06-16 14:51:04,179][flwr][INFO] - 	 '\tround 13: 0.1734874422001892\n'
+[2024-06-16 14:51:04,179][flwr][INFO] - 	 '\tround 14: 0.14581949169375036\n'
+[2024-06-16 14:51:04,180][flwr][INFO] - 	 '\tround 15: 0.7348011367538702\n'
+[2024-06-16 14:51:04,180][flwr][INFO] - 	 '\tround 16: 0.47718622489343315\n'
+[2024-06-16 14:51:04,181][flwr][INFO] - 	 '\tround 17: 0.4594935144714537\n'
+[2024-06-16 14:51:04,181][flwr][INFO] - 	 '\tround 18: 0.30076642064878195\n'
+[2024-06-16 14:51:04,181][flwr][INFO] - 	 '\tround 19: 0.3559620245095568\n'
+[2024-06-16 14:51:04,182][flwr][INFO] - 	 '\tround 20: 0.22925701159029216\n'
+[2024-06-16 14:51:04,182][flwr][INFO] - 	 '\tround 21: 0.24223693776037486\n'
+[2024-06-16 14:51:04,182][flwr][INFO] - 	 '\tround 22: 0.13167732699867302\n'
+[2024-06-16 14:51:04,183][flwr][INFO] - 	 '\tround 23: 0.13549298919015526\n'
+[2024-06-16 14:51:04,183][flwr][INFO] - 	 '\tround 24: 0.14348043093609114\n'
+[2024-06-16 14:51:04,184][flwr][INFO] - 	 '\tround 25: 0.12736597404850142\n'
+[2024-06-16 14:51:04,184][flwr][INFO] - 	 '\tround 26: 0.12548304257017984\n'
+[2024-06-16 14:51:04,184][flwr][INFO] - 	 '\tround 27: 0.08472176971822017\n'
+[2024-06-16 14:51:04,185][flwr][INFO] - 	 '\tround 28: 0.10557322028768208\n'
+[2024-06-16 14:51:04,185][flwr][INFO] - 	 '\tround 29: 0.08326003143307718\n'
+[2024-06-16 14:51:04,185][flwr][INFO] - 	 '\tround 30: 0.08092314533749559\n'
+[2024-06-16 14:51:04,186][flwr][INFO] - 	 '\tround 31: 0.10233320733625398\n'
+[2024-06-16 14:51:04,186][flwr][INFO] - 	 '\tround 32: 0.07066287896630785\n'
+[2024-06-16 14:51:04,186][flwr][INFO] - 	 '\tround 33: 0.11227223785570772\n'
+[2024-06-16 14:51:04,187][flwr][INFO] - 	 '\tround 34: 0.07051344221201689\n'
+[2024-06-16 14:51:04,187][flwr][INFO] - 	 '\tround 35: 0.06762974166346213\n'
+[2024-06-16 14:51:04,187][flwr][INFO] - 	 '\tround 36: 0.02863017022178959\n'
+[2024-06-16 14:51:04,188][flwr][INFO] - 	 '\tround 37: 0.06366713797475641\n'
+[2024-06-16 14:51:04,188][flwr][INFO] - 	 '\tround 38: 0.06127005055698065\n'
+[2024-06-16 14:51:04,188][flwr][INFO] - 	 '\tround 39: 0.07912034683313643\n'
+[2024-06-16 14:51:04,189][flwr][INFO] - 	 '\tround 40: 0.053794109392678036\n'
+[2024-06-16 14:51:04,189][flwr][INFO] - 	 '\tround 41: 0.039171034244121716\n'
+[2024-06-16 14:51:04,190][flwr][INFO] - 	 '\tround 42: 0.03893631005869219\n'
+[2024-06-16 14:51:04,190][flwr][INFO] - 	 '\tround 43: 0.04297942313924402\n'
+[2024-06-16 14:51:04,190][flwr][INFO] - 	 '\tround 44: 0.04453402351157243\n'
+[2024-06-16 14:51:04,191][flwr][INFO] - 	 '\tround 45: 0.0750974767839066\n'
+[2024-06-16 14:51:04,191][flwr][INFO] - 	 '\tround 46: 0.031521585901849655\n'
+[2024-06-16 14:51:04,191][flwr][INFO] - 	 '\tround 47: 0.04997823180025408\n'
+[2024-06-16 14:51:04,192][flwr][INFO] - 	 '\tround 48: 0.0462666716057571\n'
+[2024-06-16 14:51:04,192][flwr][INFO] - 	 '\tround 49: 0.04258178726979499\n'
+[2024-06-16 14:51:04,192][flwr][INFO] - 	 '\tround 50: 0.05680669559200722\n')History (metrics, centralized):
+[2024-06-16 14:51:04,193][flwr][INFO] - 	{'mae_loss, mse_loss': [(0, (74.75811706542969, 5596.3716184588575)),
+[2024-06-16 14:51:04,193][flwr][INFO] - 	                        (1, (3.0380850219726554, 11.555721439959944)),
+[2024-06-16 14:51:04,194][flwr][INFO] - 	                        (2, (1.159927673339844, 1.6995454038013704)),
+[2024-06-16 14:51:04,194][flwr][INFO] - 	                        (3, (1.2304246520996103, 2.2549626286843596)),
+[2024-06-16 14:51:04,194][flwr][INFO] - 	                        (4, (0.6524118041992196, 0.4930822583891)),
+[2024-06-16 14:51:04,195][flwr][INFO] - 	                        (5, (0.9978071594238273, 1.3117369695383818)),
+[2024-06-16 14:51:04,195][flwr][INFO] - 	                        (6, (1.208920898437499, 1.6669583823692509)),
+[2024-06-16 14:51:04,196][flwr][INFO] - 	                        (7, (1.028865661621093, 1.2065983201689074)),
+[2024-06-16 14:51:04,196][flwr][INFO] - 	                        (8, (1.036306610107421, 1.2018325337782723)),
+[2024-06-16 14:51:04,197][flwr][INFO] - 	                        (9, (0.8104681396484367, 0.7721876253744112)),
+[2024-06-16 14:51:04,197][flwr][INFO] - 	                        (10, (0.9070600891113273, 0.9284059428636672)),
+[2024-06-16 14:51:04,197][flwr][INFO] - 	                        (11, (0.8190191650390617, 0.7692919363277022)),
+[2024-06-16 14:51:04,198][flwr][INFO] - 	                        (12, (0.6331137084960929, 0.49897798833064655)),
+[2024-06-16 14:51:04,198][flwr][INFO] - 	                        (13, (0.2899073791503909, 0.1734874422001892)),
+[2024-06-16 14:51:04,199][flwr][INFO] - 	                        (14, (0.3340008544921872, 0.14581949169375036)),
+[2024-06-16 14:51:04,199][flwr][INFO] - 	                        (15, (0.7937864685058585, 0.7348011367538702)),
+[2024-06-16 14:51:04,199][flwr][INFO] - 	                        (16, (0.6130499267578117, 0.47718622489343315)),
+[2024-06-16 14:51:04,200][flwr][INFO] - 	                        (17, (0.6059729003906241, 0.4594935144714537)),
+[2024-06-16 14:51:04,200][flwr][INFO] - 	                        (18, (0.4876454162597653, 0.30076642064878195)),
+[2024-06-16 14:51:04,200][flwr][INFO] - 	                        (19, (0.5282575988769522, 0.35596202450955683)),
+[2024-06-16 14:51:04,201][flwr][INFO] - 	                        (20, (0.429494934082031, 0.22925701159029216)),
+[2024-06-16 14:51:04,201][flwr][INFO] - 	                        (21, (0.4347714233398435, 0.24223693776037486)),
+[2024-06-16 14:51:04,201][flwr][INFO] - 	                        (22, (0.3366253662109372, 0.13167732699867302)),
+[2024-06-16 14:51:04,202][flwr][INFO] - 	                        (23, (0.33887603759765594, 0.13549298919015526)),
+[2024-06-16 14:51:04,202][flwr][INFO] - 	                        (24, (0.3446110534667966, 0.14348043093609114)),
+[2024-06-16 14:51:04,203][flwr][INFO] - 	                        (25, (0.32566574096679657, 0.12736597404850142)),
+[2024-06-16 14:51:04,203][flwr][INFO] - 	                        (26, (0.32109268188476536, 0.12548304257017984)),
+[2024-06-16 14:51:04,203][flwr][INFO] - 	                        (27, (0.2710827636718747, 0.08472176971822017)),
+[2024-06-16 14:51:04,204][flwr][INFO] - 	                        (28, (0.29473693847656224, 0.10557322028768208)),
+[2024-06-16 14:51:04,204][flwr][INFO] - 	                        (29, (0.2656353759765622, 0.08326003143307718)),
+[2024-06-16 14:51:04,204][flwr][INFO] - 	                        (30, (0.26022308349609347, 0.0809231453374956)),
+[2024-06-16 14:51:04,205][flwr][INFO] - 	                        (31, (0.2840023803710935, 0.10233320733625398)),
+[2024-06-16 14:51:04,205][flwr][INFO] - 	                        (32, (0.24278762817382785, 0.07066287896630787)),
+[2024-06-16 14:51:04,206][flwr][INFO] - 	                        (33, (0.29627136230468665, 0.11227223785570772)),
+[2024-06-16 14:51:04,206][flwr][INFO] - 	                        (34, (0.23945739746093722, 0.0705134422120169)),
+[2024-06-16 14:51:04,206][flwr][INFO] - 	                        (35, (0.23415725708007784, 0.06762974166346213)),
+[2024-06-16 14:51:04,207][flwr][INFO] - 	                        (36, (0.15490005493164033, 0.02863017022178959)),
+[2024-06-16 14:51:04,207][flwr][INFO] - 	                        (37, (0.2254978942871091, 0.06366713797475641)),
+[2024-06-16 14:51:04,207][flwr][INFO] - 	                        (38, (0.2209660339355466, 0.06127005055698065)),
+[2024-06-16 14:51:04,208][flwr][INFO] - 	                        (39, (0.24669479370117103, 0.07912034683313643)),
+[2024-06-16 14:51:04,208][flwr][INFO] - 	                        (40, (0.20777099609374972, 0.053794109392678036)),
+[2024-06-16 14:51:04,209][flwr][INFO] - 	                        (41, (0.1809582519531247, 0.039171034244121716)),
+[2024-06-16 14:51:04,209][flwr][INFO] - 	                        (42, (0.17968261718749973, 0.03893631005869219)),
+[2024-06-16 14:51:04,209][flwr][INFO] - 	                        (43, (0.18686645507812472, 0.04297942313924402)),
+[2024-06-16 14:51:04,210][flwr][INFO] - 	                        (44, (0.1888340759277341, 0.04453402351157243)),
+[2024-06-16 14:51:04,210][flwr][INFO] - 	                        (45, (0.2464498901367179, 0.0750974767839066)),
+[2024-06-16 14:51:04,210][flwr][INFO] - 	                        (46, (0.1614262390136716, 0.031521585901849655)),
+[2024-06-16 14:51:04,211][flwr][INFO] - 	                        (47, (0.19418304443359347, 0.04997823180025408)),
+[2024-06-16 14:51:04,211][flwr][INFO] - 	                        (48, (0.18748519897460908, 0.0462666716057571)),
+[2024-06-16 14:51:04,212][flwr][INFO] - 	                        (49, (0.1807232666015622, 0.04258178726979499)),
+[2024-06-16 14:51:04,212][flwr][INFO] - 	                        (50, (0.21247238159179602, 0.05680669559200722))]}
+[2024-06-16 14:51:04,213][flwr][INFO] - 

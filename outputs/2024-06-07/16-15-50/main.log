@@ -1,0 +1,4 @@
+[2024-06-07 16:15:51,067][flwr][INFO] - Starting Flower simulation, config: num_rounds=50, no round_timeout
+[2024-06-07 16:15:56,270][flwr][INFO] - Flower VCE: Ray initialized with resources: {'memory': 7277105972.0, 'object_store_memory': 3638552985.0, 'node:127.0.0.1': 1.0, 'CPU': 8.0, 'node:__internal_head__': 1.0}
+[2024-06-07 16:15:56,271][flwr][INFO] - Optimize your simulation with Flower VCE: https://flower.ai/docs/framework/how-to-run-simulations.html
+[2024-06-07 16:15:56,271][flwr][INFO] - Flower VCE: Resources for each Virtual Client: {'num_cpus': 0.0, 'num_gpus': 0.0}

@@ -203,33 +203,9 @@ def merge(folder_path,output_file):#選択したクライアントのフォル�
   # マージされたデータをCSVファイルとして保存
   merged_data.to_csv(output_file, index=False)
 
-def prepare_dataset(num_partitions: int,
-                    batch_size: int,
-                    val_ratio: float = 0.1):
-    #clientの選択
-    # フォルダーの名前とインデックスを表示
-    folders = os.listdir('data_of_client_folders')
-    for i, folder in enumerate(folders, 1):
-        print(f"{i}: {folder}")
-
-    # 使用者にフォルダーを選択させる
-    selected_index = int(input("クライアントを選択してください（インデックスをカンマ区切りで入力）: "))-1
-    selected_folders = folders[selected_index]
-    #print(selected_folders)
-
-    #選択したクライアントのフォルダー内のファイルを結合
-    folder_path='data_of_client_folders/'+selected_folders
-    client_file = 'data_of_client/'+selected_folders+'.csv'
-    merge(folder_path,client_file)
-
-    trainloader, valloader, testloader, standard_list = load(all_data = client_file, csv_data = 'csv_data/'+selected_folders +'.csv')
-
-    return trainloader, valloader, testloader
-
-
 def prepare_dataset_beta(num_partitions: int,
                     batch_size: int,
-                    val_ratio: float = 0.1):
+                    val_ratio: float = 0.135):
     
     folders = os.listdir('data_of_client_folders')
 
@@ -248,24 +224,24 @@ def prepare_dataset_beta(num_partitions: int,
             file_path = "data_of_client_folders/"+folder+"/"+file
             data = pd.read_csv(file_path)             
             merged_data = pd.concat([merged_data, data], ignore_index=True)
-          # マージされたデータをCSVファイルとして保存
-
+        # マージされたデータをCSVファイルとして保存
         csvdata = "garbage/garbage.csv"
         merged_data.to_csv(csvdata, index=False)
-
         #標準化処理をどうするか問題！！！！！！！！！！！！！！！、いったんしない方向で考える
         X,Y,df = base(csvdata, csv_data = 'csv_data/'+folder+'.csv')
+        Y_name = "garbage/y_"+folder+".csv"
+        Y.to_csv(Y_name, index=False)
+        X_name = "garbage/x_"+folder+".csv"
+        X.to_csv(X_name, index=False)
         X = torch.tensor(X.to_numpy(), dtype=torch.float32)
-        Y = torch.tensor(Y.to_numpy(), dtype=torch.float64)
+        Y = torch.tensor(Y.to_numpy(), dtype=torch.float64)      
         #訓練データとテストデータに分割
         train_rate = 0.9
         X_train, X_test, Y_train, Y_test = train_test_split(X, Y, train_size=train_rate, random_state = 0)
         trainset = TensorDataset(X_train, Y_train)
         testset = TensorDataset(X_test, Y_test)
         trainsets.append(trainset)
-
     
-
     #dataloaderの作成
     trainloaders = []
     valloaders = []
@@ -277,26 +253,10 @@ def prepare_dataset_beta(num_partitions: int,
 
         for_train, for_val = random_split(trainset_, [num_train, num_val], torch.Generator().manual_seed(2023))
 
-        trainloaders.append(DataLoader(for_train, batch_size=batch_size,shuffle=True, num_workers=2))
-        valloaders.append(DataLoader(for_val, batch_size=batch_size,shuffle=False, num_workers=2))
+        trainloaders.append(DataLoader(for_train, batch_size=batch_size,shuffle=True, num_workers=0))
+        valloaders.append(DataLoader(for_val, batch_size=batch_size,shuffle=False, num_workers=0))
 
-        #for batch in DataLoader(for_train, batch_size=batch_size,shuffle=True, num_workers=2):
-            #for tensor in batch:
-                #print(tensor.dtype)  # Tensorのdtypeを表示
-               # break  # 最初のバッチのみを調べるため、ループを終了
-
-        #for batch in DataLoader(for_val, batch_size=batch_size,shuffle=True, num_workers=2):
-            #for tensor in batch:
-                #print(tensor.dtype)  # Tensorのdtypeを表示
-                #break  # 最初のバッチのみを調べるため、ループを終了
-    
-    testloader = DataLoader(testset, batch_size=16)
-    #for batch in testloader:
-           # for tensor in batch:
-                #print(tensor.dtype)  # Tensorのdtypeを表示
-                #break  # 最初のバッチのみを調べるため、ループを終了
-
-
+    testloader = DataLoader(testset, batch_size=batch_size)
     return trainloaders, valloaders, testloader
 
 # データの理解と前処理、データの可視化、データの分析の処理を行うための関数を定義
@@ -322,6 +282,7 @@ def process_alldata():
     return csvdata
 
 def prepare_dataset_alldata(num_partitions: int,
+                            
                     batch_size: int,
                     val_ratio: float = 0.1):
     
@@ -375,3 +336,40 @@ def prepare_dataset_alldata(num_partitions: int,
     print("trainloaders, valloaders, testloader", type(trainloaders), type(valloaders), type(testloader))
 
     return trainloaders, valloaders, testloader
+
+def datasets_gridsearch():
+    
+    folders = os.listdir('data_of_client_folders')
+    #datasetsをほ損ずるためのからのリスト
+    datasets = []
+    for folder in folders:
+        # データを保持する空のDataFrameを作成
+
+        merged_data = pd.DataFrame()
+        # 選択されたフォルダーのパス
+        input_folder = os.path.join('data_of_client_folders', folder)
+        # フォルダ内の各ファイルに対して処理
+        for file in os.listdir(input_folder):
+            file_path = "data_of_client_folders/"+folder+"/"+file
+            data = pd.read_csv(file_path)             
+            merged_data = pd.concat([merged_data, data], ignore_index=True)
+        # マージされたデータをCSVファイルとして保存
+        csvdata = "garbage/garbage.csv"
+        merged_data.to_csv(csvdata, index=False)
+        #標準化処理をどうするか問題！！！！！！！！！！！！！！！ いったんしない方向で考える
+        X,Y,df = base(csvdata, csv_data = 'csv_data/'+folder+'.csv')
+        Y_name = "garbage/y_"+folder+".csv"
+        Y.to_csv(Y_name, index=False)
+        X_name = "garbage/x_"+folder+".csv"
+        X.to_csv(X_name, index=False)
+        X_tensor = torch.tensor(X.to_numpy(), dtype=torch.float32)
+        Y_tensor = torch.tensor(Y.to_numpy(), dtype=torch.float64)      
+        
+        #tesorに変換
+        dataset = TensorDataset(X_tensor, Y_tensor)
+        datasets.append(dataset)
+    
+    return datasets, X_tensor, Y_tensor
+
+
+    

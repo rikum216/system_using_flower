@@ -1,0 +1,43 @@
+[2024-06-16 17:04:35,073][flwr][INFO] - Starting Flower simulation, config: num_rounds=50, no round_timeout
+[2024-06-16 17:04:40,217][flwr][INFO] - Flower VCE: Ray initialized with resources: {'node:127.0.0.1': 1.0, 'object_store_memory': 7039397068.0, 'memory': 14078794139.0, 'node:__internal_head__': 1.0, 'CPU': 8.0}
+[2024-06-16 17:04:40,218][flwr][INFO] - Optimize your simulation with Flower VCE: https://flower.ai/docs/framework/how-to-run-simulations.html
+[2024-06-16 17:04:40,219][flwr][INFO] - Flower VCE: Resources for each Virtual Client: {'num_cpus': 8, 'num_gpus': 0.0}
+[2024-06-16 17:04:40,227][flwr][INFO] - Flower VCE: Creating VirtualClientEngineActorPool with 1 actors
+[2024-06-16 17:04:40,228][flwr][INFO] - [INIT]
+[2024-06-16 17:04:40,228][flwr][INFO] - Requesting initial parameters from one random client
+[2024-06-16 17:04:44,231][flwr][INFO] - Received initial parameters from one random client
+[2024-06-16 17:04:44,232][flwr][INFO] - Evaluating initial global parameters
+[2024-06-16 17:04:44,240][flwr][INFO] - initial parameters (loss, other metrics): tensor(4855.0919, dtype=torch.float64), {'mae_loss, mse_loss': (69.67056556701661, 4855.091903390259)}
+[2024-06-16 17:04:44,243][flwr][INFO] - 
+[2024-06-16 17:04:44,244][flwr][INFO] - [ROUND 1]
+[2024-06-16 17:04:44,245][flwr][INFO] - configure_fit: strategy sampled 25 clients (out of 25)
+[2024-06-16 17:04:49,904][flwr][INFO] - aggregate_fit: received 25 results and 0 failures
+[2024-06-16 17:04:49,922][flwr][WARNING] - No fit_metrics_aggregation_fn provided
+[2024-06-16 17:04:49,927][flwr][INFO] - fit progress: (1, tensor(33.9775, dtype=torch.float64), {'mae_loss, mse_loss': (5.489658203124999, 33.977496294625794)}, 5.684241899999998)
+[2024-06-16 17:04:49,929][flwr][INFO] - configure_evaluate: strategy sampled 25 clients (out of 25)
+[2024-06-16 17:04:50,478][flwr][INFO] - aggregate_evaluate: received 25 results and 0 failures
+[2024-06-16 17:04:50,479][flwr][WARNING] - No evaluate_metrics_aggregation_fn provided
+[2024-06-16 17:04:50,479][flwr][INFO] - 
+[2024-06-16 17:04:50,480][flwr][INFO] - [ROUND 2]
+[2024-06-16 17:04:50,480][flwr][INFO] - configure_fit: strategy sampled 25 clients (out of 25)
+[2024-06-16 17:04:54,653][flwr][INFO] - aggregate_fit: received 25 results and 0 failures
+[2024-06-16 17:04:54,676][flwr][INFO] - fit progress: (2, tensor(19.0975, dtype=torch.float64), {'mae_loss, mse_loss': (4.2318304443359365, 19.09753304940741)}, 10.432543699999998)
+[2024-06-16 17:04:54,677][flwr][INFO] - configure_evaluate: strategy sampled 25 clients (out of 25)
+[2024-06-16 17:04:55,237][flwr][INFO] - aggregate_evaluate: received 25 results and 0 failures
+[2024-06-16 17:04:55,237][flwr][INFO] - 
+[2024-06-16 17:04:55,238][flwr][INFO] - [ROUND 3]
+[2024-06-16 17:04:55,238][flwr][INFO] - configure_fit: strategy sampled 25 clients (out of 25)
+[2024-06-16 17:04:59,464][flwr][INFO] - aggregate_fit: received 25 results and 0 failures
+[2024-06-16 17:04:59,491][flwr][INFO] - fit progress: (3, tensor(8.2437, dtype=torch.float64), {'mae_loss, mse_loss': (2.7771849060058584, 8.243689661841254)}, 15.247514399999998)
+[2024-06-16 17:04:59,493][flwr][INFO] - configure_evaluate: strategy sampled 25 clients (out of 25)
+[2024-06-16 17:05:00,047][flwr][INFO] - aggregate_evaluate: received 25 results and 0 failures
+[2024-06-16 17:05:00,048][flwr][INFO] - 
+[2024-06-16 17:05:00,049][flwr][INFO] - [ROUND 4]
+[2024-06-16 17:05:00,050][flwr][INFO] - configure_fit: strategy sampled 25 clients (out of 25)
+[2024-06-16 17:05:04,622][flwr][INFO] - aggregate_fit: received 25 results and 0 failures
+[2024-06-16 17:05:04,646][flwr][INFO] - fit progress: (4, tensor(4.1892, dtype=torch.float64), {'mae_loss, mse_loss': (1.9860220336914054, 4.189161861501399)}, 20.4026341)
+[2024-06-16 17:05:04,648][flwr][INFO] - configure_evaluate: strategy sampled 25 clients (out of 25)
+[2024-06-16 17:05:05,265][flwr][INFO] - aggregate_evaluate: received 25 results and 0 failures
+[2024-06-16 17:05:05,265][flwr][INFO] - 
+[2024-06-16 17:05:05,266][flwr][INFO] - [ROUND 5]
+[2024-06-16 17:05:05,267][flwr][INFO] - configure_fit: strategy sampled 25 clients (out of 25)

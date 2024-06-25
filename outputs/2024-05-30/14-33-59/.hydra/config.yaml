@@ -19,4 +19,4 @@ num_clients_per_round_eval: 25
 config_fit:
   lr: 0.01
   momentum: 0.9
-  local_epochs: 20
+  local_epochs: 500

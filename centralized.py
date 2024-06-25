@@ -28,7 +28,6 @@ import flwr as fl
 import data_loading
 from sklearn.utils import shuffle
 from data_set import base, load
-from data_set import prepare_dataset_alldata
 
 warnings.filterwarnings("ignore", category=UserWarning)
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
@@ -116,6 +115,7 @@ def test(net, testloader):
     mae_loss = 0
     mse_loss = 0
     rmse_loss = 0
+    loss = 0
     
     with torch.no_grad():
         pred_y = torch.Tensor()
@@ -124,7 +124,9 @@ def test(net, testloader):
             #inputs, targets = inputs.float(), targets.float()
             targets = targets.reshape((targets.shape[0], 1))
             outputs = net(inputs)
-            loss = MSE_criterion(outputs, targets)
+            MSE_loss = MSE_criterion(outputs, targets)
+            loss += MSE_loss
+
             #平均絶対誤差
             mae = mean_absolute_error(targets, outputs)
             mae_loss += mae
@@ -134,12 +136,11 @@ def test(net, testloader):
             #二乗平均平方根誤差
             rmse = np.sqrt(mean_squared_error(targets, outputs))
             rmse_loss+= rmse
-            test_loss += loss
             #print('\nTest loss (avg)', loss)
             #pred = outputs.argmax(dim=1, keepdim=True)
-            epoch = epoch+1
+            epoch= epoch+1
 
-    return mae_loss/epoch, mse_loss/epoch, rmse_loss/epoch
+    return  loss, mae_loss/epoch, mse_loss/epoch, rmse_loss/epoch
 
 # インスタンス生成
 def load_model():
@@ -200,20 +201,22 @@ if __name__ == "__main__":
     trainset = TensorDataset(X_train, Y_train)
     validset = TensorDataset(X_val, Y_val)
     testset = TensorDataset(X_test, Y_test)
-    trainloader = DataLoader(trainset, batch_size=32, shuffle=True)    
-    valloader = DataLoader(validset, batch_size=32, shuffle=True)
-    testloader = DataLoader(testset, batch_size=32, shuffle=True)
+    trainloader = DataLoader(trainset, batch_size=16, shuffle=True)  
+    valloader = DataLoader(validset, batch_size=16, shuffle=True)
+    testloader = DataLoader(testset, batch_size=16, shuffle=True)
     n_epochs = 500
     for epoch in range(n_epochs):
         #train 
         train(net, trainloader,optimizer, epochs=1)
         torch.save(net.state_dict(), 'model.pth')
         #val loss
-        mae_loss, mse_loss, rmse_loss = test(net, valloader) 
+        loss, mae_loss, mse_loss, rmse_loss = test(net, valloader) 
 
         #if (epoch+1) % 100 == 0:
-        print(f"epochs{epoch+1:.0f},mae_Loss:{mae_loss:.5f}, mse_oss:{mae_loss:.5f}, rmse_loss:{rmse_loss:.5f}")
+        #print(f"epochs{epoch+1:.0f},mae_Loss:{mae_loss:.5f}, mse_oss:{mse_loss:.5f}, rmse_loss:{rmse_loss:.5f}")
+        print(f"{epoch+1:.0f},{mae_loss:.5f},{mse_loss:.5f},{rmse_loss:.5f}")
 
     #test loss
-    mae_loss, mse_loss, rmse_loss = test(net, testloader)
-    print(f"testloss : mae_Loss:{mae_loss:.5f}, mse_oss:{mae_loss:.5f}, rmse_loss:{rmse_loss:.5f}")
+    loss, mae_loss, mse_loss, rmse_loss = test(net, testloader)
+    print(f"testloss : mae_Loss:{mae_loss:.5f}, mse_oss:{mse_loss:.5f}, rmse_loss:{rmse_loss:.5f}")
+
